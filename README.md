@@ -1,1 +1,2 @@
-# This is a uni project regarding the decoding of mental imagery with the use of fMRI data. This project will analyze the opensource dataset (https://openneuro.org/datasets/ds001506/versions/1.3.1)
+# This repository contains the relevant code, openlab notebook and information regarding the decoding of mental imagery with the use of fMRI data. This project will analyze the following opensource dataset (https://openneuro.org/datasets/ds001506/versions/1.3.1).
+Aim of this project is to decode both mental imagery stimuli and natural stimuli presented in the study. This will allow a comparison in decoding between imagined and visually seen images.
