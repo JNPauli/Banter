@@ -1,1 +1,1 @@
-In this folder the documentation of my open_lab_notebook will take place.
+In this folder the documentation of my work and project process will take place. The documentation is stored within the "Documentation.md" file.
