@@ -8,3 +8,5 @@ Step 2 of the workflow was the data processing. A computing environment has been
 
 Things that are missing for now:
 Quality check of the functional data. Quality check of the processed data.
+
+The model of interest performs by supervised learning. The input to the model is brain activity of the participants. Since this input will be decoded and thus categorized, the respective labels of the stimuli(mental imagery; natural stimuli) are needed.
