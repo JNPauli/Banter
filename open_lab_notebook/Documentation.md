@@ -1,4 +1,4 @@
-##October 2022:
+# October 2022:
 
 Things that happended so far in this project:
 The overall workflow of the fMRIPrep protocol has been followed. 
@@ -11,8 +11,8 @@ Quality check of the functional data. Quality check of the processed data.
 
 The model of interest performs by supervised learning. The input to the model is brain activity of the participants. Since this input will be decoded and thus categorized, the respective labels of the stimuli(mental imagery; natural stimuli) are needed.
 
-##November 2022:
+# November 2022:
 
-#1.11.2022
+## 1.11.2022
 
 One issue that I encountered was the lack of "human readable" labels for the stimuli. Each stimuli was paired with a numeric ID. Luckily, there is a [repository](https://github.com/mf1024/ImageNet-Datasets-Downloader/blob/master/classes_in_imagenet.csv) that containts the translation for each ID. 
