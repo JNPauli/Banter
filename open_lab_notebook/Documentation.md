@@ -15,4 +15,8 @@ The model of interest performs by supervised learning. The input to the model is
 
 ## 1.11.2022
 
-One issue that I encountered was the lack of "human readable" labels for the stimuli. Each stimuli was paired with a numeric ID. Luckily, there is a [repository](https://github.com/mf1024/ImageNet-Datasets-Downloader/blob/master/classes_in_imagenet.csv) that containts the translation for each ID. 
+One issue that I encountered was the lack of "human readable" labels for the stimuli. Each stimuli was paired with a numeric ID. Luckily, there is a [repository](https://github.com/mf1024/ImageNet-Datasets-Downloader/blob/master/classes_in_imagenet.csv) that containts the translation for each ID.
+However, a license is missing. It is still in question whether I can actually use this repository. 
+
+## 3/4.11.2022
+I installed the raw dataset from openneuro by using *datalad*. The structure of this dataset has been started to be explored by using *pybids*.
