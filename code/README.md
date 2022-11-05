@@ -1,1 +1,2 @@
-The code used for analyzing the data will be uploaded in here
+This folder contains the code used in the research project. The analysis is done by using *Python*, mostly with the use of *jupyter notebooks*. The respective modules that were needed to create the computing environment is found in the requirements.txt file.
+Besides the analysis code, a jupyter notebook that explores the BIDS structure of the dataset is found in the Bids_Exploration.ipynb notebook.
