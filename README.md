@@ -12,6 +12,6 @@ This repository contains the relevant code, openlab notebook and information reg
 Aim of this project is to decode brain activity during two conditions, in which mental imagery and natural stimuli are presented, respectively. This will allow a comparison in decoding between imagined and visually seen images and answering the question, whether the quality of decoding is equal for both types of stimuli.
 
 ## Structure
-Information regarding the project status is stored in the openlab labbook folder. Exploration and analysis of the dataset can be found in the code folder. 
+Information regarding the project status is stored in the openlab notebook folder. Exploration and analysis of the dataset can be found in the code folder. 
 
 If there are any questions regarding this repository, please dont hesitate do open an issue on github. 
