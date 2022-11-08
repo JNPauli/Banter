@@ -14,9 +14,17 @@ The model of interest performs by supervised learning. The input to the model is
 # November 2022:
 
 ## 1.11.2022
-
 One issue that I encountered was the lack of "human readable" labels for the stimuli. Each stimuli was paired with a numeric ID. Luckily, there is a [repository](https://github.com/mf1024/ImageNet-Datasets-Downloader/blob/master/classes_in_imagenet.csv) that containts the translation for each ID.
 However, a license is missing. It is still in question whether I can actually use this repository. 
 
 ## 3/4.11.2022
 I installed the raw dataset from openneuro by using *datalad*. The structure of this dataset has been started to be explored by using *pybids*.
+
+## 8.11.2022
+Things that I need to do this week:
+Take a look at how many categories there are in the dataset.
+Use *datalad install* to install anatomical file of subject one and the functional file of subject one (within session one and run one). Plot images of anatomical file for subject one and plot functional images from subject one in the first imagery run and session. 
+Update notebook with step 3 of fMRI Data handling (Data modelling). 
+Read about SVM.
+Work through the following notebooks from the course website [1](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/introduction/notebooks/neuroscience/statistical_maps.html), [2](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/introduction/notebooks/neuroscience/statistical_analyses_MRI.html), [3](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/introduction/notebooks/neuroscience/statistical_analyses_MRI.html#performing-statistical-analyses-on-bids-dataset). 
+
