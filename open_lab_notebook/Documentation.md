@@ -18,13 +18,19 @@ One issue that I encountered was the lack of "human readable" labels for the sti
 However, a license is missing. It is still in question whether I can actually use this repository. 
 
 ## 3/4.11.2022
-I installed the raw dataset from openneuro by using *datalad*. The structure of this dataset has been started to be explored by using *pybids*.
+I installed the raw dataset from openneuro by using *datalad install https://github.com/OpenNeuroDatasets/ds001506.git*. The structure of this dataset has been started to be explored by using *pybids*.
 
 ## 8.11.2022
 Things that I need to do this week:
 Take a look at how many categories there are in the dataset.
-Use *datalad install* to install anatomical file of subject one and the functional file of subject one (within session one and run one). Plot images of anatomical file for subject one and plot functional images from subject one in the first imagery run and session. 
+Use *datalad get* to install anatomical file of subject one and the functional file of subject one (within session one and run one). Plot images of anatomical file for subject one and plot functional images from subject one in the first imagery run and session. 
 Update notebook with step 3 of fMRI Data handling (Data modelling). 
 Read about SVM.
 Work through the following notebooks from the course website [1](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/introduction/notebooks/neuroscience/statistical_maps.html), [2](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/introduction/notebooks/neuroscience/statistical_analyses_MRI.html), [3](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/introduction/notebooks/neuroscience/statistical_analyses_MRI.html#performing-statistical-analyses-on-bids-dataset). 
 
+## 13.11.2022
+Updated the Bids_exploration notebook with more comments, structure and information (still in progress though!). *datalad get sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.json* and *datalad get sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_events.tsv* did not work, but the *datalad get (/../../..).nii.gz* worked.  The exploration of the anatomical and functional brain images have been executed. The amount of categories in for the imagery session 01 is included. 
+    Further exploration of .json .tsv files have *still* to be done.
+
+I looked up the [scikit-learn algorithm cheatsheet](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html). It seems like the most useful model for my research project would be the support vector machine.
+    Adding information about data modelling is still missing in the notebook; I am thinking about creating another one for this purpose.
