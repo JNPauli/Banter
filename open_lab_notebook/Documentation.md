@@ -34,3 +34,6 @@ Updated the Bids_exploration notebook with more comments, structure and informat
 
 I looked up the [scikit-learn algorithm cheatsheet](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html). It seems like the most useful model for my research project would be the support vector machine.
     Adding information about data modelling is still missing in the notebook; I am thinking about creating another one for this purpose.
+
+## 14.11.2022
+Next step would be to run a GLM analysis on the preprocessed data, so I have the input for my machine learning model. The input to my model is the brain activity during the imagery and natural stimuli trials and thus requires the GLM. However, I still do not have the preprocessed data, because there are current issues with the data transfer.
