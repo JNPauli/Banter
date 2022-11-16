@@ -40,3 +40,6 @@ Next step would be to run a GLM analysis on the preprocessed data, so I have the
 
 ## 15.11.2022
 Added information about how to execute the datalad commands. Created first draft of a plot categorie id over time. Added more notes and structure. Made explanations to why the mean_img of the fmri image should be taken.
+
+## 16.11.2022
+Added more info to event and .json file. Created a second draft of plotting the categories over time. Transformed some markdown files from **txt** to a, in my opinion, more nicer way by using boxes.
