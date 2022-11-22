@@ -45,6 +45,6 @@ Added information about how to execute the datalad commands. Created first draft
 Added more info to event and .json file. Created a second draft of plotting the categories over time. Transformed some markdown files from **txt** to a, in my opinion, more nicer way by using boxes.
 
 ## 22.11.2022
-I incorperated some feedback that I got from Peer Herholz in the issue that I created on Github. Mainly, I added some overview about the paradigm that was used in the study. I explained how the mental imagery experiment works. Also, I added more structure and tried to be more narrative and explain more things.
+I incorperated some feedback that I got from Peer Herholz in the issue that I created on Github. Mainly, I added some overview about the paradigm that was used in the study. I explained how the mental imagery experiment works. Also, I added more structure and tried to be more narrative and explain more things. I updated the README files of the data and code folder.
 
 What I am still struggling with is to understand the metadata of the functional files. I do not completely understand what things like "echo timing", "slice timing" or "flip angle" mean.
