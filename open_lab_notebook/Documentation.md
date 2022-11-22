@@ -37,3 +37,14 @@ I looked up the [scikit-learn algorithm cheatsheet](https://scikit-learn.org/sta
 
 ## 14.11.2022
 Next step would be to run a GLM analysis on the preprocessed data, so I have the input for my machine learning model. The input to my model is the brain activity during the imagery and natural stimuli trials and thus requires the GLM. However, I still do not have the preprocessed data, because there are current issues with the data transfer.
+
+## 15.11.2022
+Added information about how to execute the datalad commands. Created first draft of a plot categorie id over time. Added more notes and structure. Made explanations to why the mean_img of the fmri image should be taken.
+
+## 16.11.2022
+Added more info to event and .json file. Created a second draft of plotting the categories over time. Transformed some markdown files from **txt** to a, in my opinion, more nicer way by using boxes.
+
+## 22.11.2022
+I incorperated some feedback that I got from Peer Herholz in the issue that I created on Github. Mainly, I added some overview about the paradigm that was used in the study. I explained how the mental imagery experiment works. Also, I added more structure and tried to be more narrative and explain more things. I updated the README files of the data and code folder.
+
+What I am still struggling with is to understand the metadata of the functional files. I do not completely understand what things like "echo timing", "slice timing" or "flip angle" mean.
