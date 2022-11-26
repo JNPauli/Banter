@@ -48,3 +48,7 @@ Added more info to event and .json file. Created a second draft of plotting the 
 I incorperated some feedback that I got from Peer Herholz in the issue that I created on Github. Mainly, I added some overview about the paradigm that was used in the study. I explained how the mental imagery experiment works. Also, I added more structure and tried to be more narrative and explain more things. I updated the README files of the data and code folder.
 
 What I am still struggling with is to understand the metadata of the functional files. I do not completely understand what things like "echo timing", "slice timing" or "flip angle" mean.
+
+## 26.11.2022
+I decided that probably the best thing for my support vector machine would be to use the "one versus all" classifying approach. 
+I created the General linear model notebook and loaded the data for sub-01/ses-imagery01/run01-run-05. I inspected the confounds.tsv file and started to create the structure for running the first level model.
