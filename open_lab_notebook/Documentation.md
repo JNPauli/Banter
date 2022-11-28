@@ -52,3 +52,7 @@ What I am still struggling with is to understand the metadata of the functional 
 ## 26.11.2022
 I decided that probably the best thing for my support vector machine would be to use the "one versus all" classifying approach. 
 I created the General linear model notebook and loaded the data for sub-01/ses-imagery01/run01-run-05. I inspected the confounds.tsv file and started to create the structure for running the first level model.
+
+## 28.11.2022
+For subject one, ses and run one the first level model was created. I created the respective design matrix. 
+Also, I updated the exploration notebook with an updated plot for categories over time.
