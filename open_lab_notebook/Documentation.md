@@ -56,3 +56,6 @@ I created the General linear model notebook and loaded the data for sub-01/ses-i
 ## 28.11.2022
 For subject one, ses and run one the first level model was created. I created the respective design matrix. 
 Also, I updated the exploration notebook with an updated plot for categories over time.
+
+## 29.11.2022
+Created a new plot to show how the categories distribute over time.
