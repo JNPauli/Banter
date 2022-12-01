@@ -61,4 +61,5 @@ Also, I updated the exploration notebook with an updated plot for categories ove
 Created a new plot to show how the categories distribute over time.
 
 ## 01.12.2022
-Started to prepare the calculation of contrasts, for detecting voxels with significant effects.
+Prepared the calculation of contrasts for essentially detecting voxels with significant effects.
+Computed effect and z map. Plotted the z map on the mean img.
