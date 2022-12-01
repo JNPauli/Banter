@@ -59,3 +59,6 @@ Also, I updated the exploration notebook with an updated plot for categories ove
 
 ## 29.11.2022
 Created a new plot to show how the categories distribute over time.
+
+## 01.12.2022
+Started to prepare the calculation of contrasts, for detecting voxels with significant effects.
