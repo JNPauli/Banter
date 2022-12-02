@@ -48,3 +48,22 @@ Added more info to event and .json file. Created a second draft of plotting the 
 I incorperated some feedback that I got from Peer Herholz in the issue that I created on Github. Mainly, I added some overview about the paradigm that was used in the study. I explained how the mental imagery experiment works. Also, I added more structure and tried to be more narrative and explain more things. I updated the README files of the data and code folder.
 
 What I am still struggling with is to understand the metadata of the functional files. I do not completely understand what things like "echo timing", "slice timing" or "flip angle" mean.
+
+## 26.11.2022
+I decided that probably the best thing for my support vector machine would be to use the "one versus all" classifying approach. 
+I created the General linear model notebook and loaded the data for sub-01/ses-imagery01/run01-run-05. I inspected the confounds.tsv file and started to create the structure for running the first level model.
+
+## 28.11.2022
+For subject one, ses and run one the first level model was created. I created the respective design matrix. 
+Also, I updated the exploration notebook with an updated plot for categories over time.
+
+## 29.11.2022
+Created a new plot to show how the categories distribute over time.
+
+## 01.12.2022
+Prepared the calculation of contrasts for essentially detecting voxels with significant effects.
+Computed effect and z map. Plotted the z map on the mean img.
+
+## 02.12.2022
+I tried the plotting methods with different conditions. For some reason, the displayed brain images do not change at all. I guess there must be something wrong with the way I computed the contrasts. I already created an issue for this. 
+Also, I updated the exploration dataset with comments from the respective issue.
