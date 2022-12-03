@@ -67,3 +67,6 @@ Computed effect and z map. Plotted the z map on the mean img.
 ## 02.12.2022
 I tried the plotting methods with different conditions. For some reason, the displayed brain images do not change at all. I guess there must be something wrong with the way I computed the contrasts. I already created an issue for this. 
 Also, I updated the exploration dataset with comments from the respective issue.
+
+## 03.12.2022
+According to the feedback I got in the issue, the way I computed the glm and everything associated with it in the notebook was correct. Thus, I proceeded and started to prepare the GLM for all 5 runs. Still figuring how I have to go about it.
