@@ -64,7 +64,7 @@ Created a new plot to show how the categories distribute over time.
 
 
 ## 01.12.2022
-Prepared the calculation of contrasts for essentially detecting voxels with significant effects.
+Prepared the calculation of contrasts for essentially detecting voxels with significant effects for a single run of subject one.
 Computed effect and z map. Plotted the z map on the mean img.
 
 ## 02.12.2022
@@ -73,3 +73,6 @@ Also, I updated the exploration dataset with comments from the respective issue.
 
 ## 03.12.2022
 According to the feedback I got in the issue, the way I computed the glm and everything associated with it in the notebook was correct. Thus, I proceeded and started to prepare the GLM for all 5 runs. Still figuring how I have to go about it.
+
+## 04.12.2022
+I calculated another z map. This time, I fitted the whole glm on 5 different fMRI images and their respective design matrices. Im still not sure which way is right one. In my first approach I calculated the contrast for a given condition, repeated this for all 5 runs, meaning I got 5 different zmaps of five different runs.
