@@ -76,3 +76,8 @@ According to the feedback I got in the issue, the way I computed the glm and eve
 
 ## 04.12.2022
 I calculated another z map. This time, I fitted the whole glm on 5 different fMRI images and their respective design matrices. Im still not sure which way is right one. In my first approach I calculated the contrast for a given condition, repeated this for all 5 runs, meaning I got 5 different zmaps of five different runs.
+
+## 05.12.2022
+I changed my approach and tried to follow the [nilearn documentation](https://nilearn.github.io/stable/auto_examples/04_glm_first_level/plot_fiac_analysis.html) and compute the design matrices for each run, without fitting the glm to get the matrices. Then I ran the glm, computed and saved the z-maps for each contrast. I am still unsure, wether this can now finally serve as the input to the SVM. I tried to plot the contrasts, but I need to specifiy which contrasts I want to plot. I am not sure, if I should plot all 26 contrasts.
+
+Also, I need to create a figure that shows the stimuli over time for all 5 runs.
