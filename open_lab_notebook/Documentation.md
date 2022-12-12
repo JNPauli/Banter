@@ -86,3 +86,6 @@ Also, I need to create a figure that shows the stimuli over time for all 5 runs.
 I started by calculating R squared for the glm, to evaluate the model. However, I do not know yet how to properly interpreted the results. It seems like the results are in accordance to what I am expecting, but I need to figure some things out. For example which exact brain areas show increased R^2 and if those are according to literature.
 
 I created a plot for each contrast across runs and started to compare them to the meta analysis database of neurosynth. This needs to be done to conclude, wether the activation pattern behaves according to theory.
+
+## 12.12.2022
+I finalized the evaluation of the R-Squared plots and discussed the results with Peer on the discord server. Furthermore, I compared the 26 contrast plots across runs to the results from neurosynth. They seem to show similar patterns, meaning that it is most likely now time to start with training the SVM.
