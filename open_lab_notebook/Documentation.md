@@ -60,10 +60,32 @@ Also, I updated the exploration notebook with an updated plot for categories ove
 ## 29.11.2022
 Created a new plot to show how the categories distribute over time.
 
+# December 2022
+
+
 ## 01.12.2022
-Prepared the calculation of contrasts for essentially detecting voxels with significant effects.
+Prepared the calculation of contrasts for essentially detecting voxels with significant effects for a single run of subject one.
 Computed effect and z map. Plotted the z map on the mean img.
 
 ## 02.12.2022
 I tried the plotting methods with different conditions. For some reason, the displayed brain images do not change at all. I guess there must be something wrong with the way I computed the contrasts. I already created an issue for this. 
 Also, I updated the exploration dataset with comments from the respective issue.
+
+## 03.12.2022
+According to the feedback I got in the issue, the way I computed the glm and everything associated with it in the notebook was correct. Thus, I proceeded and started to prepare the GLM for all 5 runs. Still figuring how I have to go about it.
+
+## 04.12.2022
+I calculated another z map. This time, I fitted the whole glm on 5 different fMRI images and their respective design matrices. Im still not sure which way is right one. In my first approach I calculated the contrast for a given condition, repeated this for all 5 runs, meaning I got 5 different zmaps of five different runs.
+
+## 05.12.2022
+I changed my approach and tried to follow the [nilearn documentation](https://nilearn.github.io/stable/auto_examples/04_glm_first_level/plot_fiac_analysis.html) and compute the design matrices for each run, without fitting the glm to get the matrices. Then I ran the glm, computed and saved the z-maps for each contrast. I am still unsure, wether this can now finally serve as the input to the SVM. I tried to plot the contrasts, but I need to specifiy which contrasts I want to plot. I am not sure, if I should plot all 26 contrasts.
+
+Also, I need to create a figure that shows the stimuli over time for all 5 runs.
+
+## 11.12.2022
+I started by calculating R squared for the glm, to evaluate the model. However, I do not know yet how to properly interpreted the results. It seems like the results are in accordance to what I am expecting, but I need to figure some things out. For example which exact brain areas show increased R^2 and if those are according to literature.
+
+I created a plot for each contrast across runs and started to compare them to the meta analysis database of neurosynth. This needs to be done to conclude, wether the activation pattern behaves according to theory.
+
+## 12.12.2022
+I finalized the evaluation of the R-Squared plots and discussed the results with Peer on the discord server. Furthermore, I compared the 26 contrast plots across runs to the results from neurosynth. They seem to show similar patterns, meaning that it is most likely now time to start with training the SVM.
