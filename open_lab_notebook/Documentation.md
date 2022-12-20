@@ -89,3 +89,9 @@ I created a plot for each contrast across runs and started to compare them to th
 
 ## 12.12.2022
 I finalized the evaluation of the R-Squared plots and discussed the results with Peer on the discord server. Furthermore, I compared the 26 contrast plots across runs to the results from neurosynth. They seem to show similar patterns, meaning that it is most likely now time to start with training the SVM.
+
+## 20.12.2022
+This week can be summed up pretty easy: I decided, that ROI based decoding makes the most sense for my supervised learning algorithm. This means, that I should look into the literature and decide which ROI makes the most sense. There are already masks provided in the openneuro dataset. The provided masks are the following (for the left and right hemisphere, respectively):
+V1,V2,V3,V4,Higher Visual cortex, PPA, FFA, LOC.
+I am diving into the literature to conclude which ROI will be the most useful for starters.
+I probably will go with the visual areas, or even the LOC due to its significant role in [object detection](https://www.sciencedirect.com/science/article/pii/S0042698901000736).
