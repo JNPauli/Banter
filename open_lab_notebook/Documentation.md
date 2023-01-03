@@ -101,3 +101,8 @@ I probably will go with the visual areas, or even the LOC due to its significant
 ## 02.01.2023
 Things I need to do this week: Create 26 z-maps (so one z-map for each condition) across runs for all 4 sessions. So basically just repeat the steps I already made. 
 Then I can train the SVM for example on 3 sessions and test them on 2 other sessions (= cross validation).
+
+## 03.01.2023
+I started with applying the glm analysis to the remaining 3 sessions. For this purpose, I created a loop that gets me a design matrix, which contains all 5 runs for each session. This design matrix was validated for session with the respective event file, meaning that the pattern of the stimuli behavior is the same for both the design matrix and the event file. I will still validate the other 2 sessions on another day. 
+
+I probably just need to run the glm for all three sessions and create the contrasts for the three session, so I get the respective z-map time series.
