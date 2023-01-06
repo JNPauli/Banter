@@ -113,4 +113,12 @@ I continued with calculating the z-map time series. At first, I did this for ses
 Also, I compared the voxel based activity pattern of all three z-maps to the one from session one. The pattern is very similiar meaning its also similiar to the pattern usually found in literature.
 
 ## 05.01.2023
-I started with a new notebook for the SVM. Within this notebook I loaded the masks and tried to extract the time-series out of the z-maps. However, this did not work, because the "Mask affine is different from image affine". Currently looking for a solution to fix this.
+I started with a new notebook for the SVM. Within this notebook I loaded the masks and tried to extract the time-series out of the z-maps. However, this did not work with nilearns "apply_mask()" function, because the "Mask affine is different from image affine". Currently looking for a solution to fix this.
+
+## 06.01.2023
+So I simply plotted the ROI on the z-map with the plot_roi() function. It seems like the mask objects do allign with the z-maps in a way that makes sense, meaning the visual cortex mask is plotted on the right spot for the z-map.
+
+One problem is that for sub 02 and sub 03 the functional images are not in subject space. This could lead to allignment issues. The brainlife preprocessing is now happening again, but this time with the functional images in subject space.
+When this is done I can run the glm for all subjects again and proceed with the SVM.
+
+In the meanwhile I could try to run the SVM and try things out.
