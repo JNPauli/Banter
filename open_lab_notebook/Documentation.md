@@ -111,3 +111,6 @@ I probably just need to run the glm for all three sessions and create the contra
 I continued with calculating the z-map time series. At first, I did this for session two alone. Then I had the idea, that I can just include the calculation in the main loop of section 5.0. I did this, and compared the results of 26 z-map contrasts for session 2. What I mean by this is that I checked if the plotted contrasts for session 2, when calculating the z-maps on its own, and when including it in a fancy loop are the same. They are indeed equal, meaning the loop I wrote is correct and works.
 
 Also, I compared the voxel based activity pattern of all three z-maps to the one from session one. The pattern is very similiar meaning its also similiar to the pattern usually found in literature.
+
+## 05.01.2023
+I started with a new notebook for the SVM. Within this notebook I loaded the masks and tried to extract the time-series out of the z-maps. However, this did not work, because the "Mask affine is different from image affine". Currently looking for a solution to fix this.
