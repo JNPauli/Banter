@@ -122,3 +122,9 @@ One problem is that for sub 02 and sub 03 the functional images are not in subje
 When this is done I can run the glm for all subjects again and proceed with the SVM.
 
 In the meanwhile I could try to run the SVM and try things out.
+
+## 09.01.2023
+The functional files have been reprocessed on brainlife. Now, all functional images are in the subject space, meaning in the respective anatomical T1 image. 
+The z-maps have been recalculated and plotted. The pattern still makes sense in respect to theory. So next step now is to download the remaining subject files (02 and 03) and calculate the respective z-maps.
+
+
