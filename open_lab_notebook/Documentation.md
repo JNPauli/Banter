@@ -127,4 +127,11 @@ In the meanwhile I could try to run the SVM and try things out.
 The functional files have been reprocessed on brainlife. Now, all functional images are in the subject space, meaning in the respective anatomical T1 image. 
 The z-maps have been recalculated and plotted. The pattern still makes sense in respect to theory. So next step now is to download the remaining subject files (02 and 03) and calculate the respective z-maps.
 
+## 17.01.2023
+Summary of the last week:
+The functional files for sub-02 and -03 have been reprocessed and successfully downloaded. Unfortunately, Brainlife has issues with the backend server for now. This means, that I am not able to progress with the project by downloading the respective regressors.
+They are working on a solution and will give notice, when the issues is fixed.
+
+
+
 
