@@ -132,6 +132,5 @@ Summary of the last week:
 The functional files for sub-02 and -03 have been reprocessed and successfully downloaded. Unfortunately, Brainlife has issues with the backend server for now. This means, that I am not able to progress with the project by downloading the respective regressors.
 They are working on a solution and will give notice, when the issues is fixed.
 
-
-
-
+## 18.01.2023
+Started to load the data into X and Y variables. Tried to implement logistic regression algorithm.
