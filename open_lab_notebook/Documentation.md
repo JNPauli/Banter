@@ -134,3 +134,7 @@ They are working on a solution and will give notice, when the issues is fixed.
 
 ## 18.01.2023
 Started to load the data into X and Y variables. Tried to implement logistic regression algorithm.
+
+## 19.01.2023
+There were some misunderstandings on my part about the X and Y variables. If I understood it correct, X needs to be n_samples * n_features large. N_samples is 104, since we have 26 categories a 4 sessions. N_features is equal to 992, since there are 992 for the mask applied (left hemisphere visual cortex). 
+I now created an numpy array that has 104 rows and 992 columns. Each row represents the respective timeseries.
