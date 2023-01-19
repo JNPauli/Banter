@@ -138,3 +138,9 @@ Started to load the data into X and Y variables. Tried to implement logistic reg
 ## 19.01.2023
 There were some misunderstandings on my part about the X and Y variables. If I understood it correct, X needs to be n_samples * n_features large. N_samples is 104, since we have 26 categories a 4 sessions. N_features is equal to 992, since there are 992 for the mask applied (left hemisphere visual cortex). 
 I now created an numpy array that has 104 rows and 992 columns. Each row represents the respective timeseries.
+
+Also I calculated a correlation matrix that displays the most 100 highest correlation coefficients... Im not sure if I should keep it this way. But its a start.
+
+I created the Y variable. It has 104 entries, aka 26*4. Each category is classified with a number. First category = 1 and so on.
+
+When running the logistic regression algorithm, it returns a model prediction of 0. Something is wrong. Maybe the features are to highly correlated? Not enough samples?
