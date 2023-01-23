@@ -150,6 +150,10 @@ Been trying to figure out why the model performs so poorly. Mainly by inspecting
 Well it is going rather... unsuccesfull. Today I just tried out a lot of different things, but I am not really smarter
 
 ## 23.01.2023
-Investigated the different voxel patterns and compared them with respective z_maps. I also tried different values for the C-Hyperparameter. For now, the model is working very well (accuracy 100%) for the training. However, the test data still performs very poor. 
+Investigated the different voxel patterns and compared them with respective z_maps. There is a session specific correlation, but I still do not know why. Maybe it is what it is...
+
+I also tried different values for the C-Hyperparameter. For now, the model is working very well (accuracy 100%) for the training. However, the test data still performs very poor. This was inspected by creating a confusion matrix. Probably the model is pretty overfitted.
 
 I extracted the most important features from the coef_ function of the logistic regression model. Still, the training performance is very bad.
+
+Also I added a bit more structure to the notebook. The notebook was moved from /data to /code.
