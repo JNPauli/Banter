@@ -144,3 +144,12 @@ Also I calculated a correlation matrix that displays the most 100 highest correl
 I created the Y variable. It has 104 entries, aka 26*4. Each category is classified with a number. First category = 1 and so on.
 
 When running the logistic regression algorithm, it returns a model prediction of 0. Something is wrong. Maybe the features are to highly correlated? Not enough samples?
+
+## 20.01.2023
+Been trying to figure out why the model performs so poorly. Mainly by inspecting the correlation between features.
+Well it is going rather... unsuccesfull. Today I just tried out a lot of different things, but I am not really smarter
+
+## 23.01.2023
+Investigated the different voxel patterns and compared them with respective z_maps. I also tried different values for the C-Hyperparameter. For now, the model is working very well (accuracy 100%) for the training. However, the test data still performs very poor. 
+
+I extracted the most important features from the coef_ function of the logistic regression model. Still, the training performance is very bad.
