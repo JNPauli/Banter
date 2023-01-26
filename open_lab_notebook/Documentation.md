@@ -157,3 +157,14 @@ I also tried different values for the C-Hyperparameter. For now, the model is wo
 I extracted the most important features from the coef_ function of the logistic regression model. Still, the training performance is very bad.
 
 Also I added a bit more structure to the notebook. The notebook was moved from /data to /code.
+
+## 24.01.2023
+Mapping onto brain
+
+datasplit, one class member in 25% split.
+
+explain session-specifics. first 3 components = session specific variance.
+
+Plot PCA (session specific correlation hypothesis). If so, remove PCA components that account for session differences. Reconstruction.
+
+PCA with sklearn, then "manually reconstruct". (inverse transform, check source code.)
