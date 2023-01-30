@@ -168,3 +168,12 @@ explain session-specifics. first 3 components = session specific variance.
 Plot PCA (session specific correlation hypothesis). If so, remove PCA components that account for session differences. Reconstruction.
 
 PCA with sklearn, then "manually reconstruct". (inverse transform, check source code.)
+https://github.com/scikit-learn/scikit-learn/blob/ff1023fda/sklearn/decomposition/_base.py#L128
+
+## 30.01.2023
+In the last week I did a lot of error search. It is evident, that the high session correlations affect the data. Almost al of the variance gets explained by it. A PCA reveals, that there are session cluster. We are not interest in session clusters, but in category cluster. 
+
+I tried a bunch of different things:
+Feature selection, with sklearns kbest. Hyperparamter selection with sklearns GridSearch. Instead of automatically splitting Y into training and test, I did this with a loop. The idea came, because when inspecting the confusion matrices, not every class was represented in the test set. Thus the loop comes in handy. It randomly selects a element from one of the sessions. This is done randomly, to defy the session specific effects.
+
+Since nothing really helped, I'll continue with the SupportVectorMachine.
