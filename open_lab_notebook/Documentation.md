@@ -111,3 +111,69 @@ I probably just need to run the glm for all three sessions and create the contra
 I continued with calculating the z-map time series. At first, I did this for session two alone. Then I had the idea, that I can just include the calculation in the main loop of section 5.0. I did this, and compared the results of 26 z-map contrasts for session 2. What I mean by this is that I checked if the plotted contrasts for session 2, when calculating the z-maps on its own, and when including it in a fancy loop are the same. They are indeed equal, meaning the loop I wrote is correct and works.
 
 Also, I compared the voxel based activity pattern of all three z-maps to the one from session one. The pattern is very similiar meaning its also similiar to the pattern usually found in literature.
+
+## 05.01.2023
+I started with a new notebook for the SVM. Within this notebook I loaded the masks and tried to extract the time-series out of the z-maps. However, this did not work with nilearns "apply_mask()" function, because the "Mask affine is different from image affine". Currently looking for a solution to fix this.
+
+## 06.01.2023
+So I simply plotted the ROI on the z-map with the plot_roi() function. It seems like the mask objects do allign with the z-maps in a way that makes sense, meaning the visual cortex mask is plotted on the right spot for the z-map.
+
+One problem is that for sub 02 and sub 03 the functional images are not in subject space. This could lead to allignment issues. The brainlife preprocessing is now happening again, but this time with the functional images in subject space.
+When this is done I can run the glm for all subjects again and proceed with the SVM.
+
+In the meanwhile I could try to run the SVM and try things out.
+
+## 09.01.2023
+The functional files have been reprocessed on brainlife. Now, all functional images are in the subject space, meaning in the respective anatomical T1 image. 
+The z-maps have been recalculated and plotted. The pattern still makes sense in respect to theory. So next step now is to download the remaining subject files (02 and 03) and calculate the respective z-maps.
+
+## 17.01.2023
+Summary of the last week:
+The functional files for sub-02 and -03 have been reprocessed and successfully downloaded. Unfortunately, Brainlife has issues with the backend server for now. This means, that I am not able to progress with the project by downloading the respective regressors.
+They are working on a solution and will give notice, when the issues is fixed.
+
+## 18.01.2023
+Started to load the data into X and Y variables. Tried to implement logistic regression algorithm.
+
+## 19.01.2023
+There were some misunderstandings on my part about the X and Y variables. If I understood it correct, X needs to be n_samples * n_features large. N_samples is 104, since we have 26 categories a 4 sessions. N_features is equal to 992, since there are 992 for the mask applied (left hemisphere visual cortex). 
+I now created an numpy array that has 104 rows and 992 columns. Each row represents the respective timeseries.
+
+Also I calculated a correlation matrix that displays the most 100 highest correlation coefficients... Im not sure if I should keep it this way. But its a start.
+
+I created the Y variable. It has 104 entries, aka 26*4. Each category is classified with a number. First category = 1 and so on.
+
+When running the logistic regression algorithm, it returns a model prediction of 0. Something is wrong. Maybe the features are to highly correlated? Not enough samples?
+
+## 20.01.2023
+Been trying to figure out why the model performs so poorly. Mainly by inspecting the correlation between features.
+Well it is going rather... unsuccesfull. Today I just tried out a lot of different things, but I am not really smarter
+
+## 23.01.2023
+Investigated the different voxel patterns and compared them with respective z_maps. There is a session specific correlation, but I still do not know why. Maybe it is what it is...
+
+I also tried different values for the C-Hyperparameter. For now, the model is working very well (accuracy 100%) for the training. However, the test data still performs very poor. This was inspected by creating a confusion matrix. Probably the model is pretty overfitted.
+
+I extracted the most important features from the coef_ function of the logistic regression model. Still, the training performance is very bad.
+
+Also I added a bit more structure to the notebook. The notebook was moved from /data to /code.
+
+## 24.01.2023
+Mapping onto brain
+
+datasplit, one class member in 25% split.
+
+explain session-specifics. first 3 components = session specific variance.
+
+Plot PCA (session specific correlation hypothesis). If so, remove PCA components that account for session differences. Reconstruction.
+
+PCA with sklearn, then "manually reconstruct". (inverse transform, check source code.)
+https://github.com/scikit-learn/scikit-learn/blob/ff1023fda/sklearn/decomposition/_base.py#L128
+
+## 30.01.2023
+In the last week I did a lot of error search. It is evident, that the high session correlations affect the data. Almost al of the variance gets explained by it. A PCA reveals, that there are session cluster. We are not interest in session clusters, but in category cluster. 
+
+I tried a bunch of different things:
+Feature selection, with sklearns kbest. Hyperparamter selection with sklearns GridSearch. Instead of automatically splitting Y into training and test, I did this with a loop. The idea came, because when inspecting the confusion matrices, not every class was represented in the test set. Thus the loop comes in handy. It randomly selects a element from one of the sessions. This is done randomly, to defy the session specific effects.
+
+Since nothing really helped, I'll continue with the SupportVectorMachine.
