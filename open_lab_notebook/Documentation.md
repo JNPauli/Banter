@@ -177,3 +177,9 @@ I tried a bunch of different things:
 Feature selection, with sklearns kbest. Hyperparamter selection with sklearns GridSearch. Instead of automatically splitting Y into training and test, I did this with a loop. The idea came, because when inspecting the confusion matrices, not every class was represented in the test set. Thus the loop comes in handy. It randomly selects a element from one of the sessions. This is done randomly, to defy the session specific effects.
 
 Since nothing really helped, I'll continue with the SupportVectorMachine.
+
+## 02.02.2023
+
+I applied the SVM algorithm to the dataset. Similiar to the Logistic Regression, the performance was very poor. Sklearns GridSearch and feature selection did not help at all. So probably there is something wrong with the data.
+
+I now downloaded the data from subject 2 and will apply the glm analysis and proceed with the Logistic Regression and SVM pipeline.
