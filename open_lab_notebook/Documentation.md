@@ -183,3 +183,8 @@ Since nothing really helped, I'll continue with the SupportVectorMachine.
 I applied the SVM algorithm to the dataset. Similiar to the Logistic Regression, the performance was very poor. Sklearns GridSearch and feature selection did not help at all. So probably there is something wrong with the data.
 
 I now downloaded the data from subject 2 and will apply the glm analysis and proceed with the Logistic Regression and SVM pipeline.
+
+This turned out to not work. Meaning the model performance remains very poor. Very similiar to subject one, there is a very session specific pattern that can be observed in the z-maps, a correlation plot and in the PCA.
+So regardless of the model and the subject, the performance is poor. 
+
+Maybe I need to adjust the glm parameters. I provided the mask in the glm, but I am uncertain wether this is the way to go.
