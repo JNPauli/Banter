@@ -199,11 +199,11 @@ Pytorch comes with several modules that are very helpful when setting up an NN. 
 
 So far I coded a very simple architecture (one hidden layer, ReLu Function) and applied different learning rates, width of the hidden layer and epoch sizes. Similar to the SVM and LR, the training set works quite nice, but testing it is really bad. Since I am not that experienced with coding neural networks, this can be due to an non proper working code. A code review will definitely happen. The whole process is happening in the [Neural_network](https://github.com/JNPauli/Mental-image-decoding/blob/update/code/Neural_network.ipynb) notebook within the code folder of the Github repository.
 
+## 12.02.2023
+
+I adapted the labels a bit and applied the "randomization loop", so each label is represented in the test set. This lead to an very interesting results: I perfectly(!) replicated the following accuracy: 0.038461538461538464
+This accuracy has also been reached in the SVM and LR. Very interesting. Something is wrong but I do not know what.
+
+Also, I tried the DNN with the z-maps per run, and not across runs. Results are similiar. However, I had to adapt epochs and amount of neurons in the hidden layer. I might add several layers. I am unsure, if I should add an activation function at every layer though.
 
 
-
-new strucutre
-LR
-SVM
-NN
-Troubleshoot(RSA, Cor Matrix (...))
