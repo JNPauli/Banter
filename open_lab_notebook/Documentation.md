@@ -206,4 +206,6 @@ This accuracy has also been reached in the SVM and LR. Very interesting. Somethi
 
 Also, I tried the DNN with the z-maps per run, and not across runs. Results are similiar. However, I had to adapt epochs and amount of neurons in the hidden layer. I might add several layers. I am unsure, if I should add an activation function at every layer though.
 
+## 13.02.2023
 
+Added a dropout layer, this did not change anything though.
