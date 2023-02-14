@@ -209,3 +209,18 @@ Also, I tried the DNN with the z-maps per run, and not across runs. Results are 
 ## 13.02.2023
 
 Added a dropout layer, this did not change anything though.
+
+## 14.02.2023
+
+Validated the pipelines I set up with the haxby dataset. It worked fine for the SVM and the NN, meaning it leads to decent accuracies for both training and testing data. So atleast the pipelines are okay.
+
+Things I need to do:
+
+Leave the fourth session out for testing purposes. So manually split the data again, but this time not random session in the test data but explicitly the fourth one. This way the algorithm never sees data from session 4... we'll see!
+
+Also: Adapat hidden layers -> Add one more layer and add useful amount of neurons. Furthermore, try the NN with Keras, see the workshop from Peer on [Brain decoding and encoding](https://main-educational.github.io/brain_encoding_decoding/mlp_decoding.html).
+
+Also: Maybe not use the most likely category predicted, but rather the top 3 or 5 ones.
+Plot the accuracy per epoch.
+
+
