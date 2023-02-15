@@ -223,4 +223,6 @@ Also: Adapat hidden layers -> Add one more layer and add useful amount of neuron
 Also: Maybe not use the most likely category predicted, but rather the top 3 or 5 ones.
 Plot the accuracy per epoch.
 
+## 15.02.2023
 
+I set up the cross validation pipeline in the logistic regression notebook. Here I defined the [LeaveOneGroupOut](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html) method. This way, in training, the LogisticRegression is trained with session 1 and 2 and validated on 3. However, the split it selfs works, but Im not sure it really does work when using the crossvalidation function. This needs to be further investigated.
