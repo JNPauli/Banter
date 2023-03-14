@@ -177,3 +177,56 @@ I tried a bunch of different things:
 Feature selection, with sklearns kbest. Hyperparamter selection with sklearns GridSearch. Instead of automatically splitting Y into training and test, I did this with a loop. The idea came, because when inspecting the confusion matrices, not every class was represented in the test set. Thus the loop comes in handy. It randomly selects a element from one of the sessions. This is done randomly, to defy the session specific effects.
 
 Since nothing really helped, I'll continue with the SupportVectorMachine.
+
+## 02.02.2023
+
+I applied the SVM algorithm to the dataset. Similiar to the Logistic Regression, the performance was very poor. Sklearns GridSearch and feature selection did not help at all. So probably there is something wrong with the data.
+
+I now downloaded the data from subject 2 and will apply the glm analysis and proceed with the Logistic Regression and SVM pipeline.
+
+This turned out to not work. Meaning the model performance remains very poor. Very similiar to subject one, there is a very session specific pattern that can be observed in the z-maps, a correlation plot and in the PCA.
+So regardless of the model and the subject, the performance is poor. 
+
+Maybe I need to adjust the glm parameters. I provided the mask in the glm, but I am uncertain wether this is the way to go.
+
+
+## 11.02.2023
+
+Recap of last week:
+We decided that the issue most likely is due to the data obtained. The very specific correlation pattern makes it impossible to actually decode anything (besides the session labels). I still want to learn as much as possible,thus I decided to continue with setting up a fully connected neuronal network. I did this with pytorch.
+
+Pytorch comes with several modules that are very helpful when setting up an NN. Also I am working through the [computational neuroscience](https://compneuro.neuromatch.io/tutorials/intro.html) and [DeepLearning](https://deeplearning.neuromatch.io/tutorials/intro.html) course from neuromatch. The course really helped me coding the NN.
+
+So far I coded a very simple architecture (one hidden layer, ReLu Function) and applied different learning rates, width of the hidden layer and epoch sizes. Similar to the SVM and LR, the training set works quite nice, but testing it is really bad. Since I am not that experienced with coding neural networks, this can be due to an non proper working code. A code review will definitely happen. The whole process is happening in the [Neural_network](https://github.com/JNPauli/Mental-image-decoding/blob/update/code/Neural_network.ipynb) notebook within the code folder of the Github repository.
+
+## 12.02.2023
+
+I adapted the labels a bit and applied the "randomization loop", so each label is represented in the test set. This lead to an very interesting results: I perfectly(!) replicated the following accuracy: 0.038461538461538464
+This accuracy has also been reached in the SVM and LR. Very interesting. Something is wrong but I do not know what.
+
+Also, I tried the DNN with the z-maps per run, and not across runs. Results are similiar. However, I had to adapt epochs and amount of neurons in the hidden layer. I might add several layers. I am unsure, if I should add an activation function at every layer though.
+
+## 13.02.2023
+
+Added a dropout layer, this did not change anything though.
+
+## 14.02.2023
+
+Validated the pipelines I set up with the haxby dataset. It worked fine for the SVM and the NN, meaning it leads to decent accuracies for both training and testing data. So atleast the pipelines are okay.
+
+Things I need to do:
+
+Leave the fourth session out for testing purposes. So manually split the data again, but this time not random session in the test data but explicitly the fourth one. This way the algorithm never sees data from session 4... we'll see!
+
+Also: Adapat hidden layers -> Add one more layer and add useful amount of neurons. Furthermore, try the NN with Keras, see the workshop from Peer on [Brain decoding and encoding](https://main-educational.github.io/brain_encoding_decoding/mlp_decoding.html).
+
+Also: Maybe not use the most likely category predicted, but rather the top 3 or 5 ones.
+Plot the accuracy per epoch.
+
+## 15.02.2023
+
+I set up the cross validation pipeline in the logistic regression notebook. Here I defined the [LeaveOneGroupOut](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html) method. This way, in training, the LogisticRegression is trained with session 1 and 2 and validated on 3. However, the split it selfs works, but Im not sure it really does work when using the crossvalidation function. This needs to be further investigated.
+
+## 01.03.2023
+
+Nothing new happened. The hypothesis to decode mental imagery does not seem to work. This means that I will now stop the machine learning and start to get the assignment ready.
