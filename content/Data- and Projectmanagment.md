@@ -307,5 +307,9 @@ The literature resources used in this jupyter book and the project in general ar
 
 </details>
 
-
+## FAIRNESS
+[FAIR](https://www.go-fair.org/fair-principles/f1-meta-data-assigned-globally-unique-persistent-identifiers/) stands for **F**indability, **A**ccessibility, **I**nteroperability, and **R**euse of digital assets.
+The research project reaches the Findability and Accessibility criterion, because the data used in it is open-source and linked. Also even the preprocessed data is uploaded on brainlife and it is explained, which explicit data is used. Also it is explained which commands were used to download the data from openneuro (see Dataset Exploration). Also the data can be loaded into Python by following the code on the github repository. There exists a computational environment that can be setup by installing the libraries with the *requirements.txt* file. 
+Interoperability is reached, because the data follows the BIDS format. HOWEVER: When preprocessing the data, it no longer follows BIDS and needs to be renamed. So it is interoperable, but only after taking action to maintain it.
+The data hits the Reuse criterion, because it not only a license is provided, but also but the data is well documented, it is described how the data was collected and what the data essentially represents.
 
