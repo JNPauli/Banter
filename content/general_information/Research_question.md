@@ -14,12 +14,11 @@ And the decoding of mental imagery stimuli does not stop there. [Horikawa et al.
 While this bit made clear, why mental imagery is investigated in this project, further motivation for the research question stems from the drive to learn more about neuroscience and combine this new knowledge with machine learning. Especially the implementation of a decoding pipeline on a hands on dataset.
 
 ## Hypothesis - what to expect in this project?
-
 The hypothesis answered in this research project is the following:
 1. A machine learning classifier can decently predict a stimulus given the respective voxel pattern.
 
 Different classifiers are implemented and compared. Those are: Logistic regression, support vector machine and a fully connected neural network. All analyzes are done in python.
-The dataset used is open source and can be obtained from [openneuro](https://openneuro.org/datasets/ds001506/versions/1.3.1). The respective paper from Shen et al. (2019) is also available [here](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006633).
+The dataset used is open source and can be obtained from [openneuro](https://openneuro.org/datasets/ds001506/versions/1.3.1). The respective paper "Deep image reconstruction from human brain activity"(Shen et al., 2019) is also available [here](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006633).
 
 
 
