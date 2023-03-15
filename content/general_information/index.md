@@ -18,34 +18,35 @@ These pages are currently under construction and will be updated continuously.
 Please visit these pages again in the next few weeks for further information.
 ````
 
-Hello everyone and welcome to the course page for X
+Hello everyone and welcome to the documentation of the research project "Mental image decoding", conducted within the MSc5 course Computational Neuroscience at the Goethe University in Frankfurt am Main.
 
-## Course name
+## Mental image decoding
 
-Within this course we will explore X
+This research report takes you to different steps of the whole research process. 
 
-You can use the following sections to navigate through the content of the lecture:
+You can use the following sections to navigate through the content of the research report:
 
-* [Overview & procedure ](https://m-earnest.github.io/course_template_diler/general_information/overview.html)
+# * [Whats happening in this research project?]
 
-   What's this course all about? How are things implemented and supposed to work?
+* [Theoretical background & Research question](https://m-earnest.github.io/course_template_diler/general_information/overview.html)
 
-* [General outline](https://m-earnest.github.io/course_template_diler/general_information/outline.html)
+   Why did I choose this specific topic and what has already been discussed regarding mental imagery?
 
-   What are the specific topics and aspects taught?
+* [Data and Projectmanagment](https://m-earnest.github.io/course_template_diler/general_information/outline.html)
 
-* [Introduction](https://m-earnest.github.io/course_template_diler/introduction/intro.html)
+   How did I acquire the data? Where is everything else documented? Is this project FAIR?
 
-   All things gotta start somewhere, but how?
+* [Data Exploration](https://m-earnest.github.io/course_template_diler/introduction/intro.html)
 
-* [Content](https://m-earnest.github.io/course_template_diler/content/intro_content.html)
+   Exploration and further explanation of the Data
 
-   What is this course gonna contain?
+* [Genereal linear Model](https://m-earnest.github.io/course_template_diler/content/intro_content.html)
 
-   
-* [Results communication](https://m-earnest.github.io/course_template_diler/general_information/results_communication.html)
+   Why should one run a glm in the first place? Which modules did I use? 
+ 
+* [Machine Learning](https://m-earnest.github.io/course_template_diler/general_information/results_communication.html)
 
-   Where should the acquired knowledge to be disseminated?
+   What kind of different algorithms did I use? How did it work out?
 
 * [Symposium](https://m-earnest.github.io/course_template_diler/general_information/symposium.html)
 
@@ -63,7 +64,9 @@ You can use the following sections to navigate through the content of the lectur
 
 ## I've got a question!
 
-In case you have any questions or difficulties with the lecture and its materials, please don’t hesitate a single second to get in touch with us. A great way to do this is to open an issue on the GitHub site of the course. You can of course further contact us via [E-mail](@psych.uni-frankfurt.de). Every feedback or idea  you might have is highly appreciated and valued.
+In case you have any questions or difficulties with the lecture and its materials, please don’t hesitate a single second to get in touch with me. A great way to do this is to open an issue on the GitHub site of the course. You can of course further contact me via [E-mail](paulijanos@gmail.com). Every feedback or idea  you might have is highly appreciated and valued.
 
 
 ## Acknowledgements
+
+Huge thanks to Peer Herholz for investing a lot of time to create the fantastic course about computational neuroscience and being almost always available round the clock for questions. To Michael Ernst for maintaing the course and being a great lecturer and Maren Wehrheim for supporting me a lot in the machine learning parts.
