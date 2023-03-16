@@ -26,7 +26,7 @@ This research report takes you to different steps of the whole research process.
 
 You can use the following sections to navigate through the content of the research report:
 
-# * [Whats happening in this research project?]
+## Whats happening in this research project?
 
 * [Theoretical background & Research question](https://JNPauli.github.io/Mental-image-decoding/general_information/Research_question.html)
 
