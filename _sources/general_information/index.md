@@ -28,15 +28,15 @@ You can use the following sections to navigate through the content of the resear
 
 # * [Whats happening in this research project?]
 
-* [Theoretical background & Research question](https://m-earnest.github.io/course_template_diler/general_information/overview.html)
+* [Theoretical background & Research question](https://JNPauli.github.io/Mental-image-decoding/general_information/Research_question.html)
 
    Why did I choose this specific topic and what has already been discussed regarding mental imagery?
 
-* [Data and Projectmanagment](https://m-earnest.github.io/course_template_diler/general_information/outline.html)
+* [Data and Projectmanagment](https://JNPauli.github.io/Mental-image-decoding/general_information/Data_and_Projectmanagment.html)
 
    How did I acquire the data? Where is everything else documented? Is this project FAIR?
 
-* [Data Exploration](https://m-earnest.github.io/course_template_diler/introduction/intro.html)
+* [Data Exploration](https://JNPauli.github.io/Mental-image-decoding/code/Dataset_Exploration.html)
 
    Exploration and further explanation of the Data
 
