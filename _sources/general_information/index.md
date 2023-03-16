@@ -36,15 +36,15 @@ You can use the following sections to navigate through the content of the resear
 
    How did I acquire the data? Where is everything else documented? Is this project FAIR?
 
-* [Data Exploration](https://JNPauli.github.io/Mental-image-decoding/code/Dataset_Exploration.html)
+* [Data Exploration](https://JNPauli.github.io/Mental-image-decoding/data/Dataset_Exploration.html)
 
    Exploration and further explanation of the Data
 
-* [Genereal linear Model](https://m-earnest.github.io/course_template_diler/content/intro_content.html)
+* [Genereal linear Model](https://JNPauli.github.io/Mental-image-decoding/data/Genereal_linear_model.html)
 
    Why should one run a glm in the first place? Which modules did I use? 
  
-* [Machine Learning](https://m-earnest.github.io/course_template_diler/general_information/results_communication.html)
+* [Machine Learning](https://JNPauli.github.io/Mental-image-decoding/code/Logistic_Regression.html)
 
    What kind of different algorithms did I use? How did it work out?
 

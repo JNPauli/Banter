@@ -1,0 +1,1512 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Exploration of the dataset used in my research project. &#8212; Mental image decoding - A student research project</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data/Dataset_Exploration';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="This notebook serves the purpose of performing the general linear model on the respective dataset." href="General_linear_model.html" />
+    <link rel="prev" title="Data- and Projectmanagment" href="../general_information/Data_and_Projectmanagment.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../general_information/index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_mental_imagery.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo_mental_imagery.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../general_information/index.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_information/Research_question.html">Research Question aka what is this project all about?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_information/Data_and_Projectmanagment.html">Data- and Projectmanagment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploration of the dataset used in my research project.</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="General_linear_model.html">This notebook serves the purpose of performing the general linear model on the respective dataset.</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../code/Logistic_Regression.html"><strong>0. Introduction</strong></a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/JNPauli/Mental-image-decoding/Main?urlpath=tree/content/data/Dataset_Exploration.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/JNPauli/Mental-image-decoding" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/JNPauli/Mental-image-decoding/edit/Main/content/data/Dataset_Exploration.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/JNPauli/Mental-image-decoding/issues/new?title=Issue%20on%20page%20%2Fdata/Dataset_Exploration.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/data/Dataset_Exploration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploration of the dataset used in my research project.</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploration of the dataset used in my research project.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">0.  <strong>Introduction</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids">1. <strong>Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-anatomical-and-functional-files-of-subject-one">2.0 <strong>Exploration of anatomical and functional files of subject one</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-of-event-file-and-meta-data">2.1 <strong>Inspection of event file and meta data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datamanagment-data-modelling">3.0 Datamanagment: Data modelling</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="exploration-of-the-dataset-used-in-my-research-project">
+<h1>Exploration of the <a class="reference external" href="https://openneuro.org/datasets/ds001506/versions/1.3.1">dataset</a> used in my research project.<a class="headerlink" href="#exploration-of-the-dataset-used-in-my-research-project" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>0.  <strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>This notebook serves the purpose of exploring the structure of the dataset. More precisely, there are two parts within this notebook. The first part will explore the BIDS format. This is done by using the <a class="reference external" href="https://bids-standard.github.io/pybids/">pybids</a> module.
+The second part will focus on exploring the anatomical and functional files for subject one, within the first session and first run. Next to files of anatomical and functional nature, the events and bold.json files of the respective subject are investigated.</p>
+<p>Within the study of the respective dataset, the participants had two main tasks that are interesting for us in the fMRI. Task one was to simply look at visual stimuli (natural images, artifical shapes and alphabetical letters). Task two was to perform mental imagery, so visually imagine one of the presented stimuli. The imagination has been performed on either the natural images or the alphabetical letters.</p>
+<section id="example-task">
+<h3>Example task<a class="headerlink" href="#example-task" title="Permalink to this heading">#</a></h3>
+<p>In the paradigm, two experiments were used. To make the paradigm more clear, I will provide a brief example on how a task in the visual stimuli and in the imagery experiment looks like.</p>
+<p><strong>Visual stimuli</strong></p>
+<p>For the visual stimuli, or image presentation, experiment there were four distinct sessions. 1: Training of the natural images, 2. test of the natural images, artificial shape session and alphabetic letter sessions. For these sessions, each run compromised of 50, 50, 40 and 10 blocks with different images. Since we are mainly interested in the mental imagery part of the experiment, we will now introduce more thoroughly this respective condition. So the main stimuli were natural images, artificial shapes and alphabetic letters.</p>
+<p><strong>Mental imagery</strong></p>
+<p>As mentioned before, the subject had to recall one of the 25 visual stimuli from the natural images (10) and artificial shape session (15). The visual stimuli were related to a certain word, that helps them with the recall by using a word-cue. The imagery part consisted of 20 seperate runs, each run with 26 blocks. The 26 blocks were built from 25 imagery trials and one fixation trial. In the fixation trial no imagery was performed.</p>
+<p>The imagery trials looked like this: 4 seconds of word-cue, 8 seconds of imagery, 3 seconds of evalution (how vivid was the imagination) and one second rest period.
+In the word-cue period, the respective words to indicate the visual stimuli were presented. The participants had to immediately perform the imagery after receiving the word-cue.</p>
+</section>
+</section>
+<section id="exploration-of-the-dataset-with-pybids">
+<h2>1. <strong>Exploration of the dataset with pybids</strong><a class="headerlink" href="#exploration-of-the-dataset-with-pybids" title="Permalink to this heading">#</a></h2>
+<section id="bids-validation">
+<h3>Bids Validation<a class="headerlink" href="#bids-validation" title="Permalink to this heading">#</a></h3>
+<p>According to the BIDS validator from <a class="reference external" href="http://Openneuro.org">Openneuro.org</a> the dataset follows a valid BIDS.</p>
+<p>We want to understand the structure of the dataset, especially how the dataset follows the BIDS format. This can be done with the pybids module. The following part serves the purpose of determining the structure.
+To explore the dataset, we will need to obtain it first from datalad. The installation of the dataset is  done by using the command <em>datalad install https: <a class="github reference external" href="//github.com/"></a> OpenNeuroDatasets/ds001506.git</em> in bash.</p>
+<p>datalad install <a class="github reference external" href="https://github.com/OpenNeuroDatasets/ds001506.git">OpenNeuroDatasets/ds001506.git</a></p>
+<p>Now we will create a path to where the data is stored and import all modules we need for know. This dataset_path can then be used to investigate the layout of the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_path</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506&#39;</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bids</span> <span class="kn">import</span> <span class="n">BIDSLayout</span>
+<span class="kn">from</span> <span class="nn">bids.tests</span> <span class="kn">import</span> <span class="n">get_test_data_path</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span> <span class="o">=</span> <span class="n">BIDSLayout</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
+<span class="n">layout</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BIDS Layout: .../home/jpauli/ds001506 | Subjects: 3 | Sessions: 77 | Runs: 36
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">This dataset consists of three participants. Overall, there are 77 sessions and 36 runs.
+Furthermore it is interesting to take a look at the amount of files in the dataset and the tasks that are done by the participants</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span><span class="o">.</span><span class="n">get_tasks</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;imagery&#39;, &#39;perception&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">This simply validates the statement from the introduction block. The participants had to do two tasks: Tasks that rely on perception and tasks that rely on imagery.</div><p>Also, it is possible to get the files of the subjects filtered by the task.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;perception&quot;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-01_bold.json&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-01_bold.nii.gz&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-01_events.tsv&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-02_bold.json&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-02_bold.nii.gz&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-02_events.tsv&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-03_bold.json&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-03_bold.nii.gz&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-03_events.tsv&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-perceptionArtificialImage01/func/sub-01_ses-perceptionArtificialImage01_task-perception_run-04_bold.json&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">We can see, that we have three different file types for the perception tasks. 
+bold.json, bold.nii.gz and events.tsv.
+<p>Also we see, that this is according to BIDS.</div></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;imagery&quot;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.json&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.nii.gz&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_events.tsv&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-02_bold.json&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-02_bold.nii.gz&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-02_events.tsv&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-03_bold.json&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-03_bold.nii.gz&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-03_events.tsv&#39;,
+ &#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-04_bold.json&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>..this is also true for the imagery task!</p>
+<p>We can use the following command to get all entitites (=BIDS defined keywords) for our dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span><span class="o">.</span><span class="n">get_entities</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;subject&#39;: &lt;Entity subject (pattern=[/\\]+sub-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;session&#39;: &lt;Entity session (pattern=[_/\\]+ses-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;sample&#39;: &lt;Entity sample (pattern=[_/\\]+sample-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;task&#39;: &lt;Entity task (pattern=[_/\\]+task-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;acquisition&#39;: &lt;Entity acquisition (pattern=[_/\\]+acq-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;ceagent&#39;: &lt;Entity ceagent (pattern=[_/\\]+ce-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;staining&#39;: &lt;Entity staining (pattern=[_/\\]+stain-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;tracer&#39;: &lt;Entity tracer (pattern=[_/\\]+trc-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;reconstruction&#39;: &lt;Entity reconstruction (pattern=[_/\\]+rec-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;direction&#39;: &lt;Entity direction (pattern=[_/\\]+dir-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;run&#39;: &lt;Entity run (pattern=[_/\\]+run-(\d+), dtype=&lt;class &#39;bids.layout.utils.PaddedInt&#39;&gt;)&gt;,
+ &#39;proc&#39;: &lt;Entity proc (pattern=[_/\\]+proc-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;modality&#39;: &lt;Entity modality (pattern=[_/\\]+mod-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;echo&#39;: &lt;Entity echo (pattern=[_/\\]+echo-([0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;flip&#39;: &lt;Entity flip (pattern=[_/\\]+flip-([0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;inv&#39;: &lt;Entity inv (pattern=[_/\\]+inv-([0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;mt&#39;: &lt;Entity mt (pattern=[_/\\]+mt-(on|off), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;part&#39;: &lt;Entity part (pattern=[_/\\]+part-(imag|mag|phase|real), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;recording&#39;: &lt;Entity recording (pattern=[_/\\]+recording-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;space&#39;: &lt;Entity space (pattern=[_/\\]+space-([a-zA-Z0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;chunk&#39;: &lt;Entity chunk (pattern=[_/\\]+chunk-([0-9]+), dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;suffix&#39;: &lt;Entity suffix (pattern=[._]*([a-zA-Z0-9]*?)\.[^/\\]+$, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;scans&#39;: &lt;Entity scans (pattern=(.*\_scans.tsv)$, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;fmap&#39;: &lt;Entity fmap (pattern=(phasediff|magnitude[1-2]|phase[1-2]|fieldmap|epi)\.nii, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;datatype&#39;: &lt;Entity datatype (pattern=[/\\]+(anat|beh|dwi|eeg|fmap|func|ieeg|meg|micr|perf|pet)[/\\]+, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;extension&#39;: &lt;Entity extension (pattern=[._]*[a-zA-Z0-9]*?(\.[^/\\]+)$, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;Manufacturer&#39;: &lt;Entity Manufacturer (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;ManufacturersModelName&#39;: &lt;Entity ManufacturersModelName (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;MagneticFieldStrength&#39;: &lt;Entity MagneticFieldStrength (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;FlipAngle&#39;: &lt;Entity FlipAngle (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;EchoTime&#39;: &lt;Entity EchoTime (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;RepetitionTime&#39;: &lt;Entity RepetitionTime (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;SliceTiming&#39;: &lt;Entity SliceTiming (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;MultibandAccelerationFactor&#39;: &lt;Entity MultibandAccelerationFactor (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;,
+ &#39;TaskName&#39;: &lt;Entity TaskName (pattern=None, dtype=&lt;class &#39;str&#39;&gt;)&gt;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+We encounter familiar entities: Subject, session, run and task. This command informs us about several other entities that are being used within the dataset and can be found in other files. For example, we will later encounter the entity "SliceTiming" in the event.tsv file of subject one, for the first session and the first run of the mental imagery task
+</div><p>Lets explore the file of subject 01 a bit more. We can assing the variable “sub1” to the fourth file of subject one, print it out and check the type of the file. This type can then be compared to the intial layout file!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub1</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subject</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;01&#39;</span><span class="p">])[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BIDSImageFile filename=&#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.nii.gz&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The type of this file is:&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">sub1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The type of this file is:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bids.layout.models.BIDSImageFile
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The type of the intial layout file is:&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The type of the intial layout file is:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bids.layout.layout.BIDSLayout
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">So we now do not have a BIDSLayout file anymore, but rather are dealing with a BIDSImageFile. This file in particular is the functional image taken for subject one, in the first session and run during the imagery task.</div>
+<p>We can now print the metadata associated with this particular file. This metadata is simply the associated .json file. We get information about the magnetic field or the repetition time. So all data related to the fMRI specifics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub1</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;EchoTime&#39;: 0.043,
+ &#39;FlipAngle&#39;: 80.0,
+ &#39;MagneticFieldStrength&#39;: 3.0,
+ &#39;Manufacturer&#39;: &#39;SIEMENS&#39;,
+ &#39;ManufacturersModelName&#39;: &#39;Verio&#39;,
+ &#39;MultibandAccelerationFactor&#39;: 4,
+ &#39;RepetitionTime&#39;: 2.0,
+ &#39;SliceTiming&#39;: [0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525,
+  0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525,
+  0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525,
+  0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525],
+ &#39;TaskName&#39;: &#39;imagery&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The initial layout file can even be transformed into a <em>pandas dataframe</em> to get a rough overlook!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+<span class="n">dataframe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>entity</th>
+      <th>path</th>
+      <th>datatype</th>
+      <th>extension</th>
+      <th>run</th>
+      <th>session</th>
+      <th>subject</th>
+      <th>suffix</th>
+      <th>task</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>/home/jpauli/ds001506/dataset_description.json</td>
+      <td>NaN</td>
+      <td>.json</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>description</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>/home/jpauli/ds001506/sub-01/ses-anatomy/anat/...</td>
+      <td>anat</td>
+      <td>.nii.gz</td>
+      <td>NaN</td>
+      <td>anatomy</td>
+      <td>01</td>
+      <td>T1w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>/home/jpauli/ds001506/sub-01/ses-imagery01/ana...</td>
+      <td>anat</td>
+      <td>.nii.gz</td>
+      <td>NaN</td>
+      <td>imagery01</td>
+      <td>01</td>
+      <td>inplaneT2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>/home/jpauli/ds001506/sub-01/ses-imagery01/fun...</td>
+      <td>func</td>
+      <td>.json</td>
+      <td>01</td>
+      <td>imagery01</td>
+      <td>01</td>
+      <td>bold</td>
+      <td>imagery</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>/home/jpauli/ds001506/sub-01/ses-imagery01/fun...</td>
+      <td>func</td>
+      <td>.nii.gz</td>
+      <td>01</td>
+      <td>imagery01</td>
+      <td>01</td>
+      <td>bold</td>
+      <td>imagery</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1839</th>
+      <td>/home/jpauli/ds001506/sub-03/ses-perceptionNat...</td>
+      <td>func</td>
+      <td>.json</td>
+      <td>08</td>
+      <td>perceptionNaturalImageTraining15</td>
+      <td>03</td>
+      <td>bold</td>
+      <td>perception</td>
+    </tr>
+    <tr>
+      <th>1840</th>
+      <td>/home/jpauli/ds001506/sub-03/ses-perceptionNat...</td>
+      <td>func</td>
+      <td>.nii.gz</td>
+      <td>08</td>
+      <td>perceptionNaturalImageTraining15</td>
+      <td>03</td>
+      <td>bold</td>
+      <td>perception</td>
+    </tr>
+    <tr>
+      <th>1841</th>
+      <td>/home/jpauli/ds001506/sub-03/ses-perceptionNat...</td>
+      <td>func</td>
+      <td>.tsv</td>
+      <td>08</td>
+      <td>perceptionNaturalImageTraining15</td>
+      <td>03</td>
+      <td>events</td>
+      <td>perception</td>
+    </tr>
+    <tr>
+      <th>1842</th>
+      <td>/home/jpauli/ds001506/CHANGES</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1843</th>
+      <td>/home/jpauli/ds001506/README</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1844 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>After exploring the BIDS of the dataset, the anatomical and functional files of subject one will be explored.</p>
+</section>
+</section>
+<section id="exploration-of-anatomical-and-functional-files-of-subject-one">
+<h2>2.0 <strong>Exploration of anatomical and functional files of subject one</strong><a class="headerlink" href="#exploration-of-anatomical-and-functional-files-of-subject-one" title="Permalink to this heading">#</a></h2>
+<p><strong>First use the followings commands to inspect anatomical and function images and the event and json file of the functional session. Those files can be obtained from datalad. This allows me to install the respective files of subject one in the first session to inspect. The commands are exectued in <em>bash</em>.</strong></p>
+<p>datalad get sub-01/ses-anatomy/anat/sub-01_ses-anatomy_T1w.nii.gz</p>
+<p>datalad get sub-01/ses-imagery01/anat/sub-01_ses-imagery01_inplaneT2.nii.gz</p>
+<p>datalad get sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.json</p>
+<p>datalad get sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.nii.gz</p>
+<p>datalad get sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_events.tsv</p>
+<div class="alert alert-block alert-success">Although the respective datalad get syntax is in the notebook, the .json and .tsv files were already loaded by the datalad *install* command (see "1.0"). This is because smaller files are obtained via datalad install, and larger ones via datalad get.
+For information purpose, the respective commands are still in the cell above.</div><p>First we will import the modules neccesary for inspecting the files. Also, we need to define the path to the respective files. We can then simply plot them with the “plot_anat” function from <em>nilearn</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_stat_map</span><span class="p">,</span> <span class="n">plot_anat</span><span class="p">,</span> <span class="n">plot_img</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">plot_glass_brain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path_anat</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506/sub-01/ses-anatomy/anat&#39;</span>
+<span class="n">data_path_imagery_T2</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506/sub-01/ses-imagery01/anat&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anat_T1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path_anat</span><span class="p">,</span><span class="s1">&#39;sub-01_ses-anatomy_T1w.nii.gz&#39;</span><span class="p">)</span>
+<span class="n">anat_T2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path_imagery_T2</span> <span class="p">,</span><span class="s1">&#39;sub-01_ses-imagery01_inplaneT2.nii.gz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_anat</span><span class="p">(</span><span class="n">anat_T1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays._slicers.OrthoSlicer at 0x7f682c8aea58&gt;
+</pre></div>
+</div>
+<img alt="../_images/6482cb9ad46f1ba556fc99a13b5ca8109c99d7a7acfd81b946ab5db746a81db0.png" src="../_images/6482cb9ad46f1ba556fc99a13b5ca8109c99d7a7acfd81b946ab5db746a81db0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_anat</span><span class="p">(</span><span class="n">anat_T2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/nilearn/image/resampling.py:545: UserWarning: Casting data from int32 to float32
+  warnings.warn(&quot;Casting data from %s to %s&quot; % (data.dtype.name, aux))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays._slicers.OrthoSlicer at 0x7f6813ccd470&gt;
+</pre></div>
+</div>
+<img alt="../_images/30bc5c0681ea1abd77e0d8a0f45ef1aee6fee2b7ad87e8b4dbbcac89cc7b45e5.png" src="../_images/30bc5c0681ea1abd77e0d8a0f45ef1aee6fee2b7ad87e8b4dbbcac89cc7b45e5.png" />
+</div>
+</div>
+<p>We have two seperate images. The first plot is of the anatomical image of subject one. Important to note is, that we are looking at a T1 weighted image. This results in tissues, that are rich of fat, are highlighted.
+The second plot is also a anatomical image, taken during the first imagery session of subject one. This is a T2 weighted image, meaning both fat <em>and</em> water is highlighted.</p>
+<div class="alert alert-block alert-success">
+Now we will take a look at the functional image of subject one, within run and session one of the imagery condition. When dealing with functional images, we have four dimensions, so one dimension more than in the structural MRI. Common dimensions between both methods are x,y and z. *However* in functional images we are also dealing with the fourth dimension *time*. Thus, we need to take the mean img of the fMRI img. The mean_img() function can simply be imported from the nilearn module.</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_func_img</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func&#39;</span> 
+
+<span class="n">fmri_img</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_func_img</span> <span class="p">,</span><span class="s1">&#39;sub-01_ses-imagery01_task-imagery_run-01_bold.nii.gz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">mean_img</span> 
+<span class="n">mean_img</span> <span class="o">=</span> <span class="n">mean_img</span><span class="p">(</span><span class="n">fmri_img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_img</span><span class="p">(</span><span class="n">mean_img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays._slicers.OrthoSlicer at 0x7f6813c0a908&gt;
+</pre></div>
+</div>
+<img alt="../_images/d418f50cc02fe0abd74b66d7c386ed7218fd309c061f09d9fa30bcc675252da7.png" src="../_images/d418f50cc02fe0abd74b66d7c386ed7218fd309c061f09d9fa30bcc675252da7.png" />
+</div>
+</div>
+</section>
+<section id="inspection-of-event-file-and-meta-data">
+<h2>2.1 <strong>Inspection of event file and meta data</strong><a class="headerlink" href="#inspection-of-event-file-and-meta-data" title="Permalink to this heading">#</a></h2>
+<p>Now its time to inspect the events.tsv and the .json file. The event file tells us for example which stimuli (category_id) was presented at which timestamp (onset) and for how long (duration). The unit for this information is in seconds. Also the event file contains the column Evaluation. It runs from 5 (very) to 1 (could not recognize) and indicates how vivid the mental imagery was for the participants.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">events</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_events.tsv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">events</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset</th>
+      <th>duration</th>
+      <th>trial_no</th>
+      <th>event_type</th>
+      <th>category_id</th>
+      <th>category_name</th>
+      <th>category_index</th>
+      <th>response_time</th>
+      <th>evaluation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>32.0</td>
+      <td>1.0</td>
+      <td>-1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>32.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>1976957.0</td>
+      <td>n01976957</td>
+      <td>7.0</td>
+      <td>44.967050</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>36.0</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>1976957.0</td>
+      <td>n01976957</td>
+      <td>7.0</td>
+      <td>44.967050</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>44.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>1976957.0</td>
+      <td>n01976957</td>
+      <td>7.0</td>
+      <td>44.967050</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>47.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>1976957.0</td>
+      <td>n01976957</td>
+      <td>7.0</td>
+      <td>44.967050</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>432.0</td>
+      <td>4.0</td>
+      <td>27.0</td>
+      <td>1</td>
+      <td>1943899.0</td>
+      <td>n01943899</td>
+      <td>6.0</td>
+      <td>445.498226</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>436.0</td>
+      <td>8.0</td>
+      <td>27.0</td>
+      <td>2</td>
+      <td>1943899.0</td>
+      <td>n01943899</td>
+      <td>6.0</td>
+      <td>445.498226</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>444.0</td>
+      <td>3.0</td>
+      <td>27.0</td>
+      <td>3</td>
+      <td>1943899.0</td>
+      <td>n01943899</td>
+      <td>6.0</td>
+      <td>445.498226</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>447.0</td>
+      <td>1.0</td>
+      <td>27.0</td>
+      <td>4</td>
+      <td>1943899.0</td>
+      <td>n01943899</td>
+      <td>6.0</td>
+      <td>445.498226</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>448.0</td>
+      <td>6.0</td>
+      <td>28.0</td>
+      <td>-2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>106 rows × 9 columns</p>
+</div></div></div>
+</div>
+<p>We are also interested in how many unique image categories were used in the experiment, so we use the following command to inspect this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">events</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;category_id&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#sort values, because values are also sorted in design matrix.</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s1">&#39;category_id&#39;</span><span class="p">]</span>
+<span class="n">categories_no_nan</span> <span class="o">=</span> <span class="n">categories</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;we are dealing with </span><span class="si">{}</span><span class="s1"> categories&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">categories_no_nan</span><span class="o">.</span><span class="n">unique</span><span class="p">())))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>we are dealing with 26 categories
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+It is useful to plot the behavior of the categories over time. This is demonstrated in the figure below.</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-whitegrid&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_string</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="mi">106</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories_no_nan</span><span class="p">):</span>
+    <span class="n">cat_string</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">events</span><span class="p">[</span><span class="s1">&#39;stimulus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cat_string</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">g</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;stimulus&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;onset&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Imagery session sub01-ses01-run01&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3d450788b64f1d0ccdd071b00e4fcf51a8e3fc76055235b56048eb3e16b5ae3d.png" src="../_images/3d450788b64f1d0ccdd071b00e4fcf51a8e3fc76055235b56048eb3e16b5ae3d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+<span class="n">json_data</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Manufacturer&#39;: &#39;SIEMENS&#39;,
+ &#39;ManufacturersModelName&#39;: &#39;Verio&#39;,
+ &#39;MagneticFieldStrength&#39;: 3.0,
+ &#39;FlipAngle&#39;: 80.0,
+ &#39;EchoTime&#39;: 0.043,
+ &#39;RepetitionTime&#39;: 2.0,
+ &#39;SliceTiming&#39;: [0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525,
+  0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525,
+  0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525,
+  0.0,
+  1.0575,
+  0.1075,
+  1.1625,
+  0.2125,
+  1.2675,
+  0.3175,
+  1.375,
+  0.4225,
+  1.48,
+  0.53,
+  1.585,
+  0.635,
+  1.6925,
+  0.74,
+  1.7975,
+  0.845,
+  1.9025,
+  0.9525],
+ &#39;MultibandAccelerationFactor&#39;: 4,
+ &#39;TaskName&#39;: &#39;imagery&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The json file tells us about the meta data associated with this file. This includes the manufacter, the signal strengh of the magnetic field in tesla, the slicing time and even the respective task name.</p>
+</section>
+</section>
+<section id="datamanagment-data-modelling">
+<h1>3.0 Datamanagment: Data modelling<a class="headerlink" href="#datamanagment-data-modelling" title="Permalink to this heading">#</a></h1>
+<div class="alert alert-block alert-success">
+Next step: Run a GLM. The supervised modell takes the brain activity during the mental imagery and natural stimuli condition as an input. Thus I need to run an GLM with the predictors and dependent variable. The predictors are the respective categories of the stimuli. The dependent variable is the brain activity in a given voxel. This predicted activity will then serve as the input to the machine learning algorithm.
+<p>This step can be found in the General_linear_model.ipynb notebook in the data folder.</div></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "neuro_ai"
+        },
+        kernelOptions: {
+            name: "neuro_ai",
+            path: "./data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'neuro_ai'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../general_information/Data_and_Projectmanagment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data- and Projectmanagment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="General_linear_model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">This notebook serves the purpose of performing the general linear model on the respective dataset.</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploration of the dataset used in my research project.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">0.  <strong>Introduction</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids">1. <strong>Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-anatomical-and-functional-files-of-subject-one">2.0 <strong>Exploration of anatomical and functional files of subject one</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-of-event-file-and-meta-data">2.1 <strong>Inspection of event file and meta data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datamanagment-data-modelling">3.0 Datamanagment: Data modelling</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Janos Pauli based on the course template by Felix Koerber and Michael Ernst
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
