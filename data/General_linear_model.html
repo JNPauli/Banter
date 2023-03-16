@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>This notebook serves the purpose of performing the general linear model on the respective dataset. &#8212; Mental image decoding - A student research project</title>
+    <title>General linear model &#8212; Mental image decoding - A student research project</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'data/General_linear_model';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="0. Introduction" href="../code/Logistic_Regression.html" />
-    <link rel="prev" title="Exploration of the dataset used in my research project." href="Dataset_Exploration.html" />
+    <link rel="next" title="Logistic Regression" href="../code/Logistic_Regression.html" />
+    <link rel="prev" title="Dataset Exploration" href="Dataset_Exploration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,19 +160,9 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../general_information/Research_question.html">Research Question aka what is this project all about?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general_information/Data_and_Projectmanagment.html">Data- and Projectmanagment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Dataset_Exploration.html">Exploration of the dataset used in my research project.</a></li>
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">This notebook serves the purpose of performing the general linear model on the respective dataset.</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../code/Logistic_Regression.html"><strong>0. Introduction</strong></a></li>
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="Dataset_Exploration.html">Dataset Exploration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">General linear model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/Logistic_Regression.html">Logistic Regression</a></li>
 </ul>
 
     </div>
@@ -404,7 +394,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>This notebook serves the purpose of performing the general linear model on the respective dataset.</h1>
+    <h1>General linear model</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,23 +404,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">This notebook serves the purpose of performing the general linear model on the respective dataset.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">This notebook serves the purpose of performing the general linear model on the respective dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-glm-for-all-runs"><strong>3.0 Performing the glm for all runs</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check"><strong>4.0 Quality check</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>4.1 Model evaluation</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-results-with-literature"><strong>4.2 Comparing the results with literature</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-design-matrices"><strong>4.3 Plotting design matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-glm-for-all-runs"><strong>3.0 Performing the glm for all runs</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check"><strong>4.0 Quality check</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>4.1 Model evaluation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-results-with-literature"><strong>4.2 Comparing the results with literature</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-design-matrices"><strong>4.3 Plotting design matrices</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-z-maps-perrun-for-all-sessions"><strong>5.0 Calculating z-maps perrun for all  sessions</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression"><strong>6.0 Logistic Regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-z-maps-perrun-for-all-sessions"><strong>5.0 Calculating z-maps perrun for all  sessions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression"><strong>6.0 Logistic Regression</strong></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -441,10 +430,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">
-<h1>This notebook serves the purpose of performing the general linear model on the respective dataset.<a class="headerlink" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="general-linear-model">
+<h1>General linear model<a class="headerlink" href="#general-linear-model" title="Permalink to this heading">#</a></h1>
+<section id="this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">
+<h2>This notebook serves the purpose of performing the general linear model on the respective dataset<a class="headerlink" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset" title="Permalink to this heading">#</a></h2>
 <section id="introduction">
-<h2><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h3><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
 <p>First we will need to load the data. We are now dealing with the preprocessed data. The preprocessing has been done with using <a class="reference external" href="https://fmriprep.org/en/stable/">fMRI-prep</a>. fMRIprep describes itself as such “(…)It performs basic processing steps (coregistration, normalization, unwarping, noise component extraction, segmentation, skullstripping etc.) providing outputs that can be easily submitted to a variety of group level analyses, including task-based or resting-state fMRI, graph theory measures, surface or volume-based statistics, etc.”</p>
 <p>Thus, we will now perform our first level model. The predictors are the respective categories of the stimuli. The dependent variable is the brain activity in a given voxel.
 So lets start by loading the data! For now we are dealing with the first five runs of subject one, for the first session in the imagery task.</p>
@@ -1354,7 +1345,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 <section id="running-the-model">
-<h2><strong>1.0 running the model</strong><a class="headerlink" href="#running-the-model" title="Permalink to this heading">#</a></h2>
+<h3><strong>1.0 running the model</strong><a class="headerlink" href="#running-the-model" title="Permalink to this heading">#</a></h3>
 <p>Now it is time to run our defined first level model. We are using our mean fMRI img and our event and confound file. This results in a <em>design matrix</em>. The design matrix is informing us about a given activity for the respective regressor and for a given scan number. We have a recording frequency of 2 seconds. The whole paradigm took about 400 seconds (see: Dataset_Exploration.ipynb). This is why the only have 200 scan numbers on our y-axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1398,7 +1389,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 <section id="detection-of-significant-voxels">
-<h2><strong>2.0 Detection of significant voxels</strong><a class="headerlink" href="#detection-of-significant-voxels" title="Permalink to this heading">#</a></h2>
+<h3><strong>2.0 Detection of significant voxels</strong><a class="headerlink" href="#detection-of-significant-voxels" title="Permalink to this heading">#</a></h3>
 <p>In order to estimate our Betas of the GLM, we need to calculate the contrasts for all conditions. By doing this, we are weighting the columns to discover the associated statistics.</p>
 <p>This requires some data wrangling. First, we need to extract all unique values from our <em>event</em> file, so we only have the stimuli presented in the paradigm. Before, we have to sort the values, because our design matrix follows a ascending order. Then we remove the one NaN from this list. After that, we will create the variable <strong>conditions</strong>. This list containts the prefix “active”, so we know we are dealing with an activated brain region and is added by the respective condition name.</p>
 <p>Then an array of the length of all regressors is created. For each of our regressors of interest, so for all our conditions, i.e. imagery stimuli, a weight is assigned. One thing is very important here: Our design matrix tells us, that the first three regressors are <strong>NOT</strong> the imagery conditions but rather the cue presentation, rest and imagery evaluation. Due to this, we have to start by assigning the first weight to the <strong>fourth</strong> 0 zero of our array. This is then combined into a dictionary, so it can serve as in input to the nilearn function <strong>plot_contrast_matrix</strong>.</p>
@@ -1627,7 +1618,7 @@ The z map serves combined with the condition labels as the input for nilearns de
 </section>
 </section>
 <section id="performing-the-glm-for-all-runs">
-<h1><strong>3.0 Performing the glm for all runs</strong><a class="headerlink" href="#performing-the-glm-for-all-runs" title="Permalink to this heading">#</a></h1>
+<h2><strong>3.0 Performing the glm for all runs</strong><a class="headerlink" href="#performing-the-glm-for-all-runs" title="Permalink to this heading">#</a></h2>
 <p>Now that we demonstrated the process for one single run, we want to execute the GLM for all runs we have.
 First, we can start by saving all functional images in one list.</p>
 <div class="cell docutils container">
@@ -1982,9 +1973,9 @@ CAVE:
 </div>
 </section>
 <section id="quality-check">
-<h1><strong>4.0 Quality check</strong><a class="headerlink" href="#quality-check" title="Permalink to this heading">#</a></h1>
+<h2><strong>4.0 Quality check</strong><a class="headerlink" href="#quality-check" title="Permalink to this heading">#</a></h2>
 <section id="model-evaluation">
-<h2><strong>4.1 Model evaluation</strong><a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h2>
+<h3><strong>4.1 Model evaluation</strong><a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h3>
 <p>Since we now calculated all contrasts, it is time to check the quality of the glm we produced and applied. Lets start with the model evaluation. We evalute the model by inspecting R-Squared.</p>
 <div class="alert alert-block alert-success">
 At first a anatomical reference image is plotted. To check if everything was modelled correct, we are expecting only voxels within grey matter areas to respond to the general linear model, leading to an increased R-square value.</div><div class="cell docutils container">
@@ -2079,7 +2070,7 @@ At first a anatomical reference image is plotted. To check if everything was mod
 <p>Thus, we can continue with the quality check.</p>
 </section>
 <section id="comparing-the-results-with-literature">
-<h2><strong>4.2 Comparing the results with literature</strong><a class="headerlink" href="#comparing-the-results-with-literature" title="Permalink to this heading">#</a></h2>
+<h3><strong>4.2 Comparing the results with literature</strong><a class="headerlink" href="#comparing-the-results-with-literature" title="Permalink to this heading">#</a></h3>
 <p>Next step would be to check, if the results of all contrasts across runs is consistend with the literature on mental imagery. Meaning, can a similar activation pattern be seen in the z-map plots when comparing it to activation pattern, that are based on several other studies/meta analysis on mental imagery? To investigate this, I will plot the contrasts and then compare them to the activation maps on <a class="reference external" href="https://neurosynth.org/analyses/terms/mental%20imagery/">neurosynth</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2130,7 +2121,7 @@ At first a anatomical reference image is plotted. To check if everything was mod
 <p>Since the activation pattern from the plotted z-maps seem to be in accordance to the results from neurosynth we can conclude, that the results are as expected and match with prior research.</p>
 </section>
 <section id="plotting-design-matrices">
-<h2><strong>4.3 Plotting design matrices</strong><a class="headerlink" href="#plotting-design-matrices" title="Permalink to this heading">#</a></h2>
+<h3><strong>4.3 Plotting design matrices</strong><a class="headerlink" href="#plotting-design-matrices" title="Permalink to this heading">#</a></h3>
 <p>For the last step, we should make sure that the design matrices show the same pattern of stimuli onset as the event files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2184,7 +2175,7 @@ At first a anatomical reference image is plotted. To check if everything was mod
 </section>
 </section>
 <section id="calculating-z-maps-perrun-for-all-sessions">
-<h1><strong>5.0 Calculating z-maps perrun for all  sessions</strong><a class="headerlink" href="#calculating-z-maps-perrun-for-all-sessions" title="Permalink to this heading">#</a></h1>
+<h2><strong>5.0 Calculating z-maps perrun for all  sessions</strong><a class="headerlink" href="#calculating-z-maps-perrun-for-all-sessions" title="Permalink to this heading">#</a></h2>
 <p>Since we have the data for three more sessions, we will apply the contrast computation for per run for each session. This way we can use split the existing z-maps into training and testing data, i.e. cross validating our model.</p>
 <p>We will simply repeat all the step from section 3.0. Thus, I wont provide a detailed explanation on what is happening in the individual steps. The code is simply adapted a bit to iterate to all session folders and apply the same steps of section 3.0 to each folder.</p>
 <p>Please note, that the functional files have been reprocessed. They are now in the respective subject anatomical space.</p>
@@ -2695,8 +2686,9 @@ VERY IMPORANT INFORMATION:
 <p>For example: The first idea was to simply run the glm across runs and not per run. This ended up with few data points, thus the idea do run the glm perrun was executed. Also, not only the data from subject one but also from subject two has been tried out. This lead to very similar problems, which you will encounter in the following notebooks. Please accept, that it is not possible to include every attempt in this jupyter book. If you are interested in which methods I tried out, please contact me (see: Welcome page) and I’ll be very happy to discuss everything with you.  </div></p>
 </section>
 <section id="logistic-regression">
-<h1><strong>6.0 Logistic Regression</strong><a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h1>
+<h2><strong>6.0 Logistic Regression</strong><a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
 <p>Since we now completed the GLM for all sessions, we should continue with the Logistic Regression. Please see the respective notebook “Logistic_Regression.ipynb”</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2733,7 +2725,7 @@ VERY IMPORANT INFORMATION:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exploration of the dataset used in my research project.</p>
+        <p class="prev-next-title">Dataset Exploration</p>
       </div>
     </a>
     <a class="right-next"
@@ -2741,7 +2733,7 @@ VERY IMPORANT INFORMATION:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>0. Introduction</strong></p>
+        <p class="prev-next-title">Logistic Regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2760,23 +2752,22 @@ VERY IMPORANT INFORMATION:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">This notebook serves the purpose of performing the general linear model on the respective dataset.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">This notebook serves the purpose of performing the general linear model on the respective dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-glm-for-all-runs"><strong>3.0 Performing the glm for all runs</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check"><strong>4.0 Quality check</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>4.1 Model evaluation</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-results-with-literature"><strong>4.2 Comparing the results with literature</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-design-matrices"><strong>4.3 Plotting design matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-glm-for-all-runs"><strong>3.0 Performing the glm for all runs</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check"><strong>4.0 Quality check</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>4.1 Model evaluation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-results-with-literature"><strong>4.2 Comparing the results with literature</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-design-matrices"><strong>4.3 Plotting design matrices</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-z-maps-perrun-for-all-sessions"><strong>5.0 Calculating z-maps perrun for all  sessions</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression"><strong>6.0 Logistic Regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-z-maps-perrun-for-all-sessions"><strong>5.0 Calculating z-maps perrun for all  sessions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression"><strong>6.0 Logistic Regression</strong></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

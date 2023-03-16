@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>0. Introduction &#8212; Mental image decoding - A student research project</title>
+    <title>Logistic Regression &#8212; Mental image decoding - A student research project</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'code/Logistic_Regression';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="This notebook serves the purpose of performing the general linear model on the respective dataset." href="../data/General_linear_model.html" />
+    <link rel="prev" title="General linear model" href="../data/General_linear_model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,19 +159,9 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../general_information/Research_question.html">Research Question aka what is this project all about?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general_information/Data_and_Projectmanagment.html">Data- and Projectmanagment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/Dataset_Exploration.html">Exploration of the dataset used in my research project.</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../data/General_linear_model.html">This notebook serves the purpose of performing the general linear model on the respective dataset.</a></li>
-
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>0. Introduction</strong></a></li>
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../data/Dataset_Exploration.html">Dataset Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/General_linear_model.html">General linear model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Logistic Regression</a></li>
 </ul>
 
     </div>
@@ -403,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>0. Introduction</h1>
+    <h1>Logistic Regression</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,14 +403,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examing-the-voxel-pattern"><strong>2.0 Examing the voxel pattern</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression"><strong>3.0 Logistic regression</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#error-search-what-is-wrong-with-the-data"><strong>4.0 Error search - what is wrong with the data?</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pca"><strong>4.1 PCA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examing-the-voxel-pattern"><strong>2.0 Examing the voxel pattern</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>3.0 Logistic regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-search-what-is-wrong-with-the-data"><strong>4.0 Error search - what is wrong with the data?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca"><strong>4.1 PCA</strong></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -431,12 +420,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="introduction">
-<h1><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
+<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>This notebook follows after the “General Linear Model.iypnb” notebook. Aim of this notebook is to conduct the logistic regression algorithm. For now, we have 26 z-maps, so one for each contrast, for each session, per run i.e. 4 * 5 * 26 z-maps.</p>
 </section>
 <section id="masking">
-<h1><strong>1. Masking</strong><a class="headerlink" href="#masking" title="Permalink to this heading">#</a></h1>
+<h2><strong>1. Masking</strong><a class="headerlink" href="#masking" title="Permalink to this heading">#</a></h2>
 <p>First we will need to load the mask. The masks needs to be fetched from the openneuro dataset. This is done with <em>datalad</em>.</p>
 <p>We cd into the local dataset directory and then use the command:</p>
 <p>datalad get sourcedata/sub-01/anat.</p>
@@ -611,7 +602,7 @@ Also, we append values to the y list. We have 26 different categories we want to
 <p>There are 520 rows for both X and y. This makes sense, because each row represents the respective image category label. The columns in our X data represents the voxels in our specific mask, in other words: We have the activity of 992 voxels per category.</p>
 </section>
 <section id="examing-the-voxel-pattern">
-<h1><strong>2.0 Examing the voxel pattern</strong><a class="headerlink" href="#examing-the-voxel-pattern" title="Permalink to this heading">#</a></h1>
+<h2><strong>2.0 Examing the voxel pattern</strong><a class="headerlink" href="#examing-the-voxel-pattern" title="Permalink to this heading">#</a></h2>
 <p>The shape of our input array X tells us, that we have n_samples = 104 and n_features = 992.
 The features relate to the amount of voxels extracted. The samples are the 26 categories multiplied by all 4 sessions.</p>
 <p>First, we will take a look at the correlation matrix.</p>
@@ -864,8 +855,8 @@ The features relate to the amount of voxels extracted. The samples are the 26 ca
 </div>
 <p>It really seems like there is no clear pattern to be examined between or within sessions. It rather looks like a lot of noise.</p>
 </section>
-<section id="logistic-regression">
-<h1><strong>3.0 Logistic regression</strong><a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2><strong>3.0 Logistic regression</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="alert alert-block alert-danger">
 VERY IMPORANT INFORMATION:
 <p>This notebook has gone through several attempts. Please take a look at the respective github repository folder to understand the different attempts made.</p>
@@ -1363,7 +1354,7 @@ weighted avg       0.04      0.05      0.03       130
 <p>This does not look too good. Apparently our training data can be predicted very well, but on the test data the algorithm performs very poor. This is illustrated clearly in the confusion matrix. Well organized for the train confusion matrix but just a mess in the test confusion matrix.</p>
 </section>
 <section id="error-search-what-is-wrong-with-the-data">
-<h1><strong>4.0 Error search - what is wrong with the data?</strong><a class="headerlink" href="#error-search-what-is-wrong-with-the-data" title="Permalink to this heading">#</a></h1>
+<h2><strong>4.0 Error search - what is wrong with the data?</strong><a class="headerlink" href="#error-search-what-is-wrong-with-the-data" title="Permalink to this heading">#</a></h2>
 <p>Since the model did not perform well at all, we should inspect what exactly is going wrong. For example, we have a lot of features (992) but only 520 samples. This combination is prone to overfitting. Thus, we should continue with examining the feature importance. Meaning, inspecting which features are actually important for the model and which are not.</p>
 <p>Each feature gets a certain weight assigned by the Logistic Regression. This loop goes through all those coefficients.  We will go through all weights, that are at least above 1.0 and plot them. The weight determines, how important the feature is.</p>
 <div class="cell docutils container">
@@ -1581,7 +1572,7 @@ Our model does not work. Feature selection does not help. SklearnsGridSearch als
 <p>To proceed, we will now fit a PCA onto the data. Most likely, the high within session correlation is at fault for those poor results.</p>
 </section>
 <section id="pca">
-<h1><strong>4.1 PCA</strong><a class="headerlink" href="#pca" title="Permalink to this heading">#</a></h1>
+<h2><strong>4.1 PCA</strong><a class="headerlink" href="#pca" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -1685,6 +1676,7 @@ Our model does not work. Feature selection does not help. SklearnsGridSearch als
 <p>Most of the variance seems to be within 20 components. We have 4 sessions a 5 runs. Meaning, that most of the variance is stuck within those sessions. Everything beyond that is just noise. Our data has a very high within session variance. Making it almost impossible to model anything. For the correlation matrix, we should expect 26 correlation cluster and not only 4. Our model and hypothesis will thus not work. We are unable to dedocde anything beyond noise.</p>
 <p>Still, we will continue our journey of diving into the science beyond computational neuroscience. The next sections will test the same hypothesis with a SVM and a fully conncected neural network.</p>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1720,7 +1712,7 @@ Our model does not work. Feature selection does not help. SklearnsGridSearch als
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">This notebook serves the purpose of performing the general linear model on the respective dataset.</p>
+        <p class="prev-next-title">General linear model</p>
       </div>
     </a>
 </div>
@@ -1738,14 +1730,13 @@ Our model does not work. Feature selection does not help. SklearnsGridSearch als
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examing-the-voxel-pattern"><strong>2.0 Examing the voxel pattern</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression"><strong>3.0 Logistic regression</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#error-search-what-is-wrong-with-the-data"><strong>4.0 Error search - what is wrong with the data?</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pca"><strong>4.1 PCA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examing-the-voxel-pattern"><strong>2.0 Examing the voxel pattern</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>3.0 Logistic regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-search-what-is-wrong-with-the-data"><strong>4.0 Error search - what is wrong with the data?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca"><strong>4.1 PCA</strong></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

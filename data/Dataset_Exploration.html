@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exploration of the dataset used in my research project. &#8212; Mental image decoding - A student research project</title>
+    <title>Dataset Exploration &#8212; Mental image decoding - A student research project</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'data/Dataset_Exploration';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="This notebook serves the purpose of performing the general linear model on the respective dataset." href="General_linear_model.html" />
+    <link rel="next" title="General linear model" href="General_linear_model.html" />
     <link rel="prev" title="Data- and Projectmanagment" href="../general_information/Data_and_Projectmanagment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -160,19 +160,9 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../general_information/Research_question.html">Research Question aka what is this project all about?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general_information/Data_and_Projectmanagment.html">Data- and Projectmanagment</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploration of the dataset used in my research project.</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="General_linear_model.html">This notebook serves the purpose of performing the general linear model on the respective dataset.</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../code/Logistic_Regression.html"><strong>0. Introduction</strong></a></li>
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dataset Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="General_linear_model.html">General linear model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/Logistic_Regression.html">Logistic Regression</a></li>
 </ul>
 
     </div>
@@ -404,7 +394,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exploration of the dataset used in my research project.</h1>
+    <h1>Dataset Exploration</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,22 +404,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploration of the dataset used in my research project.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">0.  <strong>Introduction</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-used-in-my-research-project">Exploration of the dataset used in my research project.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0.  Introduction</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids">1. <strong>Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids"><strong>1. Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-anatomical-and-functional-files-of-subject-one">2.0 <strong>Exploration of anatomical and functional files of subject one</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-of-event-file-and-meta-data">2.1 <strong>Inspection of event file and meta data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-anatomical-and-functional-files-of-subject-one"><strong>2.0 Exploration of anatomical and functional files of subject one</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-of-event-file-and-meta-data"><strong>2.1 Inspection of event file and meta data</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datamanagment-data-modelling">3.0 Datamanagment: Data modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamanagment-data-modelling"><strong>3.0 Datamanagment: Data modelling</strong></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -440,15 +429,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="exploration-of-the-dataset-used-in-my-research-project">
-<h1>Exploration of the <a class="reference external" href="https://openneuro.org/datasets/ds001506/versions/1.3.1">dataset</a> used in my research project.<a class="headerlink" href="#exploration-of-the-dataset-used-in-my-research-project" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="dataset-exploration">
+<h1>Dataset Exploration<a class="headerlink" href="#dataset-exploration" title="Permalink to this heading">#</a></h1>
+<section id="exploration-of-the-dataset-used-in-my-research-project">
+<h2>Exploration of the <a class="reference external" href="https://openneuro.org/datasets/ds001506/versions/1.3.1">dataset</a> used in my research project.<a class="headerlink" href="#exploration-of-the-dataset-used-in-my-research-project" title="Permalink to this heading">#</a></h2>
 <section id="introduction">
-<h2>0.  <strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h3><strong>0.  Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
 <p>This notebook serves the purpose of exploring the structure of the dataset. More precisely, there are two parts within this notebook. The first part will explore the BIDS format. This is done by using the <a class="reference external" href="https://bids-standard.github.io/pybids/">pybids</a> module.
 The second part will focus on exploring the anatomical and functional files for subject one, within the first session and first run. Next to files of anatomical and functional nature, the events and bold.json files of the respective subject are investigated.</p>
 <p>Within the study of the respective dataset, the participants had two main tasks that are interesting for us in the fMRI. Task one was to simply look at visual stimuli (natural images, artifical shapes and alphabetical letters). Task two was to perform mental imagery, so visually imagine one of the presented stimuli. The imagination has been performed on either the natural images or the alphabetical letters.</p>
 <section id="example-task">
-<h3>Example task<a class="headerlink" href="#example-task" title="Permalink to this heading">#</a></h3>
+<h4>Example task<a class="headerlink" href="#example-task" title="Permalink to this heading">#</a></h4>
 <p>In the paradigm, two experiments were used. To make the paradigm more clear, I will provide a brief example on how a task in the visual stimuli and in the imagery experiment looks like.</p>
 <p><strong>Visual stimuli</strong></p>
 <p>For the visual stimuli, or image presentation, experiment there were four distinct sessions. 1: Training of the natural images, 2. test of the natural images, artificial shape session and alphabetic letter sessions. For these sessions, each run compromised of 50, 50, 40 and 10 blocks with different images. Since we are mainly interested in the mental imagery part of the experiment, we will now introduce more thoroughly this respective condition. So the main stimuli were natural images, artificial shapes and alphabetic letters.</p>
@@ -459,9 +450,9 @@ In the word-cue period, the respective words to indicate the visual stimuli were
 </section>
 </section>
 <section id="exploration-of-the-dataset-with-pybids">
-<h2>1. <strong>Exploration of the dataset with pybids</strong><a class="headerlink" href="#exploration-of-the-dataset-with-pybids" title="Permalink to this heading">#</a></h2>
+<h3><strong>1. Exploration of the dataset with pybids</strong><a class="headerlink" href="#exploration-of-the-dataset-with-pybids" title="Permalink to this heading">#</a></h3>
 <section id="bids-validation">
-<h3>Bids Validation<a class="headerlink" href="#bids-validation" title="Permalink to this heading">#</a></h3>
+<h4>Bids Validation<a class="headerlink" href="#bids-validation" title="Permalink to this heading">#</a></h4>
 <p>According to the BIDS validator from <a class="reference external" href="http://Openneuro.org">Openneuro.org</a> the dataset follows a valid BIDS.</p>
 <p>We want to understand the structure of the dataset, especially how the dataset follows the BIDS format. This can be done with the pybids module. The following part serves the purpose of determining the structure.
 To explore the dataset, we will need to obtain it first from datalad. The installation of the dataset is  done by using the command <em>datalad install https: <a class="github reference external" href="//github.com/"></a> OpenNeuroDatasets/ds001506.git</em> in bash.</p>
@@ -922,7 +913,7 @@ We encounter familiar entities: Subject, session, run and task. This command inf
 </section>
 </section>
 <section id="exploration-of-anatomical-and-functional-files-of-subject-one">
-<h2>2.0 <strong>Exploration of anatomical and functional files of subject one</strong><a class="headerlink" href="#exploration-of-anatomical-and-functional-files-of-subject-one" title="Permalink to this heading">#</a></h2>
+<h3><strong>2.0 Exploration of anatomical and functional files of subject one</strong><a class="headerlink" href="#exploration-of-anatomical-and-functional-files-of-subject-one" title="Permalink to this heading">#</a></h3>
 <p><strong>First use the followings commands to inspect anatomical and function images and the event and json file of the functional session. Those files can be obtained from datalad. This allows me to install the respective files of subject one in the first session to inspect. The commands are exectued in <em>bash</em>.</strong></p>
 <p>datalad get sub-01/ses-anatomy/anat/sub-01_ses-anatomy_T1w.nii.gz</p>
 <p>datalad get sub-01/ses-imagery01/anat/sub-01_ses-imagery01_inplaneT2.nii.gz</p>
@@ -1020,7 +1011,7 @@ Now we will take a look at the functional image of subject one, within run and s
 </div>
 </section>
 <section id="inspection-of-event-file-and-meta-data">
-<h2>2.1 <strong>Inspection of event file and meta data</strong><a class="headerlink" href="#inspection-of-event-file-and-meta-data" title="Permalink to this heading">#</a></h2>
+<h3><strong>2.1 Inspection of event file and meta data</strong><a class="headerlink" href="#inspection-of-event-file-and-meta-data" title="Permalink to this heading">#</a></h3>
 <p>Now its time to inspect the events.tsv and the .json file. The event file tells us for example which stimuli (category_id) was presented at which timestamp (onset) and for how long (duration). The unit for this information is in seconds. Also the event file contains the column Evaluation. It runs from 5 (very) to 1 (could not recognize) and indicates how vivid the mental imagery was for the participants.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1374,10 +1365,11 @@ It is useful to plot the behavior of the categories over time. This is demonstra
 </section>
 </section>
 <section id="datamanagment-data-modelling">
-<h1>3.0 Datamanagment: Data modelling<a class="headerlink" href="#datamanagment-data-modelling" title="Permalink to this heading">#</a></h1>
+<h2><strong>3.0 Datamanagment: Data modelling</strong><a class="headerlink" href="#datamanagment-data-modelling" title="Permalink to this heading">#</a></h2>
 <div class="alert alert-block alert-success">
 Next step: Run a GLM. The supervised modell takes the brain activity during the mental imagery and natural stimuli condition as an input. Thus I need to run an GLM with the predictors and dependent variable. The predictors are the respective categories of the stimuli. The dependent variable is the brain activity in a given voxel. This predicted activity will then serve as the input to the machine learning algorithm.
-<p>This step can be found in the General_linear_model.ipynb notebook in the data folder.</div></p>
+<p>Please follow the jupyter book to continue.</div></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1422,7 +1414,7 @@ Next step: Run a GLM. The supervised modell takes the brain activity during the 
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">This notebook serves the purpose of performing the general linear model on the respective dataset.</p>
+        <p class="prev-next-title">General linear model</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1441,22 +1433,21 @@ Next step: Run a GLM. The supervised modell takes the brain activity during the 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploration of the dataset used in my research project.</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">0.  <strong>Introduction</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-used-in-my-research-project">Exploration of the dataset used in my research project.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0.  Introduction</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids">1. <strong>Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids"><strong>1. Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-anatomical-and-functional-files-of-subject-one">2.0 <strong>Exploration of anatomical and functional files of subject one</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-of-event-file-and-meta-data">2.1 <strong>Inspection of event file and meta data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-anatomical-and-functional-files-of-subject-one"><strong>2.0 Exploration of anatomical and functional files of subject one</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspection-of-event-file-and-meta-data"><strong>2.1 Inspection of event file and meta data</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datamanagment-data-modelling">3.0 Datamanagment: Data modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamanagment-data-modelling"><strong>3.0 Datamanagment: Data modelling</strong></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
