@@ -1,1 +1,0 @@
-This folder contains the exploration of the dataset. In the "Dataset_Exploration.ipynb" notebook brief introduction to the dataset and the paradigm can be found. Also, within the notebook the BIDS structure, and anatomical and functional files and features have been explored.

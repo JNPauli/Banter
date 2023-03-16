@@ -3,6 +3,7 @@ format: jb-book
 chapters:
 - file: general_information/Research_question.md
 - file: general_information/Data_and_Projectmanagment.md
-- file: general_information/outline
-- file: general_information/setup
+- file: data/Dataset_Exploration.ipynb
+- file: data/General_linear_model.ipynb
+- file: code/Logistic_Regression.ipynb
 
