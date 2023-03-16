@@ -1,0 +1,8 @@
+root: general_information/index
+format: jb-book
+chapters:
+- file: general_information/overview
+- file: general_information/procedure
+- file: general_information/outline
+- file: general_information/setup
+
