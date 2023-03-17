@@ -17,8 +17,8 @@ The stimuli images were obtained from Imagenet. So called natural images were ex
 The whole project is documented on Github. Please click [here](https://github.com/JNPauli/Mental-image-decoding) to get to the Github repository. **Note**: Most of the commits happened on the update branch, so that the main branch is not trashed with random stuff and ideas. The README file of the Github repository explains the respective structure and what contents are documented in which folder. Also, the project is documented on [OSF](https://osf.io/t2psq/).
 
 ## Literature
-The literature resources used in this jupyter book and the project in general are all documented with the opensource literature software [zotero](zotero.org). To see which literature contributed to creating this project,<details>
-<summary> please follow here:</summary>
+The literature resources used in this jupyter book and the project in general are all documented with the opensource literature software [zotero](zotero.org). To see which literature contributed to creating this project you can either follow the link to the OSF project, or<details>
+<summary> click here:</summary>
 <br>
 @misc{noauthor_mind-vis_nodate,
 	title = {{MinD}-{Vis}},
@@ -314,7 +314,7 @@ Interoperability is reached, because the data follows the BIDS format. HOWEVER: 
 The data hits the Reuse criterion, because it not only a license is provided, but also but the data is well documented, it is described how the data was collected and what the data essentially represents.
 
 ## Openlab notebook
-The folder [open-lab-notebook](https://github.com/JNPauli/Mental-image-decoding/tree/update/open_lab_notebook) exists on the github repository. This folder holds the **Documentation.md** file. The whole process of the project is documented there. Every obstacle, failure and win is described and sorted by date. Ideally, the thought process within the project is reasonable and transparent for everyone interested (or just put me under the fMRI, whatever suits you best).
+The [open-lab-notebook](https://github.com/JNPauli/Mental-image-decoding/open_lab_notebook.html) exists. This folder holds the **Documentation.md** file. The whole process of the project is documented there. Every obstacle, failure and win is described and sorted by date. Ideally, the thought process within the project is reasonable and transparent for everyone interested (or just put me under the fMRI, whatever suits you best).
 
 ## Computational environment
 In order to fulfill the FAIR principle, a computational environment exists. This environment consists of all python modules that are used in this project, but ONLY in this project. This way a possible conflict between different versions of modules etc is prevented. You can find the modules within the **requirements.txt** file in the [code folder](https://github.com/JNPauli/Mental-image-decoding/tree/update/code) of the github repository. To install the modules, proceed this way: Download the requirements.txt file from the github repository. *Alternative way*: Create a new folder and clone the repository (1. cd your_directory,

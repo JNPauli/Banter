@@ -3,6 +3,8 @@ format: jb-book
 chapters:
 - file: general_information/Research_question.md
 - file: general_information/Data_and_Projectmanagment.md
+  sections:
+  - file: open_lab_notebook/Documentation.md
 - file: data/Dataset_Exploration.ipynb
 - file: data/General_linear_model.ipynb
 - file: general_information/Machine_Learning.md
