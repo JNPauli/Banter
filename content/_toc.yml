@@ -11,4 +11,5 @@ chapters:
   sections:
   - file: code/Logistic_Regression.ipynb
   - file: code/Support_Vector_Machine.ipynb
+  - file: code/Neural_network.ipynb
 
