@@ -5,5 +5,8 @@ chapters:
 - file: general_information/Data_and_Projectmanagment.md
 - file: data/Dataset_Exploration.ipynb
 - file: data/General_linear_model.ipynb
-- file: code/Logistic_Regression.ipynb
+- file: general_information/Machine_Learning.md
+  Sections:
+  - file: code/Logistic_Regression.ipynb
+  - file: code/Support_Vector_Machine.ipynb
 
