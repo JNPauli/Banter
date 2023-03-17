@@ -44,13 +44,17 @@ You can use the following sections to navigate through the content of the resear
 
    Why should one run a glm in the first place? Which modules did I use? 
  
-* [Machine Learning](https://JNPauli.github.io/Mental-image-decoding/code/Logistic_Regression.html)
+* [Machine Learning](https://jnpauli.github.io/Mental-image-decoding/general_information/Machine_Learning.html)
 
    What kind of different algorithms did I use? How did it work out?
 
 * [Symposium](https://m-earnest.github.io/course_template_diler/general_information/symposium.html)
 
    What to do about outreach and discourse creation?
+
+## Google presentation
+
+In the summer semester 2022, a presentation for this project was created. This presentation depicts the visions I had for this project at the given time. Please follow this [link](https://docs.google.com/presentation/d/1hdF_vYehPPWYPMLEpF6A8M-vYMSxDagZfov6lBnF_cA/edit?usp=sharing) if you are interested in how the project looked in july 2022.
 
 ## I've got a question!
 
