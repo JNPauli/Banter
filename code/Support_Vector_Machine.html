@@ -428,54 +428,52 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/home/jpauli/ds001506/sourcedata/sub-02/anat&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/home/jpauli/ds001506/sourcedata/sub-01/anat&quot;</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sub-02_mask_LH_FFA.nii.gz&#39;,
- &#39;sub-02_mask_LH_hV4.nii.gz&#39;,
- &#39;sub-02_mask_LH_HVC.nii.gz&#39;,
- &#39;sub-02_mask_LH_LOC.nii.gz&#39;,
- &#39;sub-02_mask_LH_PPA.nii.gz&#39;,
- &#39;sub-02_mask_LH_V1d.nii.gz&#39;,
- &#39;sub-02_mask_LH_V1v.nii.gz&#39;,
- &#39;sub-02_mask_LH_V2d.nii.gz&#39;,
- &#39;sub-02_mask_LH_V2v.nii.gz&#39;,
- &#39;sub-02_mask_LH_V3d.nii.gz&#39;,
- &#39;sub-02_mask_LH_V3v.nii.gz&#39;,
- &#39;sub-02_mask_RH_FFA.nii.gz&#39;,
- &#39;sub-02_mask_RH_hV4.nii.gz&#39;,
- &#39;sub-02_mask_RH_HVC.nii.gz&#39;,
- &#39;sub-02_mask_RH_LOC.nii.gz&#39;,
- &#39;sub-02_mask_RH_PPA.nii.gz&#39;,
- &#39;sub-02_mask_RH_V1d.nii.gz&#39;,
- &#39;sub-02_mask_RH_V1v.nii.gz&#39;,
- &#39;sub-02_mask_RH_V2d.nii.gz&#39;,
- &#39;sub-02_mask_RH_V2v.nii.gz&#39;,
- &#39;sub-02_mask_RH_V3d.nii.gz&#39;,
- &#39;sub-02_mask_RH_V3v.nii.gz&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sub-01_mask_LH_FFA.nii.gz&#39;,
+ &#39;sub-01_mask_LH_hV4.nii.gz&#39;,
+ &#39;sub-01_mask_LH_HVC.nii.gz&#39;,
+ &#39;sub-01_mask_LH_LOC.nii.gz&#39;,
+ &#39;sub-01_mask_LH_PPA.nii.gz&#39;,
+ &#39;sub-01_mask_LH_V1d.nii.gz&#39;,
+ &#39;sub-01_mask_LH_V1v.nii.gz&#39;,
+ &#39;sub-01_mask_LH_V2d.nii.gz&#39;,
+ &#39;sub-01_mask_LH_V2v.nii.gz&#39;,
+ &#39;sub-01_mask_LH_V3d.nii.gz&#39;,
+ &#39;sub-01_mask_LH_V3v.nii.gz&#39;,
+ &#39;sub-01_mask_RH_FFA.nii.gz&#39;,
+ &#39;sub-01_mask_RH_hV4.nii.gz&#39;,
+ &#39;sub-01_mask_RH_HVC.nii.gz&#39;,
+ &#39;sub-01_mask_RH_LOC.nii.gz&#39;,
+ &#39;sub-01_mask_RH_PPA.nii.gz&#39;,
+ &#39;sub-01_mask_RH_V1d.nii.gz&#39;,
+ &#39;sub-01_mask_RH_V1v.nii.gz&#39;,
+ &#39;sub-01_mask_RH_V2d.nii.gz&#39;,
+ &#39;sub-01_mask_RH_V2v.nii.gz&#39;,
+ &#39;sub-01_mask_RH_V3d.nii.gz&#39;,
+ &#39;sub-01_mask_RH_V3v.nii.gz&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_img_path_sub1</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506/sourcedata/sub-01/anat&#39;</span>
-<span class="n">mask_img_path_sub2</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506/sourcedata/sub-02/anat&#39;</span>
-
-<span class="n">mask_img_sub1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_img_path_sub1</span><span class="p">,</span><span class="s1">&#39;sub-01_mask_LH_LOC.nii.gz&#39;</span><span class="p">)</span>
-<span class="n">mask_img_sub2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_img_path_sub2</span><span class="p">,</span><span class="s1">&#39;sub-02_mask_LH_LOC.nii.gz&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_img_path</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506/sourcedata/sub-01/anat&#39;</span>
+<span class="n">mask_img</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_img_path</span><span class="p">,</span><span class="s1">&#39;sub-01_mask_LH_HVC.nii.gz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Just for the sake of trying something out, I choose a different mask this time. Instead of the v1 its going to be the <strong>higher</strong> visual cortex.</p>
+<p>Also, for demonstration purposes, I will conduct the SVM with the z-maps <strong>across</strong> runs. A PCA on the z-maps across runs will follow to further illustrate the session specific variance issue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.maskers</span> <span class="kn">import</span> <span class="n">NiftiMasker</span>
-<span class="n">nifti_masker</span> <span class="o">=</span> <span class="n">NiftiMasker</span><span class="p">(</span><span class="n">mask_img</span><span class="o">=</span><span class="n">mask_img_sub1</span><span class="p">)</span>
-<span class="c1">#nifti_masker2 = NiftiMasker(mask_img=mask_img_sub2)</span>
+<span class="n">nifti_masker</span> <span class="o">=</span> <span class="n">NiftiMasker</span><span class="p">(</span><span class="n">mask_img</span><span class="o">=</span><span class="n">mask_img</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -483,24 +481,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">Sessions</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">category</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">cat_index</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">cat_index_boundary</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">session</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">]:</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/janos/git/sessions_new/z_maps_</span><span class="si">{}</span><span class="s1">_perrun&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">session</span><span class="p">))</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/janos/git/sessions_new/z_maps_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">session</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;nilearn_cache&#39;</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nifti_masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-            <span class="n">Y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
             <span class="n">Sessions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
-            <span class="n">cat_index</span> <span class="o">=</span> <span class="n">cat_index</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="n">cat_index</span> <span class="o">==</span> <span class="n">cat_index_boundary</span><span class="p">:</span>
-                <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="o">+</span><span class="mi">1</span>
-                <span class="n">cat_index_boundary</span> <span class="o">=</span> <span class="n">cat_index_boundary</span><span class="o">+</span><span class="mi">5</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="o">+</span><span class="mi">1</span>
             <span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
                 <span class="n">category</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
@@ -512,17 +505,50 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="n">Y_ses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Sessions</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-<span class="n">X_</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Our model takes </span><span class="si">{}</span><span class="s1"> features/voxels and </span><span class="si">{}</span><span class="s1"> samples as an input&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our model takes (2293,) features/voxels and (104,) samples as an input
+</pre></div>
+</div>
+</div>
+</div>
+<p>After checking the shape of our input data, we observe differences. We have far more features and far less samples. In theory, this does not benefit our model, since this just provokes overfitting.</p>
+<p>Like in the logistic regression notebook, I also tried a bunch of different techniques. This notebook will run the SVM on the aforementioned data. Sklearns feature selection modules <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html">SelectKBest</a> and the hyperparameter tuning method <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search">Gridsearch</a> are demonstrated.</p>
+<p>So lets jump straight in by splitting our data into training and testing variables with sklearns <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a> method.</p>
 </section>
 <section id="support-vector-machine">
 <h1><strong>1.0 Support Vector Machine</strong><a class="headerlink" href="#support-vector-machine" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Split dataset into training set and test set</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We choose a 80/20 split, meaning that 80% of our data will be used for training the data and 20% for testing the data.</p>
+<p>Random state is set to 42 for reproduction reasons</p>
+<p>Next step: Choosing our feature selection method.</p>
+<p>We will use the <strong>k</strong>-best features from our 2293 features. The goal is to prevent overfitting by reducing features.
+The k-best methods works like this:</p>
+<p>“Function taking two arrays X and y, and returning a pair of arrays (scores, pvalues) or a single array with scores. Default is f_classif (see below “See Also”). The default function only works with classification tasks.”</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html">SOURCE</a></p>
+<p>So lets set k = 10 and continue running the SVM with our 10 best features!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span>
@@ -535,20 +561,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(520, 10)
-</pre></div>
-</div>
-</div>
-</div>
-<p>X_train = X_[0:390]
-y_train = y[0:390]</p>
-<p>X_test = X_[390:520] #leaving session 4 out
-y_test = y[390:520]</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-
-<span class="c1"># Split dataset into training set and test set</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
