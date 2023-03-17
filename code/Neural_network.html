@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>0. Introduction &#8212; Mental image decoding - A student research project</title>
+    <title>Deep Neural Network &#8212; Mental image decoding - A student research project</title>
   
   
   
@@ -402,7 +402,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>0. Introduction</h1>
+    <h1>Deep Neural Network</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -412,11 +412,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data"><strong>1.0 Loading the data</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#split-dataset-into-training-set-and-test-set">Split dataset into training set and test set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data"><strong>1.0 Loading the data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-neural-network"><strong>2.0 Setting up the neural network</strong></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -427,12 +426,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="introduction">
-<h1><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
-<p>This notebook continues the series of machine learning techniques with the goal to decode the brain activitiy given the respective categories. Unfortunately, neither the LogReg nor the SVM produced any results that back the initial hypothesis. Still, we will set up the Neuralnetwork for the purpose of learning the respective technique.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="deep-neural-network">
+<h1>Deep Neural Network<a class="headerlink" href="#deep-neural-network" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>This notebook continues the series of machine learning techniques with the goal to decode the brain activitiy given the respective categories. Unfortunately, neither the LogReg nor the SVM produced any results that back the initial hypothesis. Still, we will set up the Neural network for the purpose of learning the respective technique.</p>
+<p>For this notebook, we will work with the z-maps <code class="docutils literal notranslate"><span class="pre">per</span> <span class="pre">run</span></code>.</p>
 </section>
 <section id="loading-the-data">
-<h1><strong>1.0 Loading the data</strong><a class="headerlink" href="#loading-the-data" title="Permalink to this heading">#</a></h1>
+<h2><strong>1.0 Loading the data</strong><a class="headerlink" href="#loading-the-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -445,7 +447,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_img_path</span> <span class="o">=</span> <span class="s1">&#39;/home/jpauli/ds001506/sourcedata/sub-01/anat&#39;</span>
 <span class="n">mask_img_L</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_img_path</span><span class="p">,</span><span class="s1">&#39;sub-01_mask_LH_V1v.nii.gz&#39;</span><span class="p">)</span>
-<span class="n">mask_img_R</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_img_path</span><span class="p">,</span><span class="s1">&#39;sub-01_mask_RH_LOC.nii.gz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -464,7 +465,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">Sessions</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">category</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">cat_index</span> <span class="o">=</span> <span class="mi">0</span>
@@ -477,7 +478,7 @@ document.write(`
             <span class="k">continue</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nifti_masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-            <span class="n">Y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
             <span class="n">Sessions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
             <span class="n">cat_index</span> <span class="o">=</span> <span class="n">cat_index</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">cat_index</span> <span class="o">==</span> <span class="n">cat_index_boundary</span><span class="p">:</span>
@@ -486,60 +487,17 @@ document.write(`
             <span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
                 <span class="n">category</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-<span class="n">X_</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>from nilearn.maskers import NiftiMasker
-os.chdir(“/mnt/c/Users/janos/git/sessions_new/data/haxby2001/subj4”)</p>
-<p>func = ‘bold.nii.gz’</p>
-<p>mask = ‘mask4_vt.nii.gz’</p>
-<p>masker = NiftiMasker(mask_img=mask, standardize=True, detrend=True)
-X_= masker.fit_transform(func)</p>
-<p>import pandas as pd
-y = pd.read_csv(‘labels.txt’, delimiter =’ ‘)
-y = y[‘labels’]</p>
-<p>import pandas as pd
-y = pd.read_csv(‘labels.txt’, delimiter =’ ‘)
-y = y[‘labels’]</p>
-<p>labels = [‘rest’,’face’,’chair’,’scissors’,’shoe’,’scrambledpix’,’house’,’cat’,’bottle’]
-new_y = []
-for x in y:
-if x == labels[0]:
-new_y.append(0)
-if x == labels[1]:
-new_y.append(1)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if x == labels[2]:
-    new_y.append(2)
-
-if x == labels[3]:
-    new_y.append(3)
-    
-if x == labels[4]:
-    new_y.append(4)
-    
-if x == labels[5]:
-    new_y.append(5)
-    
-if x == labels[6]:
-    new_y.append(6)
-    
-if x == labels[7]:
-    new_y.append(7)
-    
-if x == labels[8]:
-    new_y.append(8)
-</pre></div>
-</div>
-<p>y = np.array(new_y)
-y.shape</p>
 <p>Rescaling, because PyTorch requires Y labels to range from 0 to 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">-</span><span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span>
 <span class="n">y</span>
 </pre></div>
 </div>
@@ -580,51 +538,33 @@ y.shape</p>
 </div>
 </div>
 </div>
-<p>Y_unique = np.unique(y)
-Y_unique</p>
-<p>np.random.shuffle(Y)
-y_train = []
-y_test = []</p>
-<p>for category in y:
-if len(y_test) == len(Y_unique):
-y_train.append(category)
-else:
-y_test.append(category)
-if y_test.count(category) &gt; 1:
-y_test.remove(category)
-y_train.append(category)
-continue</p>
-<p>y_test = np.array(y_test)
-y_train = np.array(y_train)</p>
-<p>len(y_test)</p>
-<p>Split data</p>
+<p>Splitting dataset into training set and test set</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">390</span><span class="p">]</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">390</span><span class="p">]</span>
-
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_</span><span class="p">[</span><span class="mi">390</span><span class="p">:</span><span class="mi">520</span><span class="p">]</span> <span class="c1">#leaving session 4 out</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">390</span><span class="p">:</span><span class="mi">520</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>from sklearn.model_selection import train_test_split</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="split-dataset-into-training-set-and-test-set">
-<h1>Split dataset into training set and test set<a class="headerlink" href="#split-dataset-into-training-set-and-test-set" title="Permalink to this heading">#</a></h1>
-<p>X_train, X_test, y_train, y_test = train_test_split(X_, y, test_size=0.2,random_state=42)
-#X_train, X_test = train_test_split(X_, test_size=0.25,random_state=42)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="setting-up-the-neural-network">
+<h2><strong>2.0 Setting up the neural network</strong><a class="headerlink" href="#setting-up-the-neural-network" title="Permalink to this heading">#</a></h2>
 <p>General imports of pytorch modules needed to define the network. NN stands for Neural Network and is part of the pytorch library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -635,7 +575,8 @@ y_train = np.array(y_train)</p>
 </div>
 </div>
 </div>
-<p>Numpy arrays to pytorch tensor</p>
+<p>Pytorch works with <code class="docutils literal notranslate"><span class="pre">tensors</span></code>. Thus, our usual numpy arrays need to be converted to pytorch tensors.</p>
+<p>Specifically, the X tensors must be in the datatype <code class="docutils literal notranslate"><span class="pre">float32</span></code> and the y tensors in the datatype <code class="docutils literal notranslate"><span class="pre">LongTensor</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tensor_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -646,35 +587,13 @@ y_train = np.array(y_train)</p>
 </div>
 </div>
 </div>
+<p>Converting to tensors and now transforming them into the aforementioned datatype.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tensor_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_tensor_train</span><span class="p">,</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">Y_tensor_train</span> <span class="o">=</span> <span class="n">Y_tensor_train</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  &quot;&quot;&quot;Entry point for launching an IPython kernel.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tensor_test</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([130, 992])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tensor_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_tensor_test</span><span class="p">,</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">X_tensor_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_tensor_test</span><span class="p">,</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">Y_tensor_test</span> <span class="o">=</span> <span class="n">Y_tensor_test</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -682,23 +601,26 @@ y_train = np.array(y_train)</p>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   &quot;&quot;&quot;Entry point for launching an IPython kernel.
+/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/ipykernel_launcher.py:4: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  after removing the cwd from sys.path.
 </pre></div>
 </div>
 </div>
 </div>
-<p>First things first, we should define our neural network by using pythons <em>classes</em> and more important, the pytorch nn.Module. Then, we initialize and determine the inputs: The class takes three arguments: Itself (so nn.Module), n inputs and n outputs, corresponding to our x and y data.
+<p>Now that we took care of that, we should define our neural network by using pythons <em>classes</em> and the pytorch nn.Module. Then, we initialize and determine the inputs: The class takes three arguments: <code class="docutils literal notranslate"><span class="pre">Itself</span></code> (so the nn.Module), <code class="docutils literal notranslate"><span class="pre">n_inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">n_outputs</span></code>, corresponding to our usual X and y data.
 We apply the super function in order to invoke the properties of the class.</p>
 <p>Then we define our first variables: “self.in_layer” and “self.out_layer”.
-By using the linear function of the nn module, we define for the first variable, that it takes n inputs and n hidden layers. This is our input layer, so the information is forwarded from the n_input to n_hidden layers. The out_layer variable passed the input from the n_hidden layers to 26 output layers. 26 is chosen, because we want to predict 26 classes.</p>
+By using the linear function of the nn module we define for the first variable, that it takes n inputs and n hidden layers. This is our input layer, so the information is forwarded from the n_input to n_hidden layers. The out_layer variable passes the input from the n_hidden layers to 26 output layers. 26 is chosen, because we want to predict 26 classes.</p>
+<p>We are also adding a dropout layer. This helps us with the <code class="docutils literal notranslate"><span class="pre">regularization</span></code> process. Dropout in general is described as</p>
+<p>“Dropout is a machine learning technique where you remove (or “drop out”) units in a neural net to simulate training large numbers of architectures simultaneously. Importantly, dropout can drastically reduce the chance of overfitting during training.” <a class="reference external" href="https://wandb.ai/authors/ayusht/reports/Implementing-Dropout-in-PyTorch-With-Example--VmlldzoxNTgwOTE">SOURCE</a></p>
 <p>We go on by defining the forward method. The forward method runs when calling the class as a function. It takes the z_maps as an input and passes it through the hidden layer to produce the weights and to finally pass it to the output layer, in order to predict the respective category.</p>
-<p>I definitely got a lot of help from the Neuromatch course on <a class="reference external" href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/tutorials/W1D5_DeepLearning/student/W1D5_Tutorial1.ipynb#scrollTo=JFdPAcDx22RZ">computational neuroscience</a>.</p>
+<p>I definitely got a lot of help for this by following the Neuromatch course on <a class="reference external" href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/tutorials/W1D5_DeepLearning/student/W1D5_Tutorial1.ipynb#scrollTo=JFdPAcDx22RZ">computational neuroscience</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DecodingReLuNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_inputs</span><span class="p">,</span><span class="n">n_hidden</span><span class="p">):</span> <span class="c1">#,n_hidden_2</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_inputs</span><span class="p">,</span><span class="n">n_hidden</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">in_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_inputs</span><span class="p">,</span><span class="n">n_hidden</span><span class="p">)</span>
-        <span class="c1">#self.hid_layer = nn.Linear(n_hidden, n_hidden_2)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_hidden</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">V_P</span><span class="p">):</span>
@@ -715,7 +637,6 @@ By using the linear function of the nn module, we define for the first variable,
     <span class="c1">#tensor then y is a 2D tensor of shape n_stimuli x 1.</span>
     
         <span class="n">V_P</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_layer</span><span class="p">(</span><span class="n">V_P</span><span class="p">))</span>
-        <span class="c1">#V_P = torch.relu(self.hid_layer(V_P))</span>
         <span class="n">V_P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">V_P</span><span class="p">)</span>
         <span class="n">V_P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span><span class="p">(</span><span class="n">V_P</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">V_P</span>
@@ -723,46 +644,14 @@ By using the linear function of the nn module, we define for the first variable,
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_tensor_train</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  3,  3,  3,
-         3,  3,  4,  4,  4,  4,  4,  5,  5,  5,  5,  5,  6,  6,  6,  6,  6,  7,
-         7,  7,  7,  7,  8,  8,  8,  8,  8,  9,  9,  9,  9,  9, 10, 10, 10, 10,
-        10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14,
-        14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17, 17, 17, 17, 17,
-        18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 21, 21, 21,
-        21, 21, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 25,
-        25, 25, 25, 25,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  2,  2,  2,  2,
-         2,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,  5,  5,  6,  6,
-         6,  6,  6,  7,  7,  7,  7,  7,  8,  8,  8,  8,  8,  9,  9,  9,  9,  9,
-        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
-        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17,
-        17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20, 20, 20, 20,
-        20, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 24, 24,
-        24, 24, 24, 25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,
-         2,  2,  2,  2,  2,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,
-         5,  5,  6,  6,  6,  6,  6,  7,  7,  7,  7,  7,  8,  8,  8,  8,  8,  9,
-         9,  9,  9,  9, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12,
-        12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16,
-        16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19,
-        20, 20, 20, 20, 20, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 23, 23, 23,
-        23, 23, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25])
-</pre></div>
-</div>
-</div>
-</div>
+<p>We now set up a loss function. A very common loss function for multiclass problems is the CrossEntropyLoss. We set the loss function and run our deep neural network very naively on our training and testing set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1">#Initialize a deep network with 10 hidden units</span>
-<span class="n">net</span> <span class="o">=</span> <span class="n">DecodingReLuNN</span><span class="p">(</span><span class="n">X_tensor_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">509</span><span class="p">)</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">DecodingReLuNN</span><span class="p">(</span><span class="n">X_tensor_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">30</span><span class="p">)</span>
 
 <span class="c1"># Get voxel pattern and predicted category for all stimuli</span>
 <span class="n">V_P</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="n">X_tensor_train</span><span class="p">,</span> <span class="n">Y_tensor_train</span> 
@@ -782,60 +671,70 @@ By using the linear function of the nn module, we define for the first variable,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true category: tensor([ 0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  3,  3,  3,
-         3,  3,  4,  4,  4,  4,  4,  5,  5,  5,  5,  5,  6,  6,  6,  6,  6,  7,
-         7,  7,  7,  7,  8,  8,  8,  8,  8,  9,  9,  9,  9,  9, 10, 10, 10, 10,
-        10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14,
-        14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17, 17, 17, 17, 17,
-        18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 21, 21, 21,
-        21, 21, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 25,
-        25, 25, 25, 25,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  2,  2,  2,  2,
-         2,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,  5,  5,  6,  6,
-         6,  6,  6,  7,  7,  7,  7,  7,  8,  8,  8,  8,  8,  9,  9,  9,  9,  9,
-        10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13,
-        13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17,
-        17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20, 20, 20, 20,
-        20, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 24, 24,
-        24, 24, 24, 25, 25, 25, 25, 25,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,
-         2,  2,  2,  2,  2,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  5,  5,  5,
-         5,  5,  6,  6,  6,  6,  6,  7,  7,  7,  7,  7,  8,  8,  8,  8,  8,  9,
-         9,  9,  9,  9, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12,
-        12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16,
-        16, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19,
-        20, 20, 20, 20, 20, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 23, 23, 23,
-        23, 23, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25])
-Predicted category:tensor([12,  5, 23, 16, 18, 23,  1, 23,  0, 12, 12, 14,  3, 20, 19, 23,  1, 14,
-        17, 24, 16, 23,  2,  1, 23,  2,  1, 14, 17,  1, 16, 18, 12, 17, 23,  2,
-         6, 12,  1, 24, 16, 10, 14,  0,  0, 16,  3, 23, 16, 23, 12, 24, 14, 25,
-         3,  7, 23,  3, 17, 18,  9,  6, 12,  1, 18,  2, 16, 14,  1, 23, 12,  2,
-        11,  1, 19, 23, 14, 23,  0,  6, 12,  1, 23, 17, 18, 23, 14, 11,  0, 12,
-        16, 14, 23, 16, 18, 16,  5, 14, 20,  0, 12,  5,  3, 17,  5,  2,  1, 14,
-         0, 23, 12,  0, 14,  0, 18, 24, 20, 14,  0, 18, 23, 20, 14, 16, 12, 23,
-         1, 14, 23, 24, 24, 24, 16, 10, 23, 24, 23,  1,  5,  0, 10,  0, 20, 23,
-        23, 24, 24, 20, 24, 23, 24, 23, 20, 24, 23, 24, 15, 10, 24, 16, 24, 23,
-        10, 24, 16, 24, 23, 20, 23,  0, 24, 23,  1, 23, 23, 24, 23, 20,  5, 23,
-        24, 23, 20, 24, 25, 10,  6, 10, 23,  0, 24, 23, 20,  6, 23, 24, 23, 20,
-        14, 12, 24, 23, 20, 24, 24, 11,  9, 20,  4, 23, 24,  6, 20,  5, 23, 24,
-         6, 20, 23, 12, 24, 23, 20, 23,  0, 24, 24, 20,  5, 23, 24, 23, 20, 23,
-        16, 24, 23, 10, 23, 23, 24, 23,  1, 24,  0, 24,  0, 20, 24, 16, 24, 23,
-        23, 23, 23, 24, 23,  1, 22, 23, 23,  7,  0,  0, 25, 23, 16,  5, 25, 20,
-        23, 20,  0,  5, 20, 23, 20,  5, 13, 16, 23, 14, 13, 18, 20, 23, 20,  0,
-        25, 20, 25, 20,  0, 16, 20, 25, 16, 18, 18, 20, 23, 25,  5, 25, 20, 25,
-        14,  6, 25, 20, 23, 22,  5, 18, 20,  3, 14,  1, 25, 20, 23, 24,  0, 16,
-        23, 23, 20,  0, 25,  5, 23, 20,  5, 16, 16, 23, 22,  6,  5, 20, 23, 20,
-         5, 13, 23, 14, 14, 12, 25, 20, 23, 20,  0, 25,  5, 23, 16,  0, 16, 25,
-        23, 20, 18, 12, 16, 17, 20,  0, 12, 23, 23, 24,  0, 25, 23, 23, 20,  5,
-        18,  0, 23,  0, 17, 25, 23, 23, 14,  0, 16, 23])
-cross entropy loss 3.300686836242676
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true category: tensor([ 8,  9, 15, 14, 18, 22, 12, 10, 21, 19, 12, 13, 15, 20, 12, 23, 17,  8,
+        15, 13,  3,  6, 10, 16,  3,  1, 11, 22, 16, 10,  2,  5,  0,  8, 23,  2,
+        15,  5, 25,  4,  6, 22, 20,  6,  4, 11, 16,  4,  3, 23, 13, 19, 19, 18,
+        14,  4,  4, 22,  6, 23,  1, 23,  9,  3,  3, 18, 22,  0,  2,  7, 12, 22,
+        13,  2,  5,  4,  4,  5,  1, 10, 16, 21,  7,  5, 19, 23, 22,  7,  9, 14,
+        21,  2, 12, 24,  1, 23, 19, 21, 14,  2,  3, 13, 20,  7, 11, 21,  0, 10,
+        12, 16, 21,  0,  3, 18,  4, 18,  4,  3, 16, 20,  7,  6, 13, 24, 14, 15,
+        20, 21, 23,  6,  8, 13, 21,  5, 23,  1,  1, 10,  1, 24,  7, 13,  1, 25,
+         9,  8,  5, 11, 15, 23, 22, 17, 14,  1, 22,  4,  1,  7, 13, 13,  8,  3,
+         3,  3, 11,  7, 24, 24, 19,  2, 21, 12, 19, 16, 24, 10, 14, 23, 11, 22,
+        20, 10,  4, 21, 25, 19, 18, 25, 17, 25,  9,  7, 12,  0,  2, 21,  8,  6,
+        24, 18, 22,  9, 11,  6, 16, 22, 22, 20, 24, 12,  6,  1, 13, 25, 20, 23,
+        24, 20, 18, 10, 17, 25,  5,  7, 21, 24, 15,  0, 23,  8, 18, 13,  4, 17,
+        22, 11,  1,  5,  2,  7,  5,  8,  2,  5, 18, 18, 19, 10, 22, 25, 18,  0,
+         9,  8, 12,  2, 15,  4, 19, 24,  7,  0, 25, 15, 20, 19, 10, 16,  9,  8,
+        19,  6, 17, 12,  9,  6,  1, 13, 14, 15,  5,  3, 20,  0, 23,  5,  6,  0,
+        10,  1, 12,  1, 25, 21,  1, 13, 19, 12,  8,  2,  5,  8, 23, 17,  6, 17,
+         3,  3, 12, 11, 15, 21, 15, 16,  7, 17, 24, 24, 17,  8, 18,  1, 14,  6,
+         8, 17,  2, 12,  9, 25, 21, 10, 25,  0, 14, 23,  9,  5, 16, 15,  6,  8,
+         0,  7, 20, 21, 18, 15, 21, 10, 17,  0, 22,  2, 11, 17, 25,  2,  7, 13,
+        24,  0,  9, 22, 11, 22, 10, 20, 10, 18,  8, 11, 11, 25, 14, 11, 17,  7,
+        11, 16,  9, 16, 21, 24,  4, 10, 13,  6,  3, 10, 12, 25,  6,  4, 20, 16,
+        25,  9,  3,  0,  4, 19, 19, 22, 17, 13, 14, 16, 15, 24,  4, 14, 21,  2,
+         9, 20])
+Predicted category:tensor([12, 12,  1, 12,  6, 12,  1,  6, 12,  1,  1,  8,  4, 12, 19, 12,  6, 12,
+         1, 17, 17,  6, 15,  8, 12,  0,  6, 19,  6, 23,  1, 17,  1, 19, 18, 11,
+         1, 12,  6,  0,  6, 12,  6, 12, 12,  1,  6, 12,  1,  6,  6, 12, 15,  1,
+        19,  1, 12, 12, 12,  1, 17,  1,  6, 12,  6, 11,  2, 12,  1,  2, 17,  1,
+         1, 12, 21,  1, 12,  6,  1, 12, 12,  7,  1, 15,  6, 12,  9,  2,  6, 12,
+         6, 12, 12,  2, 19,  1,  6,  1, 12, 12,  2,  1, 12, 19,  1, 15,  0, 11,
+         1,  6, 12, 12,  6,  6, 17, 12, 19,  6, 12,  2, 15,  1,  1,  6,  7,  0,
+        12,  8, 12,  1, 12, 19, 12,  2, 15,  1, 19, 12,  8, 19,  1,  6, 12, 19,
+         1,  1,  6, 21, 18,  1,  1, 12,  2,  2, 17, 11,  6, 12, 15,  1, 12, 12,
+         8, 15, 17, 20, 12, 12,  6, 19, 12,  1, 15, 12, 19,  7, 15, 12,  1,  6,
+         6,  8,  6, 12, 17,  0,  1, 10, 12, 12, 12,  7,  6,  7, 12, 17,  1,  1,
+         1, 12, 19, 12, 12,  6,  1, 11, 12,  1, 10, 12, 12,  6, 15,  2, 15, 17,
+        17,  1, 12,  0, 10,  1,  1,  6,  1,  1,  1,  1,  7, 12,  6, 17,  4, 17,
+        15, 12,  0, 12,  6, 12, 15,  6,  6,  0, 19, 12, 17,  1, 11, 10, 23, 12,
+         1,  6,  0,  1, 10, 12, 19,  6,  1,  6, 12,  6, 17, 12,  0, 17, 10, 12,
+         6,  6,  6,  1, 19, 19, 17, 12,  2, 19,  1, 19,  7,  1, 19, 10, 15,  2,
+        12,  1, 19, 11, 12, 11, 12,  1,  2, 12,  1, 12,  6, 17,  0, 13, 19, 12,
+         0, 12,  6,  0, 12, 10, 15, 17, 15, 12,  6,  2, 12, 10,  6, 12,  6,  7,
+        12, 15, 12, 15, 12, 12, 17, 19,  6,  6,  0,  0, 21,  0, 17,  6,  6,  2,
+         7, 12,  1, 12,  1,  1,  0,  1, 12,  6, 12, 19,  1, 12, 12, 10, 12,  2,
+         0, 12,  1,  6,  1,  1, 12, 25, 17, 19, 12, 23, 12, 12,  1, 15, 19, 12,
+        12, 12, 12,  1,  6, 15, 17, 10,  2,  7,  1,  8, 12,  1, 10,  8,  6, 23,
+        15, 10, 12, 17,  6,  1, 21, 12,  6,  1,  6,  0,  6,  6, 17,  1,  1,  2,
+        19,  1])
+cross entropy loss 3.2855207920074463
 </pre></div>
 </div>
 </div>
 </div>
-<p>highest 3 classes (top 3, top 5)</p>
-<p>Optimization with gradient descent and regularization (weight_decay)</p>
+<p>We see that the loss is quite high and not really anything could be predicted. This becomes apparent if we compare the labels from the <code class="docutils literal notranslate"><span class="pre">true</span> <span class="pre">category</span></code> with the labels from the <code class="docutils literal notranslate"><span class="pre">predicted</span> <span class="pre">category</span></code>.</p>
+<p>Now we set up the analysis loop. This analysis loop comes with some more hyperparameters. The amount of epochs, the learning rate and the weight decay.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">epoch</span></code> is defined as one whole pass through the data. It is common that a neural network is trained on the data for several epochs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">learning</span> <span class="pre">rate</span></code> is tightly related to the <strong>backpropagation</strong>, which is the algorithm that ensure that the network is learning (=adapting the weights accordingly). The learning rate defines how “fast” (at which rate) this learning takes place.</p>
+<p><strong>Note</strong>: The whole process of how an algorithm learns is a complex one and cannot be explained in this notebook. If you are interested in how everything takes place, you might want to watch this youtube video (or consult anyother resources). Like the amazing course on computational neuroscience and Deep Learning from the Neuromatch academy, which was linked above.</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=IHZwWFHWa-w&amp;t=5s"><img alt="Video" src="https://img.youtube.com/vi/v=IHZwWFHWa-w&amp;t=5s/0.jpg" /></a></p>
+<p>We choose the stochastic gradient descent as our optimizer and also introduce a weight_decay.
+Weight decay is a <code class="docutils literal notranslate"><span class="pre">regularization</span> <span class="pre">technique</span></code> that should prevent overly complex models and thus overfitting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">analysis</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
           <span class="n">n_epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span><span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
     <span class="n">train_loss</span> <span class="o">=</span> <span class="p">[]</span>
@@ -870,22 +769,23 @@ cross entropy loss 3.300686836242676
 </div>
 </div>
 </div>
-<p>accuracy per epoch
-k-fold</p>
+<p>We can now run this loop on our data, and plot the cross entropy loss per epoch.</p>
+<p>Amount of hidden neurons per layer are set to 509, because it follows the equation n_neurons = input_layer+output_layer/2.</p>
+<p>The epoch is set to 1000 and the learning rate to 0.1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set random seeds for reproducibility</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="c1"># Initialize network with 50 hidden neurons</span>
+    <span class="c1"># Initialize network with 509 hidden neurons</span>
 <span class="n">net</span> <span class="o">=</span> <span class="n">DecodingReLuNN</span><span class="p">(</span><span class="n">X_tensor_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">509</span><span class="p">)</span> <span class="c1">#509 = input layer + output / 2</span>
 
     <span class="c1"># Initialize built-in PyTorch Crossentrop loss function</span>
 <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
 
     <span class="c1"># Run gradient descent on data</span>
-<span class="n">train_loss</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span><span class="n">y_pred_test</span><span class="p">,</span><span class="n">test_loss</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="n">loss_fn</span><span class="p">,</span><span class="n">X_tensor_train</span><span class="p">,</span><span class="n">Y_tensor_train</span><span class="p">,</span>
+<span class="n">train_loss</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span><span class="n">y_pred_test</span><span class="p">,</span><span class="n">test_loss</span> <span class="o">=</span> <span class="n">analysis</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="n">loss_fn</span><span class="p">,</span><span class="n">X_tensor_train</span><span class="p">,</span><span class="n">Y_tensor_train</span><span class="p">,</span>
                                       <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
   
 
@@ -900,31 +800,33 @@ k-fold</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration 200/1000 | loss: 0.479
-iteration 400/1000 | loss: 0.083
-iteration 600/1000 | loss: 0.040
-iteration 800/1000 | loss: 0.024
-iteration 1000/1000 | loss: 0.019
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration 200/1000 | loss: 0.683
+iteration 400/1000 | loss: 0.113
+iteration 600/1000 | loss: 0.056
+iteration 800/1000 | loss: 0.031
+iteration 1000/1000 | loss: 0.024
 </pre></div>
 </div>
-<img alt="../_images/eb34f4a6d56badfb562b2b834fac88eaa73ac8e1da3bbf7263031f7801596c02.png" src="../_images/eb34f4a6d56badfb562b2b834fac88eaa73ac8e1da3bbf7263031f7801596c02.png" />
+<img alt="../_images/ef3d56b173eb9bfd00f1ff1a49bd7a66d609db25115c0a5f5d27571a4887a9ca.png" src="../_images/ef3d56b173eb9bfd00f1ff1a49bd7a66d609db25115c0a5f5d27571a4887a9ca.png" />
 </div>
 </div>
+<p>It becomes apparent, that with the chosen hyperparameters the loss slowly minimizes over the epochs.
+Lets visualise our results with our good ol friend, the confusion matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">cf_matrix_train</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">Y_tensor_train</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cf_matrix_train</span><span class="p">,</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cf_matrix_train</span><span class="p">,</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Confusion matrix for the training set&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 1.0, &#39;Confusion matrix for the training set&#39;)]
 </pre></div>
 </div>
-<img alt="../_images/876ae560f290dec8c40a16c717a1b1fb1d68eec30395e3596b779436de367469.png" src="../_images/876ae560f290dec8c40a16c717a1b1fb1d68eec30395e3596b779436de367469.png" />
+<img alt="../_images/ffa98250151af11f6b3c51f90365183f9ea5423ffe82978f8cddf1654b085132.png" src="../_images/ffa98250151af11f6b3c51f90365183f9ea5423ffe82978f8cddf1654b085132.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -945,15 +847,15 @@ iteration 1000/1000 | loss: 0.019
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cf_matrix_test</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">Y_tensor_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cf_matrix_test</span><span class="p">,</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cf_matrix_test</span><span class="p">,</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Confusion matrix for the test set&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 1.0, &#39;Confusion matrix for the test set&#39;)]
 </pre></div>
 </div>
-<img alt="../_images/74ad1ca06a93fd8f835e86cbd5445b3b8fe666a244d624849e0af036e5dd9b62.png" src="../_images/74ad1ca06a93fd8f835e86cbd5445b3b8fe666a244d624849e0af036e5dd9b62.png" />
+<img alt="../_images/924428d8c360ba8e5b399b35a4ae1087801c81a93f278b1469763f5559755e6f.png" src="../_images/924428d8c360ba8e5b399b35a4ae1087801c81a93f278b1469763f5559755e6f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -963,12 +865,15 @@ iteration 1000/1000 | loss: 0.019
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.046153846153846156
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.009615384615384616
 </pre></div>
 </div>
 </div>
 </div>
-<p>Not sure if I did all steps correct, but 0 accuracy is a nice replication!!!</p>
+<p>And with those wonderful results we come to an end of our machine learning journey.</p>
+<p>The results can be summarized fairly easy: The fully connected neural network did not change anything regarding the outcome the classification task.</p>
+<p>Further implications are discussed in the discussion section.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1014,11 +919,10 @@ iteration 1000/1000 | loss: 0.019
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data"><strong>1.0 Loading the data</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#split-dataset-into-training-set-and-test-set">Split dataset into training set and test set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data"><strong>1.0 Loading the data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-neural-network"><strong>2.0 Setting up the neural network</strong></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
