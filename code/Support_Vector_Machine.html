@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>0. Introduction &#8212; Mental image decoding - A student research project</title>
+    <title>Support Vector Machine &#8212; Mental image decoding - A student research project</title>
   
   
   
@@ -392,7 +392,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>0. Introduction</h1>
+    <h1>Support Vector Machine</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -402,12 +402,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine"><strong>1.0 Support Vector Machine</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-again"><strong>2.0 PCA</strong>…(again)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.0 Support Vector Machine</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-again"><strong>2.0 PCA</strong>…(again)</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -418,12 +417,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="introduction">
-<h1><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="support-vector-machine">
+<h1>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>This notebook follows after the “Logistic_Regression.iypnb” notebook. Aim of this notebook is to conduct the Support Vector Machine algorithm.</p>
 </section>
 <section id="masking">
-<h1><strong>1. Masking</strong><a class="headerlink" href="#masking" title="Permalink to this heading">#</a></h1>
+<h2><strong>1. Masking</strong><a class="headerlink" href="#masking" title="Permalink to this heading">#</a></h2>
 <p>As in the Logistic Regression notebook, we will first load the masks, load the data and then apply the mask. I will not explain each step, because this has already been described in the aformentioned notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -470,7 +471,7 @@ document.write(`
 </div>
 </div>
 <p>Just for the sake of trying something out, I choose a different mask this time. Instead of the v1 its going to be the <strong>higher</strong> visual cortex.</p>
-<p>Also, for demonstration purposes, I will conduct the SVM with the z-maps <strong>across</strong> runs. A PCA on the z-maps across runs will follow to further illustrate the session specific variance issue.</p>
+<p>Also, for demonstration purposes, I will conduct the SVM with the z-maps <strong>across</strong> runs. A PCA on the z-maps across runs will follow at the end of this section to further illustrate the session specific variance issue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.maskers</span> <span class="kn">import</span> <span class="n">NiftiMasker</span>
@@ -530,8 +531,8 @@ document.write(`
 <p>Like in the logistic regression notebook, I also tried a bunch of different techniques. This notebook will run the SVM on the aforementioned data. Sklearns feature selection modules <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html">SelectKBest</a> and the hyperparameter tuning method <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search">Gridsearch</a> are demonstrated.</p>
 <p>So lets jump straight in by splitting our data into training and testing variables with sklearns <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a> method.</p>
 </section>
-<section id="support-vector-machine">
-<h1><strong>1.0 Support Vector Machine</strong><a class="headerlink" href="#support-vector-machine" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2><strong>1.0 Support Vector Machine</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Next step: Choosing our feature selection method.</p>
 <p>We will use the <strong>k</strong>-best features from our 2293 features. The goal is to prevent overfitting by reducing features.
 The k-best methods works like this:</p>
@@ -724,7 +725,7 @@ weighted avg       0.00      0.00      0.00      21.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b05e6711b480dc13349850b61256272b76c660fc3bc177bbaba38d00fce7d994.png" src="../_images/b05e6711b480dc13349850b61256272b76c660fc3bc177bbaba38d00fce7d994.png" />
+<img alt="../_images/5a5908decd4d54f1e4465212d2a1ca5a431df1243bdc8be9944820feb6b191da.png" src="../_images/5a5908decd4d54f1e4465212d2a1ca5a431df1243bdc8be9944820feb6b191da.png" />
 </div>
 </div>
 <p>So lets continue with sklearns GridSearchCV.</p>
@@ -786,13 +787,7 @@ weighted avg       0.00      0.00      0.00      21.0
 [CV] END ...................C=0.1, gamma=0.01, kernel=linear; total time=   0.0s
 [CV] END ...................C=0.1, gamma=0.01, kernel=linear; total time=   0.0s
 [CV] END .....................C=0.1, gamma=0.01, kernel=poly; total time=   0.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/model_selection/_split.py:680: UserWarning: The least populated class in y has only 2 members, which is less than n_splits=3.
-  UserWarning,
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END .....................C=0.1, gamma=0.01, kernel=poly; total time=   0.0s
+[CV] END .....................C=0.1, gamma=0.01, kernel=poly; total time=   0.0s
 [CV] END .....................C=0.1, gamma=0.01, kernel=poly; total time=   0.0s
 [CV] END ......................C=0.1, gamma=0.01, kernel=rbf; total time=   0.0s
 [CV] END ......................C=0.1, gamma=0.01, kernel=rbf; total time=   0.0s
@@ -832,7 +827,13 @@ weighted avg       0.00      0.00      0.00      21.0
 [CV] END ..........................C=1, gamma=1, kernel=poly; total time=   0.0s
 [CV] END ...........................C=1, gamma=1, kernel=rbf; total time=   0.0s
 [CV] END ...........................C=1, gamma=1, kernel=rbf; total time=   0.0s
-[CV] END ...........................C=1, gamma=1, kernel=rbf; total time=   0.0s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/model_selection/_split.py:680: UserWarning: The least populated class in y has only 2 members, which is less than n_splits=3.
+  UserWarning,
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END ...........................C=1, gamma=1, kernel=rbf; total time=   0.0s
 [CV] END .......................C=1, gamma=1, kernel=sigmoid; total time=   0.0s
 [CV] END .......................C=1, gamma=1, kernel=sigmoid; total time=   0.0s
 [CV] END .......................C=1, gamma=1, kernel=sigmoid; total time=   0.0s
@@ -916,42 +917,42 @@ weighted avg       0.00      0.00      0.00      21.0
 [CV] END ......................C=10, gamma=0.01, kernel=poly; total time=   0.0s
 [CV] END .......................C=10, gamma=0.01, kernel=rbf; total time=   0.0s
 [CV] END .......................C=10, gamma=0.01, kernel=rbf; total time=   0.0s
+[CV] END .......................C=10, gamma=0.01, kernel=rbf; total time=   0.0s
+[CV] END ...................C=10, gamma=0.01, kernel=sigmoid; total time=   0.0s
+[CV] END ...................C=10, gamma=0.01, kernel=sigmoid; total time=   0.0s
+[CV] END ...................C=10, gamma=0.01, kernel=sigmoid; total time=   0.0s
+[CV] END ...................C=10, gamma=0.001, kernel=linear; total time=   0.0s
+[CV] END ...................C=10, gamma=0.001, kernel=linear; total time=   0.0s
+[CV] END ...................C=10, gamma=0.001, kernel=linear; total time=   0.0s
+[CV] END .....................C=10, gamma=0.001, kernel=poly; total time=   0.0s
+[CV] END .....................C=10, gamma=0.001, kernel=poly; total time=   0.0s
+[CV] END .....................C=10, gamma=0.001, kernel=poly; total time=   0.0s
+[CV] END ......................C=10, gamma=0.001, kernel=rbf; total time=   0.0s
+[CV] END ......................C=10, gamma=0.001, kernel=rbf; total time=   0.0s
+[CV] END ......................C=10, gamma=0.001, kernel=rbf; total time=   0.0s
+[CV] END ..................C=10, gamma=0.001, kernel=sigmoid; total time=   0.0s
+[CV] END ..................C=10, gamma=0.001, kernel=sigmoid; total time=   0.0s
+[CV] END ..................C=10, gamma=0.001, kernel=sigmoid; total time=   0.0s
+[CV] END ..................C=10, gamma=0.0001, kernel=linear; total time=   0.0s
+[CV] END ..................C=10, gamma=0.0001, kernel=linear; total time=   0.0s
+[CV] END ..................C=10, gamma=0.0001, kernel=linear; total time=   0.0s
+[CV] END ....................C=10, gamma=0.0001, kernel=poly; total time=   0.0s
+[CV] END ....................C=10, gamma=0.0001, kernel=poly; total time=   0.0s
+[CV] END ....................C=10, gamma=0.0001, kernel=poly; total time=   0.0s
+[CV] END .....................C=10, gamma=0.0001, kernel=rbf; total time=   0.0s
+[CV] END .....................C=10, gamma=0.0001, kernel=rbf; total time=   0.0s
+[CV] END .....................C=10, gamma=0.0001, kernel=rbf; total time=   0.0s
+[CV] END .................C=10, gamma=0.0001, kernel=sigmoid; total time=   0.0s
+[CV] END .................C=10, gamma=0.0001, kernel=sigmoid; total time=   0.0s
+[CV] END .................C=10, gamma=0.0001, kernel=sigmoid; total time=   0.0s
+[CV] END ......................C=100, gamma=1, kernel=linear; total time=   0.0s
+[CV] END ......................C=100, gamma=1, kernel=linear; total time=   0.0s
+[CV] END ......................C=100, gamma=1, kernel=linear; total time=   0.0s
+[CV] END ........................C=100, gamma=1, kernel=poly; total time=   0.0s
+[CV] END ........................C=100, gamma=1, kernel=poly; total time=   0.0s
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END .......................C=10, gamma=0.01, kernel=rbf; total time=   0.0s
-[CV] END ...................C=10, gamma=0.01, kernel=sigmoid; total time=   0.0s
-[CV] END ...................C=10, gamma=0.01, kernel=sigmoid; total time=   0.0s
-[CV] END ...................C=10, gamma=0.01, kernel=sigmoid; total time=   0.0s
-[CV] END ...................C=10, gamma=0.001, kernel=linear; total time=   0.0s
-[CV] END ...................C=10, gamma=0.001, kernel=linear; total time=   0.0s
-[CV] END ...................C=10, gamma=0.001, kernel=linear; total time=   0.0s
-[CV] END .....................C=10, gamma=0.001, kernel=poly; total time=   0.0s
-[CV] END .....................C=10, gamma=0.001, kernel=poly; total time=   0.0s
-[CV] END .....................C=10, gamma=0.001, kernel=poly; total time=   0.0s
-[CV] END ......................C=10, gamma=0.001, kernel=rbf; total time=   0.0s
-[CV] END ......................C=10, gamma=0.001, kernel=rbf; total time=   0.0s
-[CV] END ......................C=10, gamma=0.001, kernel=rbf; total time=   0.0s
-[CV] END ..................C=10, gamma=0.001, kernel=sigmoid; total time=   0.0s
-[CV] END ..................C=10, gamma=0.001, kernel=sigmoid; total time=   0.0s
-[CV] END ..................C=10, gamma=0.001, kernel=sigmoid; total time=   0.0s
-[CV] END ..................C=10, gamma=0.0001, kernel=linear; total time=   0.0s
-[CV] END ..................C=10, gamma=0.0001, kernel=linear; total time=   0.0s
-[CV] END ..................C=10, gamma=0.0001, kernel=linear; total time=   0.0s
-[CV] END ....................C=10, gamma=0.0001, kernel=poly; total time=   0.0s
-[CV] END ....................C=10, gamma=0.0001, kernel=poly; total time=   0.0s
-[CV] END ....................C=10, gamma=0.0001, kernel=poly; total time=   0.0s
-[CV] END .....................C=10, gamma=0.0001, kernel=rbf; total time=   0.0s
-[CV] END .....................C=10, gamma=0.0001, kernel=rbf; total time=   0.0s
-[CV] END .....................C=10, gamma=0.0001, kernel=rbf; total time=   0.0s
-[CV] END .................C=10, gamma=0.0001, kernel=sigmoid; total time=   0.0s
-[CV] END .................C=10, gamma=0.0001, kernel=sigmoid; total time=   0.0s
-[CV] END .................C=10, gamma=0.0001, kernel=sigmoid; total time=   0.0s
-[CV] END ......................C=100, gamma=1, kernel=linear; total time=   0.0s
-[CV] END ......................C=100, gamma=1, kernel=linear; total time=   0.0s
-[CV] END ......................C=100, gamma=1, kernel=linear; total time=   0.0s
-[CV] END ........................C=100, gamma=1, kernel=poly; total time=   0.0s
-[CV] END ........................C=100, gamma=1, kernel=poly; total time=   0.0s
-[CV] END ........................C=100, gamma=1, kernel=poly; total time=   0.0s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END ........................C=100, gamma=1, kernel=poly; total time=   0.0s
 [CV] END .........................C=100, gamma=1, kernel=rbf; total time=   0.0s
 [CV] END .........................C=100, gamma=1, kernel=rbf; total time=   0.0s
 [CV] END .........................C=100, gamma=1, kernel=rbf; total time=   0.0s
@@ -1020,9 +1021,7 @@ weighted avg       0.00      0.00      0.00      21.0
 [CV] END ....................C=1000, gamma=1, kernel=sigmoid; total time=   0.0s
 [CV] END ...................C=1000, gamma=0.1, kernel=linear; total time=   0.0s
 [CV] END ...................C=1000, gamma=0.1, kernel=linear; total time=   0.0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END ...................C=1000, gamma=0.1, kernel=linear; total time=   0.0s
+[CV] END ...................C=1000, gamma=0.1, kernel=linear; total time=   0.0s
 [CV] END .....................C=1000, gamma=0.1, kernel=poly; total time=   0.0s
 [CV] END .....................C=1000, gamma=0.1, kernel=poly; total time=   0.0s
 [CV] END .....................C=1000, gamma=0.1, kernel=poly; total time=   0.0s
@@ -1282,7 +1281,7 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test_</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test_indices</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1294,7 +1293,7 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_indices</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1340,21 +1339,21 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.8255865 , 4.93499085, 1.94590505, 2.05225487, 6.00369431,
-       4.25490658, 3.03461173, 1.00413004, 0.18643591, 2.10620487])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 6.25626526,  6.92034682,  3.99165056,  5.03150966,  7.93985189,
+        6.10372678,  5.19518384,  0.49008551, -0.12572179,  3.79744318])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="n">X_train_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_kb</span><span class="p">[</span><span class="n">X_train_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.8255865 , 4.93499085, 1.94590505, 2.05225487, 6.00369431,
-       4.25490658, 3.03461173, 1.00413004, 0.18643591, 2.10620487])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 6.25626526,  6.92034682,  3.99165056,  5.03150966,  7.93985189,
+        6.10372678,  5.19518384,  0.49008551, -0.12572179,  3.79744318])
 </pre></div>
 </div>
 </div>
@@ -1393,35 +1392,35 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
            1       0.00      0.00      0.00         3
-           2       0.00      0.00      0.00         3
-           3       0.33      0.67      0.44         3
-           4       0.40      0.67      0.50         3
-           5       0.00      0.00      0.00         3
-           6       0.38      1.00      0.55         3
+           2       0.11      0.33      0.17         3
+           3       0.50      0.67      0.57         3
+           4       1.00      0.67      0.80         3
+           5       0.40      0.67      0.50         3
+           6       0.33      0.33      0.33         3
            7       0.00      0.00      0.00         3
-           8       0.33      0.33      0.33         3
-           9       0.00      0.00      0.00         3
-          10       0.29      0.67      0.40         3
-          11       0.33      0.33      0.33         3
-          12       0.40      0.67      0.50         3
-          13       0.00      0.00      0.00         3
-          14       0.50      0.67      0.57         3
-          15       0.22      0.67      0.33         3
+           8       0.00      0.00      0.00         3
+           9       0.25      0.67      0.36         3
+          10       0.00      0.00      0.00         3
+          11       0.25      0.33      0.29         3
+          12       0.50      0.33      0.40         3
+          13       1.00      0.67      0.80         3
+          14       0.00      0.00      0.00         3
+          15       0.17      0.33      0.22         3
           16       0.00      0.00      0.00         3
-          17       0.00      0.00      0.00         3
+          17       0.15      0.67      0.25         3
           18       0.00      0.00      0.00         3
-          19       0.40      0.67      0.50         3
-          20       0.11      0.33      0.17         3
+          19       1.00      0.33      0.50         3
+          20       0.67      0.67      0.67         3
           21       0.00      0.00      0.00         3
-          22       1.00      0.33      0.50         3
-          23       0.00      0.00      0.00         3
+          22       0.33      0.33      0.33         3
+          23       0.50      0.33      0.40         3
           24       0.00      0.00      0.00         3
-          25       0.25      0.33      0.29         3
-          26       0.00      0.00      0.00         3
+          25       0.00      0.00      0.00         3
+          26       0.14      0.33      0.20         3
 
-    accuracy                           0.28        78
-   macro avg       0.19      0.28      0.21        78
-weighted avg       0.19      0.28      0.21        78
+    accuracy                           0.29        78
+   macro avg       0.28      0.29      0.26        78
+weighted avg       0.28      0.29      0.26        78
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
@@ -1436,7 +1435,7 @@ weighted avg       0.19      0.28      0.21        78
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1447,14 +1446,14 @@ weighted avg       0.19      0.28      0.21        78
            1       0.00      0.00      0.00         1
            2       0.00      0.00      0.00         1
            3       0.00      0.00      0.00         1
-           4       0.00      0.00      0.00         1
+           4       0.04      1.00      0.07         1
            5       0.00      0.00      0.00         1
            6       0.00      0.00      0.00         1
            7       0.00      0.00      0.00         1
            8       0.00      0.00      0.00         1
            9       0.00      0.00      0.00         1
           10       0.00      0.00      0.00         1
-          11       0.20      1.00      0.33         1
+          11       0.00      0.00      0.00         1
           12       0.00      0.00      0.00         1
           13       0.00      0.00      0.00         1
           14       0.00      0.00      0.00         1
@@ -1472,8 +1471,8 @@ weighted avg       0.19      0.28      0.21        78
           26       0.00      0.00      0.00         1
 
     accuracy                           0.04        26
-   macro avg       0.01      0.04      0.01        26
-weighted avg       0.01      0.04      0.01        26
+   macro avg       0.00      0.04      0.00        26
+weighted avg       0.00      0.04      0.00        26
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
@@ -1491,7 +1490,7 @@ Even after reducing the features to 10, using Gridsearch <strong>and</strong> ap
 <p>We can now fit a PCA once again in order to illustrate the session specific correlation on the <strong>across runs</strong> data.</p>
 </section>
 <section id="pca-again">
-<h1><strong>2.0 PCA</strong>…(again)<a class="headerlink" href="#pca-again" title="Permalink to this heading">#</a></h1>
+<h2><strong>2.0 PCA</strong>…(again)<a class="headerlink" href="#pca-again" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -1500,6 +1499,7 @@ Even after reducing the features to 10, using Gridsearch <strong>and</strong> ap
 </div>
 </div>
 </div>
+<p>So lets create a PCA with n_components = 10 and fit it once again on the X data. Then we plot the explained variancce ratio per component.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#n_components = 10</span>
@@ -1516,16 +1516,19 @@ Even after reducing the features to 10, using Gridsearch <strong>and</strong> ap
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Explained variance ratio&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff440291c50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Explained variance ratio&#39;)
 </pre></div>
 </div>
-<img alt="../_images/1a42d1b1413c0f58618136b12818b88cea4fbec86b1e84621c3b92d3118b130f.png" src="../_images/1a42d1b1413c0f58618136b12818b88cea4fbec86b1e84621c3b92d3118b130f.png" />
+<img alt="../_images/3593381f5dc2144fb240e16de668a263bfa2ebb65ff68d310a4b6f339a976a6b.png" src="../_images/3593381f5dc2144fb240e16de668a263bfa2ebb65ff68d310a4b6f339a976a6b.png" />
 </div>
 </div>
+<p>So no variance at all is explained after this fourth component. This just further confirms the assumption of the high session specific variance.</p>
+<p>We can pca.transform X and then plot the transformed X matrix. This solely containts X with the 10 components from the fitted PCA. If we plot this, we can observe the pattern in our data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_transform</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -1560,9 +1563,32 @@ Even after reducing the features to 10, using Gridsearch <strong>and</strong> ap
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;PC 2&#39;)
 </pre></div>
 </div>
-<img alt="../_images/4ca77e5504e825724a09f7b92ecdcf5995a204facee6e0dc2ce65d549a1634ce.png" src="../_images/4ca77e5504e825724a09f7b92ecdcf5995a204facee6e0dc2ce65d549a1634ce.png" />
+<img alt="../_images/48c5423d98eba37a038034ab3685f082702ebe8f1c69c105bd1c6b1154b4912b.png" src="../_images/48c5423d98eba37a038034ab3685f082702ebe8f1c69c105bd1c6b1154b4912b.png" />
 </div>
 </div>
+<p>The PCA plots are giving us the following information:</p>
+<p>Mainly 4 components explain almost all of the variance in the data. This is evident by the cluster plot, when plotting those components. 4 clusters are observed, representing the 4 sessions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">corr</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation plot of the X data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Correlation plot of the X data&#39;)
+</pre></div>
+</div>
+<img alt="../_images/76aa2a0b293cf85b173df7ea7969d1a79a385ea85fc32e429dac96de497899a7.png" src="../_images/76aa2a0b293cf85b173df7ea7969d1a79a385ea85fc32e429dac96de497899a7.png" />
+</div>
+</div>
+<p>The PCA results are further validated by a correlation matrix, which very obviously validates the high session specific correlation pattern.</p>
+<p>We can create a random noise variable and plot both the Input data and the random noise plot. This illustrates, that after those 4 components in our data, nothing else but noise exists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1585,12 +1611,14 @@ Even after reducing the features to 10, using Gridsearch <strong>and</strong> ap
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff440711f98&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd985243a58&gt;]
 </pre></div>
 </div>
-<img alt="../_images/bfce4ad084c1ff14b2a876593647428314eaf7ea57eff1d445639ed8ee3e14a7.png" src="../_images/bfce4ad084c1ff14b2a876593647428314eaf7ea57eff1d445639ed8ee3e14a7.png" />
+<img alt="../_images/89c0e4aa08552376043538523fbccaafc29d9cf43434485319e53132d5556edf.png" src="../_images/89c0e4aa08552376043538523fbccaafc29d9cf43434485319e53132d5556edf.png" />
 </div>
 </div>
+<div class="alert alert-block alert-danger">
+Unfortunately the SVM did not help us with solving our hypothesis. We will now continue with setting up a Deep Neural Network. Please proceed.</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1636,12 +1664,11 @@ Even after reducing the features to 10, using Gridsearch <strong>and</strong> ap
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine"><strong>1.0 Support Vector Machine</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-again"><strong>2.0 PCA</strong>…(again)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.0 Support Vector Machine</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-again"><strong>2.0 PCA</strong>…(again)</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
