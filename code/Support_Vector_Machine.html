@@ -405,6 +405,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine"><strong>1.0 Support Vector Machine</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-again"><strong>2.0 PCA</strong>…(again)</a></li>
 </ul>
 
             </nav>
@@ -542,14 +543,14 @@ The k-best methods works like this:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">f_classif</span>
 
-<span class="n">X</span><span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">X_kb</span><span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please note the newly obtained shape of the input matrix X: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please note the newly obtained shape of the input matrix X: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_kb</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -564,7 +565,7 @@ The k-best methods works like this:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="c1"># Split dataset into training set and test set</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_kb</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1205,6 +1206,15 @@ weighted avg       0.00      0.00      0.00      21.0
 <div class="alert alert-block alert-success">
 Interestingly enough, the model peforms actually worse. This probably means the following. The naive settings from the first SVM were actually good enough and hyperparameter tuning can not improve the performance of our model.</div><p>So this did not work. I’ll continue anyway by introducing another straw I took inorder to defy those session specific correlations.</p>
 <p>As mentioned in the Logistic Regression notebook, one idea was to randomly select the data from all sessions. The idea was to create a training and testing data that a) has a random amount from all sessions, so one session is not “over represented” and b) the test set actually contains all 26 categories and they are randomly choosen from all sessions available.</p>
+<p><strong>Step 1</strong>:</p>
+<p>Get all unique labels from y. This variable will serve as a comparism to the y_test variable.</p>
+<p><strong>Step 2</strong>:</p>
+<p>Set up the loop. The loop works like this: y is going to be randomly shuffled, so the data from all sessions are mixed up. Then empty training and testing variables are created.</p>
+<p>The loop then iterates through the randomly sorted y variable. If the length of y test matches that of y unique, so 26 samples are stored in y test, the training data will append categories and indices.</p>
+<p>If they are not equal, the test variables will append categories and indices.</p>
+<p>BUT: If one category appears twice in the test set(this is what we defintely not want, as explained above), we will remove this specific category from the test set and append it on the training set.</p>
+<p>This way we make sure, that random variables are assigned to both training and test sets <strong>and</strong> the length of the test set matches 26 and contains all unique labels.</p>
+<p>The indices are appended for the input matrix X. We will afterwards get the respective voxel patterns from X, according to the index. This needs to be done, so the voxel pattern of X actually matches the respective y label.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_unique</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
@@ -1222,19 +1232,26 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y_train_</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y_test_</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">X_train_indices</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">X_test_indices</span> <span class="o">=</span> <span class="p">[]</span>
 
 
-<span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y_unique</span><span class="p">):</span>
-            <span class="n">y_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">y_test</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">category</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">y_test</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
-                <span class="n">y_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
-                <span class="k">continue</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test_</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y_unique</span><span class="p">):</span>
+        <span class="n">y_train_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+        <span class="n">X_train_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">y_test_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+        <span class="n">X_test_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">y_test_</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">category</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y_test_</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+            <span class="n">y_train_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+            <span class="n">X_test_indices</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+            <span class="n">X_train_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+            <span class="k">continue</span>
             
                 
 </pre></div>
@@ -1243,86 +1260,238 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test_</span><span class="p">)</span>
+<span class="n">y_train_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_train_</span><span class="p">)</span>
+<span class="n">X_test_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_test_indices</span><span class="p">)</span>
+<span class="n">X_train_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_train_indices</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_s_new</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> 
-              <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">],</span>
-              <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">]}</span> 
-  
-<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="p">,</span><span class="n">cv</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="n">refit</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1"># fitting the model for grid search</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_s_new</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test_</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_538</span><span class="o">/</span><span class="mf">2955048175.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="p">,</span><span class="n">cv</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="n">refit</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># fitting the model for grid search</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_s_new</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="nn">~/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/model_selection/_search.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, groups, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span>             <span class="n">refit_metric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">refit</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span> 
-<span class="ne">--&gt; </span><span class="mi">799</span>         <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span> <span class="o">=</span> <span class="n">indexable</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">800</span>         <span class="n">fit_params</span> <span class="o">=</span> <span class="n">_check_fit_params</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">fit_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span> 
-
-<span class="nn">~/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ni">indexable</span><span class="nt">(*iterables)</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span> 
-<span class="g g-Whitespace">    </span><span class="mi">377</span>     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">_make_indexable</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">iterables</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">378</span>     <span class="n">check_consistent_length</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">379</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span> 
-
-<span class="nn">~/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_consistent_length</span><span class="nt">(*arrays)</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span>             <span class="s2">&quot;Found input variables with inconsistent numbers of samples: </span><span class="si">%r</span><span class="s2">&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">334</span>             <span class="o">%</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span> 
-
-<span class="ne">ValueError</span>: Found input variables with inconsistent numbers of samples: [348, 494]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(26,)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test_</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(26,)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_s_new</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(78,)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(78,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The shape matches the data. 26 test labels and 78 remaining labels for training. Now we will define X train and X test according to the indices and run the SVM again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">X_train_indices</span><span class="p">:</span>
+    <span class="n">X_train_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X_kb</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_train_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.8255865 , 4.93499085, 1.94590505, 2.05225487, 6.00369431,
+       4.25490658, 3.03461173, 1.00413004, 0.18643591, 2.10620487])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="n">X_train_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.8255865 , 4.93499085, 1.94590505, 2.05225487, 6.00369431,
+       4.25490658, 3.03461173, 1.00413004, 0.18643591, 2.10620487])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We make sure that the method worked by comparing the first entry on our newly defined X train variable with the respective index, obtained in the loop, in our X matrix.</p>
+<p>Since it matches we can happily continue with the testing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test_</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">X_test_indices</span><span class="p">:</span>
+    <span class="n">X_test_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X_kb</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_test_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can set up the SVM again and see how the results compare.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">C</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span> <span class="c1"># Linear Kernel</span>
+
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_</span><span class="p">,</span> <span class="n">y_train_</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_train_</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           1       0.00      0.00      0.00         3
+           2       0.00      0.00      0.00         3
+           3       0.33      0.67      0.44         3
+           4       0.40      0.67      0.50         3
+           5       0.00      0.00      0.00         3
+           6       0.38      1.00      0.55         3
+           7       0.00      0.00      0.00         3
+           8       0.33      0.33      0.33         3
+           9       0.00      0.00      0.00         3
+          10       0.29      0.67      0.40         3
+          11       0.33      0.33      0.33         3
+          12       0.40      0.67      0.50         3
+          13       0.00      0.00      0.00         3
+          14       0.50      0.67      0.57         3
+          15       0.22      0.67      0.33         3
+          16       0.00      0.00      0.00         3
+          17       0.00      0.00      0.00         3
+          18       0.00      0.00      0.00         3
+          19       0.40      0.67      0.50         3
+          20       0.11      0.33      0.17         3
+          21       0.00      0.00      0.00         3
+          22       1.00      0.33      0.50         3
+          23       0.00      0.00      0.00         3
+          24       0.00      0.00      0.00         3
+          25       0.25      0.33      0.29         3
+          26       0.00      0.00      0.00         3
+
+    accuracy                           0.28        78
+   macro avg       0.19      0.28      0.21        78
+weighted avg       0.19      0.28      0.21        78
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           1       0.00      0.00      0.00         1
+           2       0.00      0.00      0.00         1
+           3       0.00      0.00      0.00         1
+           4       0.00      0.00      0.00         1
+           5       0.00      0.00      0.00         1
+           6       0.00      0.00      0.00         1
+           7       0.00      0.00      0.00         1
+           8       0.00      0.00      0.00         1
+           9       0.00      0.00      0.00         1
+          10       0.00      0.00      0.00         1
+          11       0.20      1.00      0.33         1
+          12       0.00      0.00      0.00         1
+          13       0.00      0.00      0.00         1
+          14       0.00      0.00      0.00         1
+          15       0.00      0.00      0.00         1
+          16       0.00      0.00      0.00         1
+          17       0.00      0.00      0.00         1
+          18       0.00      0.00      0.00         1
+          19       0.00      0.00      0.00         1
+          20       0.00      0.00      0.00         1
+          21       0.00      0.00      0.00         1
+          22       0.00      0.00      0.00         1
+          23       0.00      0.00      0.00         1
+          24       0.00      0.00      0.00         1
+          25       0.00      0.00      0.00         1
+          26       0.00      0.00      0.00         1
+
+    accuracy                           0.04        26
+   macro avg       0.01      0.04      0.01        26
+weighted avg       0.01      0.04      0.01        26
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/jpauli/miniconda3/envs/neuro_ai/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+<p>It was a good try, but unfortunately it did not influence the results at all.
+Even after reducing the features to 10, using Gridsearch <strong>and</strong> applying a customized training and testing set, the results remain poorly.</p>
+<p>We can now fit a PCA once again in order to illustrate the session specific correlation on the <strong>across runs</strong> data.</p>
+</section>
+<section id="pca-again">
+<h1><strong>2.0 PCA</strong>…(again)<a class="headerlink" href="#pca-again" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -1333,13 +1502,13 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span> <span class="c1">#n_components = 10</span>
-<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#n_components = 10</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA()
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA(n_components=10)
 </pre></div>
 </div>
 </div>
@@ -1351,35 +1520,29 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd4bb099898&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff440291c50&gt;]
 </pre></div>
 </div>
-<img alt="../_images/27123edc2141751f28b8c6f5e58889d020990522fe498d775ab9d80320bae8d4.png" src="../_images/27123edc2141751f28b8c6f5e58889d020990522fe498d775ab9d80320bae8d4.png" />
+<img alt="../_images/1a42d1b1413c0f58618136b12818b88cea4fbec86b1e84621c3b92d3118b130f.png" src="../_images/1a42d1b1413c0f58618136b12818b88cea4fbec86b1e84621c3b92d3118b130f.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_transform</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_transform</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">corr</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X_transform</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Samples&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Samples&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_transform</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Samples&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(104, 10)
 </pre></div>
 </div>
-<img alt="../_images/d35a0b8fe57dab0efb674ed693d3f0ae37675782c2ab0f51bae7abed0ba3f9b2.png" src="../_images/d35a0b8fe57dab0efb674ed693d3f0ae37675782c2ab0f51bae7abed0ba3f9b2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1397,12 +1560,12 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;PC 2&#39;)
 </pre></div>
 </div>
-<img alt="../_images/14e4c434a3f70a76bfc510d88d13fda4d8ac8cebcac8f025a3ea0be6361febc3.png" src="../_images/14e4c434a3f70a76bfc510d88d13fda4d8ac8cebcac8f025a3ea0be6361febc3.png" />
+<img alt="../_images/4ca77e5504e825724a09f7b92ecdcf5995a204facee6e0dc2ce65d549a1634ce.png" src="../_images/4ca77e5504e825724a09f7b92ecdcf5995a204facee6e0dc2ce65d549a1634ce.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">pca_rand</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
 <span class="n">pca_rand</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">rand_X</span><span class="p">)</span>
 </pre></div>
@@ -1422,10 +1585,10 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd4b9582f28&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff440711f98&gt;]
 </pre></div>
 </div>
-<img alt="../_images/c2b63cf34e429479e8529cda40c027426b57ee94f207b9aa9488d863c24a9eda.png" src="../_images/c2b63cf34e429479e8529cda40c027426b57ee94f207b9aa9488d863c24a9eda.png" />
+<img alt="../_images/bfce4ad084c1ff14b2a876593647428314eaf7ea57eff1d445639ed8ee3e14a7.png" src="../_images/bfce4ad084c1ff14b2a876593647428314eaf7ea57eff1d445639ed8ee3e14a7.png" />
 </div>
 </div>
 </section>
@@ -1476,6 +1639,7 @@ Interestingly enough, the model peforms actually worse. This probably means the 
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>0. Introduction</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine"><strong>1.0 Support Vector Machine</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-again"><strong>2.0 PCA</strong>…(again)</a></li>
 </ul>
 
   </nav></div>
