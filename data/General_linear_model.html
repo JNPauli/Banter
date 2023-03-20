@@ -1470,7 +1470,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition</span>
 </pre></div>
@@ -1901,7 +1901,7 @@ CAVE:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition</span>
 </pre></div>
@@ -2087,7 +2087,7 @@ At first a anatomical reference image is plotted. To check if everything was mod
 <section id="comparing-the-results-with-literature">
 <h3><strong>4.2 Comparing the results with literature</strong><a class="headerlink" href="#comparing-the-results-with-literature" title="Permalink to this heading">#</a></h3>
 <p>Next step would be to check, if the results of all contrasts across runs is consistend with the literature on mental imagery. Meaning, can a similar activation pattern be seen in the z-map plots when comparing it to activation pattern, that are based on several other studies/meta analysis on mental imagery? To investigate this, I will plot the contrasts and then compare them to the activation maps on <a class="reference external" href="https://neurosynth.org/analyses/terms/mental%20imagery/">neurosynth</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/janos/git/sub01-ses-01-imagery/z_maps&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">():</span>
@@ -2154,7 +2154,7 @@ At first a anatomical reference image is plotted. To check if everything was mod
 <img alt="../_images/10f728c7fc55489b2427aa3cdfdf7139235c85bba6e4dfc244cfe3d7bdefa52c.png" src="../_images/10f728c7fc55489b2427aa3cdfdf7139235c85bba6e4dfc244cfe3d7bdefa52c.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="k">for</span> <span class="n">run</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">runs</span><span class="p">):</span>
@@ -2269,7 +2269,7 @@ We will calculate the glm PER RUN and not across runs. This way we end up with m
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">hrf_model</span> <span class="o">=</span> <span class="s1">&#39;glover&#39;</span>
@@ -2562,7 +2562,7 @@ Great! We now calculated a z-map for each stimuli per run! It makes sense to che
 </div>
 </div>
 <div class="alert alert-block alert-success">
-Please note: The loops below work with an index variable 'c'. This is due to the fact, that the z_map folders perrun contain a lot of z_maps and plotting every single map would blow up the computational ability of my device. Thus, only the first 15 aka the z maps for the first 3 stimuli are plotted.</div><div class="cell docutils container">
+Please note: The loops below work with an index variable 'c'. This is due to the fact, that the z_map folders perrun contain a lot of z_maps and plotting every single map would blow up the computational ability of my device. Thus, only the first 15 aka the z maps for the first 3 stimuli are plotted.</div><div class="cell tag_ouput_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/janos/git/Sessions_new/z_maps_1_perrun&#39;</span><span class="p">)</span>
@@ -2595,7 +2595,7 @@ Please note: The loops below work with an index variable 'c'. This is due to the
 <img alt="../_images/53a85d65d20a6bb171e32ea2cb37d8427d26babf7ba736e3fc333d78854823d8.png" src="../_images/53a85d65d20a6bb171e32ea2cb37d8427d26babf7ba736e3fc333d78854823d8.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_ouput_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/janos/git/Sessions_new/z_maps_2_perrun&#39;</span><span class="p">)</span>
 <span class="n">c</span><span class="o">=</span><span class="mi">0</span>
@@ -2628,7 +2628,7 @@ Please note: The loops below work with an index variable 'c'. This is due to the
 <img alt="../_images/f32847c81fc2c464bacc1a61c8c1adc3d8ed942ab34d81db14fce491683c54d6.png" src="../_images/f32847c81fc2c464bacc1a61c8c1adc3d8ed942ab34d81db14fce491683c54d6.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_ouput_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/janos/git/Sessions_new/z_maps_3_perrun&#39;</span><span class="p">)</span>
 <span class="n">c</span><span class="o">=</span><span class="mi">0</span>
@@ -2661,7 +2661,7 @@ Please note: The loops below work with an index variable 'c'. This is due to the
 <img alt="../_images/c9194e5b1bf825bac0d08948f7806a8df0dc75c4bedbc0cd89919db6eb743c98.png" src="../_images/c9194e5b1bf825bac0d08948f7806a8df0dc75c4bedbc0cd89919db6eb743c98.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_ouput_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/janos/git/Sessions_new/z_maps_4_perrun&#39;</span><span class="p">)</span>
 <span class="n">c</span><span class="o">=</span><span class="mi">0</span>
