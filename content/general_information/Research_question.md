@@ -1,6 +1,6 @@
 # Research Question aka what is this project all about?
 
-<iframe src="https://giphy.com/embed/l2JdX9FBRJDg0sdTq" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-16-the-simpsons-16x2-l2JdX9FBRJDg0sdTq">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/26gJyEfaxAQsuMFeo" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/southparkgifs-26gJyEfaxAQsuMFeo">via GIPHY</a></p>
 
 ## Introduction to the study of mental imagery
 This research project deals with the field of `visual mental imagery`. Mental imagery refers to the imagination of a certain object, scene, person etc.
