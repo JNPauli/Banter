@@ -1,1 +1,1 @@
-# Home of GORELLA related graphics
+Logo for the welcome page
