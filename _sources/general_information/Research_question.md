@@ -20,12 +20,32 @@ And the decoding of mental imagery stimuli does not stop there. [Horikawa et al.
 
 While this bit made clear, why mental imagery is investigated in this project, further motivation for the research question stems from the drive to learn more about neuroscience and combine this new knowledge with machine learning. Especially the implementation of a decoding pipeline on a hands on dataset.
 
-## Hypothesis - what to expect in this project?
+## Hypothesis - what to expect from this project?
 The hypothesis answered in this research project is the following:
 1. A machine learning classifier can predict a mental imagery given the respective voxel pattern with an accuracy atleast above chance.
 
 Different classifiers are implemented and compared. Those are: Logistic regression, support vector machine and a fully connected neural network. All analyzes are done in python.
 The dataset used is open source and can be obtained from [openneuro](https://openneuro.org/datasets/ds001506/versions/1.3.1). The respective paper "Deep image reconstruction from human brain activity"(Shen et al., 2019) is also available [here](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006633).
 
+
+## References
+
+ Chen, Z., Qing, J., Xiang, T., Yue, W. L., & Zhou, J. H. (2022, November 14). Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding. arXiv. https://doi.org/10.48550/arXiv.2211.06956 
+
+ GALTON, F. (1880). I.—STATISTICS OF MENTAL IMAGERY. Mind, os-V(19), 301–318. https://doi.org/10.1093/mind/os-V.19.301  
+
+ Horikawa, T., Tamaki, M., Miyawaki, Y., & Kamitani, Y. (2013a). Neural Decoding of Visual Imagery During Sleep. Science, 340(6132), 639–642. https://doi.org/10.1126/science.1234330
+
+ Naselaris, T., Kay, K. N., Nishimoto, S., & Gallant, J. L. (2011a). Encoding and decoding in fMRI. NeuroImage, 56(2), 400–410. https://doi.org/10.1016/j.neuroimage.2010.07.073 
+
+ Pearson, J. (2019). The human imagination: the cognitive neuroscience of visual mental imagery. Nature Reviews Neuroscience, 20(10), 624–634. https://doi.org/10.1038/s41583-019-0202-9 [Titel anhand dieser DOI in Citavi-Projekt übernehmen] 
+
+ Reddy, L., Tsuchiya, N., & Serre, T. (2010). Reading the mind’s eye: Decoding category information during mental imagery. NeuroImage, 50(2), 818–825. https://doi.org/10.1016/j.neuroimage.2009.11.084 
+
+ Shen, G., Horikawa, T., Majima, K., & Kamitani, Y. (2019). Deep image reconstruction from human brain activity. PLOS Computational Biology, 15(1), e1006633. https://doi.org/10.1371/journal.pcbi.1006633
+
+ Vividness of Visual Imagery Depends on the Neural Overlap with Perception in Visual Areas - PMC. (n.d.). Retrieved March 13, 2023, from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6596858/ 
+
+ Zeman, A., Dewar, M., & Della Sala, S. (2015). Lives without imagery – Congenital aphantasia. Cortex, 73, 378–380. https://doi.org/10.1016/j.cortex.2015.05.019
 
 
