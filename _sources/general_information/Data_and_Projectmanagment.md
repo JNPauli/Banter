@@ -331,3 +331,5 @@ After downloading the requirements_code.txt file, cd into the directory, in whic
 
 **CAVE**:
 Super important: Please do not forget to RENAME the preprocessed data after downloading it from brainlife. See the respective notebooks for the naming convention. Also you obviously must change the paths that were set in the notebooks.
+
+The next part of the book is the documentation. If you want to skip that, simply navigate to the Dataset Exploration section (see the content files to your left).
