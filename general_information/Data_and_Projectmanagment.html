@@ -396,6 +396,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness">FAIRNESS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openlab-notebook">Openlab notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-environment">Computational environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
 </ul>
             </nav>
         </div>
@@ -701,7 +702,7 @@ pages = {e1006633},
 <section id="fairness">
 <h2>FAIRNESS<a class="headerlink" href="#fairness" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.go-fair.org/fair-principles/f1-meta-data-assigned-globally-unique-persistent-identifiers/">FAIR</a> stands for <strong>F</strong>indability, <strong>A</strong>ccessibility, <strong>I</strong>nteroperability, and <strong>R</strong>euse of digital assets.
-The research project reaches the Findability and Accessibility criterion, because the data used in it is open-source and linked. Also even the preprocessed data is uploaded on brainlife and it is explained, which explicit data is used. Also it is explained which commands were used to download the data from openneuro (see Dataset Exploration). Also the data can be loaded into Python by following the code on the github repository. There exists a computational environment that can be setup by installing the libraries with the <em>requirements_code.txt</em> file.
+The research project reaches the Findability and Accessibility criterion, because the data used in it is open-source and linked. Also even the preprocessed data is uploaded on brainlife and it is explained, which explicit data is used. Also it is explained which commands were used to download the data from openneuro (see <a class="reference external" href="https://JNPauli.github.io/Mental-image-decoding/data/Dataset_Exploration.html">Dataset Exploration</a>). Also the data can be loaded into Python by following the <a class="reference external" href="https://JNPauli.github.io/Mental-image-decoding/general_information/Machine_Learning.html">code</a> on the github repository. There exists a <span class="xref myst">computational environment</span> that can be setup by installing the libraries with the <em>requirements_code.txt</em> file.
 Interoperability is reached, because the data follows the BIDS format. HOWEVER: When preprocessing the data, it no longer follows BIDS and needs to be renamed. So it is interoperable, but only after taking action to maintain it.
 The data hits the Reuse criterion, because it not only a license is provided, but also but the data is well documented, it is described how the data was collected and what the data essentially represents.</p>
 </section>
@@ -711,16 +712,21 @@ The data hits the Reuse criterion, because it not only a license is provided, bu
 </section>
 <section id="computational-environment">
 <h2>Computational environment<a class="headerlink" href="#computational-environment" title="Permalink to this heading">#</a></h2>
-<p>In order to fulfill the FAIR principle, a computational environment exists. This environment consists of all python modules that are used in this project, but ONLY in this project. This way a possible conflict between different versions of modules etc is prevented. You can find the modules within the <strong>requirements_code.txt</strong> file in the <a class="reference external" href="https://github.com/JNPauli/Mental-image-decoding/content/code">content/code folder</a> of the github repository. To install the modules, proceed this way: Download the requirements_code.txt file from the github repository.</p>
+<p>In order to fulfill the FAIR principle, a computational environment exists. This environment consists of all python modules that are used in this project, but ONLY in this project. This way a possible conflict between different versions of modules etc is prevented. You can find the modules within the <strong>requirements_code.txt</strong> file in the <a class="reference external" href="https://github.com/JNPauli/Mental-image-decoding/content/code">content/code folder</a> of the github repository.</p>
+<p>To install the modules download the requirements_code.txt file from the github repository.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Alternative</span> <span class="pre">way</span></code>:
-Create a new folder and clone the repository
+Create a new folder (mkdir your_directory) and clone the repository
 (1. cd your_directory,</p>
 <ol class="arabic simple" start="2">
-<li><p>git clone <a class="github reference external" href="https://github.com/JNPauli/Mental-image-decoding">JNPauli/Mental-image-decoding</a> your_directory)
-After downloading the requirements_code.txt file, cd into the directory, in which the .txt file is stored. Then, create a new conda environment by running conda create –name yourenv (replace yourenv with your environment name). Activate the environment by running conda activate yourenv. Now simply run pip install -r requirements.txt to get all the modules in your active computing environment. Et voila, thats it! Now you have all the data and modules neccessary to replicate the code.</p></li>
+<li><p>git clone <a class="github reference external" href="https://github.com/JNPauli/Mental-image-decoding">JNPauli/Mental-image-decoding</a> your_directory)</p></li>
 </ol>
+<p>After downloading the requirements_code.txt file eitherway, cd into the directory, in which the .txt file is stored.</p>
+<p>Then, create a new conda environment by running conda create –name yourenv (replace yourenv with your environment name). Activate the environment by running conda activate yourenv. Now simply run pip install -r requirements.txt to get all the modules in your active computing environment. Et voila, thats it! Now you have all the data and modules neccessary to replicate the code.</p>
 <p><strong>CAVE</strong>:
 Super important: Please do not forget to RENAME the preprocessed data after downloading it from brainlife. See the respective notebooks for the naming convention. Also you obviously must change the paths that were set in the notebooks.</p>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
 <p>The next part of the book is the documentation. If you want to skip that, simply navigate to the Dataset Exploration section (see the content files to your left).</p>
 </section>
 <div class="toctree-wrapper compound">
@@ -794,6 +800,7 @@ Super important: Please do not forget to RENAME the preprocessed data after down
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness">FAIRNESS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openlab-notebook">Openlab notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-environment">Computational environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
 </ul>
   </nav></div>
 
