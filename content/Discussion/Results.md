@@ -23,4 +23,18 @@ Having the opportunity to learn about artifical intelligence is one thing, but r
 It took some time to understand the basics in general and I felt that everytime I understood something, the next obstacle was around the corner. Fortunately I enough, I was not only provided with `great` lectures and a great (double exclamation mark !!) [resource](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/) by Peer Herholz.
 
 All the way through this project I felt excited to learn new things. This was further reinforced by the practical side of the research internship, aka the project and everything you saw in this jupyter book.
-Dealing with fMRI data in a very very exciting research project was something else. All the way from preprocessing the data to finally doing *something* with it was just awesome. Setting up the glm was really intense for me. Not only getting comfortable with nilearns functionality, but also setting up the code in a smooth way challenged me a lot, but in a very good way. Often times I thought 
+Dealing with fMRI data in a very very exciting research project was something else. All the way from preprocessing the data to finally doing *something* with it was just awesome. Setting up the glm was really intense for me. Not only getting comfortable with nilearns functionality, but also setting up the code in a smooth way challenged me a lot, but in a good way. Often times I experienced frustration, because you must consider so many things when simply setting up the glm. But after each frustration I became more motivated to get stuff done, to create this fancy loops for the z-maps, to compare results with neurosynth, to set up design matrices and compare them smoothly with the event files, or event to nicely set up this contrast dictionary!
+
+This was fun and the cherry on top was the machine learning bit. Finally I was able to convert my theoretical knowledge into something practical. This was also very challenging to me, but very rewarding. 
+Unfortunately my results were really not that great. Test accuracies around ~0% are just awful and made me wonder, if I did something fundamentally wrong. Several examinations from the lectures made me believe, that there is something else wrong with the data and not the way I implemented it, which was nice.
+
+This research internship made it possible to set up fMRI data in a glm pipeline and run those statistical z-maps through a decoding pipeline. Even though the evaluation of my hypothesis was...yeah, not that great, I learned `a lot`, from setting up a Github repository to building a Deep Neural Network in pytorch. I put in a lot of hours and have been rewarded greatly. This internship challenged me differently and I must evaluate the process it self very positive. I am greatful for having learned so much in the past year and cannot wait to improve my abilities more in the next project.
+
+# Ending
+
+<iframe src="https://giphy.com/embed/3EvqXUZbb8iui6AXT7" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/theblock-channel-9-block-the-2022-3EvqXUZbb8iui6AXT7">via GIPHY</a></p>
+
+If you have made it this far, thanks a lot for thoroughly examing the research I conducted in the past 12 months. If you stumbled here by accident, thank you anyway!
+
+This research report is now officially coming to an end.
+If you have anything else to add, please open an issue or [contact](paulijanos@gmail.com) me. I will be happy to discuss anything with you!

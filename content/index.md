@@ -48,7 +48,7 @@ You can use the following sections to navigate through the content of the resear
 
    What kind of different algorithms did I use? How did it work out?
 
-* [Symposium](https://m-earnest.github.io/course_template_diler/general_information/symposium.html)
+* [Results and reflection](https://jnpauli.github.io/Mental-image-decoding/Discussion/Results.html)
 
    What to do about outreach and discourse creation?
 
