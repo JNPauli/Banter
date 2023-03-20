@@ -421,8 +421,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">This notebook serves the purpose of performing the general linear model on the respective dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
 </ul>
@@ -449,10 +449,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="general-linear-model">
 <h1>General linear model<a class="headerlink" href="#general-linear-model" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+</section>
 <section id="this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">
 <h2>This notebook serves the purpose of performing the general linear model on the respective dataset<a class="headerlink" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset" title="Permalink to this heading">#</a></h2>
-<section id="introduction">
-<h3><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
 <p>First we will need to load the data. We are now dealing with the preprocessed data. The preprocessing has been done with using <a class="reference external" href="https://fmriprep.org/en/stable/">fMRI-prep</a>. fMRIprep describes itself as such “(…)It performs basic processing steps (coregistration, normalization, unwarping, noise component extraction, segmentation, skullstripping etc.) providing outputs that can be easily submitted to a variety of group level analyses, including task-based or resting-state fMRI, graph theory measures, surface or volume-based statistics, etc.”</p>
 <p>Thus, we will now perform our first level model. The predictors are the respective categories of the stimuli. The dependent variable is the brain activity in a given voxel.
 So lets start by loading the data! For now we are dealing with the first five runs of subject one, for the first session in the imagery task.</p>
@@ -1360,7 +1361,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <img alt="../_images/6685ea4bc9565de9c87a387677b7a5caae6bf32ee59ae258681f29eef570e198.png" src="../_images/6685ea4bc9565de9c87a387677b7a5caae6bf32ee59ae258681f29eef570e198.png" />
 </div>
 </div>
-</section>
 <section id="running-the-model">
 <h3><strong>1.0 running the model</strong><a class="headerlink" href="#running-the-model" title="Permalink to this heading">#</a></h3>
 <p>Now it is time to run our defined first level model. We are using our mean fMRI img and our event and confound file. This results in a <em>design matrix</em>. The design matrix is informing us about a given activity for the respective regressor and for a given scan number. We have a recording frequency of 2 seconds. The whole paradigm took about 400 seconds (see: Dataset_Exploration.ipynb). This is why the only have 200 scan numbers on our y-axis.</p>
@@ -2769,8 +2769,8 @@ VERY IMPORANT INFORMATION:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">This notebook serves the purpose of performing the general linear model on the respective dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
 </ul>

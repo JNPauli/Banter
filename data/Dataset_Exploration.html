@@ -421,11 +421,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0.  Introduction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-used-in-my-research-project">Exploration of the dataset used in my research project.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0.  Introduction</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids"><strong>1. Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
 </ul>
@@ -448,15 +446,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dataset-exploration">
 <h1>Dataset Exploration<a class="headerlink" href="#dataset-exploration" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2><strong>0.  Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+</section>
 <section id="exploration-of-the-dataset-used-in-my-research-project">
 <h2>Exploration of the <a class="reference external" href="https://openneuro.org/datasets/ds001506/versions/1.3.1">dataset</a> used in my research project.<a class="headerlink" href="#exploration-of-the-dataset-used-in-my-research-project" title="Permalink to this heading">#</a></h2>
-<section id="introduction">
-<h3><strong>0.  Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
 <p>This notebook serves the purpose of exploring the structure of the dataset. More precisely, there are two parts within this notebook. The first part will explore the BIDS format. This is done by using the <a class="reference external" href="https://bids-standard.github.io/pybids/">pybids</a> module.
 The second part will focus on exploring the anatomical and functional files for subject one, within the first session and first run. Next to files of anatomical and functional nature, the events and bold.json files of the respective subject are investigated.</p>
 <p>Within the study of the respective dataset, the participants had two main tasks that are interesting for us in the fMRI. Task one was to simply look at visual stimuli (natural images, artifical shapes and alphabetical letters). Task two was to perform mental imagery, so visually imagine one of the presented stimuli. The imagination has been performed on either the natural images or the alphabetical letters.</p>
 <section id="example-task">
-<h4>Example task<a class="headerlink" href="#example-task" title="Permalink to this heading">#</a></h4>
+<h3>Example task<a class="headerlink" href="#example-task" title="Permalink to this heading">#</a></h3>
 <p>In the paradigm, two experiments were used. To make the paradigm more clear, I will provide a brief example on how a task in the visual stimuli and in the imagery experiment looks like.</p>
 <p><strong>Visual stimuli</strong></p>
 <p>For the visual stimuli, or image presentation, experiment there were four distinct sessions. 1: Training of the natural images, 2. test of the natural images, artificial shape session and alphabetic letter sessions. For these sessions, each run compromised of 50, 50, 40 and 10 blocks with different images. Since we are mainly interested in the mental imagery part of the experiment, we will now introduce more thoroughly this respective condition. So the main stimuli were natural images, artificial shapes and alphabetic letters.</p>
@@ -464,7 +463,6 @@ The second part will focus on exploring the anatomical and functional files for 
 <p>As mentioned before, the subject had to recall one of the 25 visual stimuli from the natural images (10) and artificial shape session (15). The visual stimuli were related to a certain word, that helps them with the recall by using a word-cue. The imagery part consisted of 20 seperate runs, each run with 26 blocks. The 26 blocks were built from 25 imagery trials and one fixation trial. In the fixation trial no imagery was performed.</p>
 <p>The imagery trials looked like this: 4 seconds of word-cue, 8 seconds of imagery, 3 seconds of evalution (how vivid was the imagination) and one second rest period.
 In the word-cue period, the respective words to indicate the visual stimuli were presented. The participants had to immediately perform the imagery after receiving the word-cue.</p>
-</section>
 </section>
 <section id="exploration-of-the-dataset-with-pybids">
 <h3><strong>1. Exploration of the dataset with pybids</strong><a class="headerlink" href="#exploration-of-the-dataset-with-pybids" title="Permalink to this heading">#</a></h3>
@@ -565,7 +563,7 @@ bold.json, bold.nii.gz and events.tsv.
 </div>
 <p>..this is also true for the imagery task!</p>
 <p>We can use the following command to get all entitites (=BIDS defined keywords) for our dataset.</p>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span><span class="o">.</span><span class="n">get_entities</span><span class="p">()</span> 
 </pre></div>
@@ -667,7 +665,7 @@ We encounter familiar entities: Subject, session, run and task. This command inf
 </div>
 <div class="alert alert-block alert-success">So we now do not have a BIDSLayout file anymore, but rather are dealing with a BIDSImageFile. This file in particular is the functional image taken for subject one, in the first session and run during the imagery task.</div>
 <p>We can now print the metadata associated with this particular file. This metadata is simply the associated .json file. We get information about the magnetic field or the repetition time. So all data related to the fMRI specifics.</p>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub1</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">()</span>
 </pre></div>
@@ -1280,7 +1278,7 @@ It is useful to plot the behavior of the categories over time. This is demonstra
 <img alt="../_images/3d450788b64f1d0ccdd071b00e4fcf51a8e3fc76055235b56048eb3e16b5ae3d.png" src="../_images/3d450788b64f1d0ccdd071b00e4fcf51a8e3fc76055235b56048eb3e16b5ae3d.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/jpauli/ds001506/sub-01/ses-imagery01/func/sub-01_ses-imagery01_task-imagery_run-01_bold.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
@@ -1450,11 +1448,9 @@ Next step: Run a GLM. The supervised modell takes the brain activity during the 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0.  Introduction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-used-in-my-research-project">Exploration of the dataset used in my research project.</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0.  Introduction</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example task</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-of-the-dataset-with-pybids"><strong>1. Exploration of the dataset with pybids</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bids-validation">Bids Validation</a></li>
 </ul>
