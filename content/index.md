@@ -38,7 +38,7 @@ You can use the following sections to navigate through the content of the resear
 
 * [Data Exploration](https://JNPauli.github.io/Mental-image-decoding/data/Dataset_Exploration.html)
 
-   Exploration and further explanation of the Data
+   Exploration and further explanation of the data.
 
 * [Genereal linear Model](https://JNPauli.github.io/Mental-image-decoding/data/Genereal_linear_model.html)
 
@@ -48,9 +48,9 @@ You can use the following sections to navigate through the content of the resear
 
    What kind of different algorithms did I use? How did it work out?
 
-* [Results and reflection](https://jnpauli.github.io/Mental-image-decoding/Discussion/Results.html)
+* [Discussion and reflection](https://jnpauli.github.io/Mental-image-decoding/Discussion/Results.html)
 
-   What to do about outreach and discourse creation?
+   Discussion and reflection of the research project.
 
 ## Google presentation
 
@@ -63,4 +63,4 @@ In case you have any questions or difficulties with the lecture and its material
 
 ## Acknowledgements
 
-Huge thanks to Peer Herholz for investing a lot of time to create the fantastic course about computational neuroscience and being almost always available round the clock for questions. To Michael Ernst for maintaing the course and being a great lecturer and Maren Wehrheim for supporting me a lot in the machine learning parts.
+Huge thanks to Peer Herholz for investing a lot of time to create the fantastic [course](https://peerherholz.github.io/Cog_Com_Neuro_ML_DL/) on computational neuroscience and being almost always available 'round the clock for questions. To Michael Ernst for maintaing the course and being a great lecturer and Maren Wehrheim for supporting me a lot in the process of setting up the machine learning parts.
