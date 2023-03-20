@@ -2,12 +2,15 @@
 This file containts the description of the Data- and Projectmanagment. In other words, the **Dataset** is described and evaluated, also the question regarding **Version control** are answered, the **literature library** and the **FAIR** principle is adressed. Furthermore, comments about the **open lab notebook** and the **computational environment** are made. So lets start right away.
 
 ## Dataset description and evaluation
-As already mentioned in the *Research question* section, the [Dataset](https://openneuro.org/datasets/ds001506/versions/1.3.1) can be obtained from openneuro. [Openneuro](https://openneuro.org/) is a open-source website that hosts multiple datasets from different modalities. In our case, the Dataset is from an fMRI experiment. Since the data is not preprocessed, it needs to be downloaded from brainlife. Brainlife is a cloud computing platform, that makes it possible to store share and analyse Data. The preprocessed brainlife dataset can be found [here](https://brainlife.io/project/638b2a566881d56fbfac223e). Brainlife has specifically been used to preprocess the fMRI data in the *subject anatomical space* for the imagery sessions of all three subjects. Further descriptions follow in the Dataset Exploration part. 
+As already mentioned in the *Research question* section, the [Dataset](https://openneuro.org/datasets/ds001506/versions/1.3.1) can be obtained from openneuro. [Openneuro](https://openneuro.org/) is a open-source website that hosts multiple datasets from different modalities. In our case, the Dataset is from an fMRI experiment. Since the data is not preprocessed, it needs to be preprocessed and then downloaded from brainlife. Brainlife is a cloud computing platform, that makes it possible to store share and analyse Data. The preprocessed brainlife dataset can be found [here](https://brainlife.io/project/638b2a566881d56fbfac223e). Brainlife has specifically been used to preprocess the fMRI data in the *subject anatomical space* for the imagery sessions of all three subjects. Further descriptions follow in the Dataset Exploration part. 
 **NOTE:** It is actually possible to store preprocessed Data on openneuron as well. It would have been better, if the dataset would have been preprocessed already. This way its easier to comprehend every step that has been made in the analysis. Regarding the analysis of the paper: The authors also uploaded their code on [Github](https://github.com/KamitaniLab/DeepImageReconstruction).
 
 The dataset follows the BIDS format and contains the data from three healthy subjects. For each subject there is fMRI data from five different experiment tasks and multiple sessions. In our case, only the fMRI data of the **imagery** sessions are used. The structure of the imagery sessions looked like this: 
+
 Subject one - Session imagery 01, 02, 03 and 04. 5 runs per session, so 20 runs in total.
+
 Subject two - Session imagery 01, 02 and 03. Session one had 8 runs, session two and three 6 runs. So also 20 runs in total.
+
 Subject three - Session imagery 01, 02 and 03. Session one had 3 runs, session two 9 and session three 8 runs. Leading to further 20 runs in total.
 
 Every run consisted of the 25 images shown (for further details, please see the Dataset Exploration part). Each imagery period lasted for 4 seconds. This means, that per stimuli only 4 seconds of fMRI activity was recorded per run. This also means, that only 80 seconds of fMRI activity per stimuli is recorded per subject. This is not a lot of data to beginn with. Implications of this issue are discussed in the... Discussion part.
@@ -309,7 +312,7 @@ The literature resources used in this jupyter book and the project in general ar
 
 ## FAIRNESS
 [FAIR](https://www.go-fair.org/fair-principles/f1-meta-data-assigned-globally-unique-persistent-identifiers/) stands for **F**indability, **A**ccessibility, **I**nteroperability, and **R**euse of digital assets.
-The research project reaches the Findability and Accessibility criterion, because the data used in it is open-source and linked. Also even the preprocessed data is uploaded on brainlife and it is explained, which explicit data is used. Also it is explained which commands were used to download the data from openneuro (see Dataset Exploration). Also the data can be loaded into Python by following the code on the github repository. There exists a computational environment that can be setup by installing the libraries with the *requirements.txt* file. 
+The research project reaches the Findability and Accessibility criterion, because the data used in it is open-source and linked. Also even the preprocessed data is uploaded on brainlife and it is explained, which explicit data is used. Also it is explained which commands were used to download the data from openneuro (see Dataset Exploration). Also the data can be loaded into Python by following the code on the github repository. There exists a computational environment that can be setup by installing the libraries with the *requirements_code.txt* file. 
 Interoperability is reached, because the data follows the BIDS format. HOWEVER: When preprocessing the data, it no longer follows BIDS and needs to be renamed. So it is interoperable, but only after taking action to maintain it.
 The data hits the Reuse criterion, because it not only a license is provided, but also but the data is well documented, it is described how the data was collected and what the data essentially represents.
 
@@ -317,9 +320,14 @@ The data hits the Reuse criterion, because it not only a license is provided, bu
 The [open-lab-notebook](https://github.com/JNPauli/Mental-image-decoding/open_lab_notebook.html) exists. This folder holds the **Documentation.md** file. The whole process of the project is documented there. Every obstacle, failure and win is described and sorted by date. Ideally, the thought process within the project is reasonable and transparent for everyone interested (or just put me under the fMRI, whatever suits you best).
 
 ## Computational environment
-In order to fulfill the FAIR principle, a computational environment exists. This environment consists of all python modules that are used in this project, but ONLY in this project. This way a possible conflict between different versions of modules etc is prevented. You can find the modules within the **requirements.txt** file in the [code folder](https://github.com/JNPauli/Mental-image-decoding/tree/update/code) of the github repository. To install the modules, proceed this way: Download the requirements.txt file from the github repository. *Alternative way*: Create a new folder and clone the repository (1. cd your_directory,
-            2. git clone https://github.com/JNPauli/Mental-image-decoding your_directory)
-After downloading the requirements.txt file, cd into the directory, in which the .txt file is stored. Then, create a new conda environment by running conda create --name yourenv (replace yourenv with your environment name). Activate the environment by running conda activate yourenv. Now simply run pip install -r requirements.txt to get all the modules in your active computing environment. Et voila, thats it! Now you have all the data and modules neccessary to replicate the code. 
+In order to fulfill the FAIR principle, a computational environment exists. This environment consists of all python modules that are used in this project, but ONLY in this project. This way a possible conflict between different versions of modules etc is prevented. You can find the modules within the **requirements_code.txt** file in the [content/code folder](https://github.com/JNPauli/Mental-image-decoding/content/code) of the github repository. To install the modules, proceed this way: Download the requirements_code.txt file from the github repository.
+ 
+`Alternative way`: 
+Create a new folder and clone the repository 
+(1. cd your_directory,
+        
+2. git clone https://github.com/JNPauli/Mental-image-decoding your_directory)
+After downloading the requirements_code.txt file, cd into the directory, in which the .txt file is stored. Then, create a new conda environment by running conda create --name yourenv (replace yourenv with your environment name). Activate the environment by running conda activate yourenv. Now simply run pip install -r requirements.txt to get all the modules in your active computing environment. Et voila, thats it! Now you have all the data and modules neccessary to replicate the code. 
 
 **CAVE**:
 Super important: Please do not forget to RENAME the preprocessed data after downloading it from brainlife. See the respective notebooks for the naming convention. Also you obviously must change the paths that were set in the notebooks.
