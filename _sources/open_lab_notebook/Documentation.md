@@ -180,6 +180,8 @@ Feature selection, with sklearns kbest. Hyperparamter selection with sklearns Gr
 
 Since nothing really helped, I'll continue with the SupportVectorMachine.
 
+# February 2023
+
 ## 02.02.2023
 
 I applied the SVM algorithm to the dataset. Similiar to the Logistic Regression, the performance was very poor. Sklearns GridSearch and feature selection did not help at all. So probably there is something wrong with the data.
@@ -229,6 +231,12 @@ Plot the accuracy per epoch.
 
 I set up the cross validation pipeline in the logistic regression notebook. Here I defined the [LeaveOneGroupOut](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html) method. This way, in training, the LogisticRegression is trained with session 1 and 2 and validated on 3. However, the split it selfs works, but Im not sure it really does work when using the crossvalidation function. This needs to be further investigated.
 
+# March 2023
+
 ## 01.03.2023
 
 Nothing new happened. The hypothesis to decode mental imagery does not seem to work. This means that I will now stop the machine learning and start to get the assignment ready.
+
+## 20.03.2023
+
+The past weeks I spend almost all of the time on setting up the jupyter book. It seems to be almost finished now! Hurray!

@@ -165,6 +165,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data/Dataset_Exploration.html">Dataset Exploration</a></li>
@@ -429,13 +431,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">23.01.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">24.01.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">30.01.2023</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#february-2023">February 2023</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">02.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">11.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">12.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">13.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">14.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">15.02.2023</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#march-2023">March 2023</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">01.03.2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">20.03.2023</a></li>
 </ul>
 </li>
 </ul>
@@ -643,6 +652,9 @@ Well it is going rather… unsuccesfull. Today I just tried out a lot of differe
 Feature selection, with sklearns kbest. Hyperparamter selection with sklearns GridSearch. Instead of automatically splitting Y into training and test, I did this with a loop. The idea came, because when inspecting the confusion matrices, not every class was represented in the test set. Thus the loop comes in handy. It randomly selects a element from one of the sessions. This is done randomly, to defy the session specific effects.</p>
 <p>Since nothing really helped, I’ll continue with the SupportVectorMachine.</p>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="february-2023">
+<h1>February 2023<a class="headerlink" href="#february-2023" title="Permalink to this heading">#</a></h1>
 <section id="id33">
 <h2>02.02.2023<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h2>
 <p>I applied the SVM algorithm to the dataset. Similiar to the Logistic Regression, the performance was very poor. Sklearns GridSearch and feature selection did not help at all. So probably there is something wrong with the data.</p>
@@ -681,9 +693,16 @@ Plot the accuracy per epoch.</p>
 <h2>15.02.2023<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h2>
 <p>I set up the cross validation pipeline in the logistic regression notebook. Here I defined the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html">LeaveOneGroupOut</a> method. This way, in training, the LogisticRegression is trained with session 1 and 2 and validated on 3. However, the split it selfs works, but Im not sure it really does work when using the crossvalidation function. This needs to be further investigated.</p>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="march-2023">
+<h1>March 2023<a class="headerlink" href="#march-2023" title="Permalink to this heading">#</a></h1>
 <section id="id39">
 <h2>01.03.2023<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h2>
 <p>Nothing new happened. The hypothesis to decode mental imagery does not seem to work. This means that I will now stop the machine learning and start to get the assignment ready.</p>
+</section>
+<section id="id40">
+<h2>20.03.2023<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h2>
+<p>The past weeks I spend almost all of the time on setting up the jupyter book. It seems to be almost finished now! Hurray!</p>
 </section>
 </section>
 
@@ -789,13 +808,20 @@ Plot the accuracy per epoch.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">23.01.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">24.01.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">30.01.2023</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#february-2023">February 2023</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">02.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">11.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">12.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">13.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">14.02.2023</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">15.02.2023</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#march-2023">March 2023</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">01.03.2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">20.03.2023</a></li>
 </ul>
 </li>
 </ul>
