@@ -422,11 +422,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">This notebook serves the purpose of performing the general linear model on the respective dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-glm-for-all-runs"><strong>3.0 Performing the glm for all runs</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check"><strong>4.0 Quality check</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>4.1 Model evaluation</strong></a></li>
@@ -451,9 +448,7 @@ document.write(`
 <h1>General linear model<a class="headerlink" href="#general-linear-model" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2><strong>0. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">
-<h2>This notebook serves the purpose of performing the general linear model on the respective dataset<a class="headerlink" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset" title="Permalink to this heading">#</a></h2>
+<p>This notebook holds the code for the <code class="docutils literal notranslate"><span class="pre">general</span> <span class="pre">linear</span> <span class="pre">model</span></code>.</p>
 <p>First we will need to load the data. We are now dealing with the preprocessed data. The preprocessing has been done with using <a class="reference external" href="https://fmriprep.org/en/stable/">fMRI-prep</a>. fMRIprep describes itself as such “(…)It performs basic processing steps (coregistration, normalization, unwarping, noise component extraction, segmentation, skullstripping etc.) providing outputs that can be easily submitted to a variety of group level analyses, including task-based or resting-state fMRI, graph theory measures, surface or volume-based statistics, etc.”</p>
 <p>Thus, we will now perform our first level model. The predictors are the respective categories of the stimuli. The dependent variable is the brain activity in a given voxel.
 So lets start by loading the data! For now we are dealing with the first five runs of subject one, for the first session in the imagery task.</p>
@@ -974,7 +969,7 @@ While there are certainly a lot of confound variable (243, to be exact) we are n
 </div></div></div>
 </div>
 <p>This looks good! Now that we took care of the confounds, its time to import nilearns FirstLevelModel function.
-This function creates a <strong>design matrix</strong> and uses the information provided by the events file.</p>
+This function creates a <code class="docutils literal notranslate"><span class="pre">design</span> <span class="pre">matrix</span></code> and uses the information provided by the events file.</p>
 <p>The function requires a lot of different parameters to be set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1361,8 +1356,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <img alt="../_images/6685ea4bc9565de9c87a387677b7a5caae6bf32ee59ae258681f29eef570e198.png" src="../_images/6685ea4bc9565de9c87a387677b7a5caae6bf32ee59ae258681f29eef570e198.png" />
 </div>
 </div>
+</section>
 <section id="running-the-model">
-<h3><strong>1.0 running the model</strong><a class="headerlink" href="#running-the-model" title="Permalink to this heading">#</a></h3>
+<h2><strong>1.0 running the model</strong><a class="headerlink" href="#running-the-model" title="Permalink to this heading">#</a></h2>
 <p>Now it is time to run our defined first level model. We are using our mean fMRI img and our event and confound file. This results in a <em>design matrix</em>. The design matrix is informing us about a given activity for the respective regressor and for a given scan number. We have a recording frequency of 2 seconds. The whole paradigm took about 400 seconds (see: Dataset_Exploration.ipynb). This is why the only have 200 scan numbers on our y-axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1406,10 +1402,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 <section id="detection-of-significant-voxels">
-<h3><strong>2.0 Detection of significant voxels</strong><a class="headerlink" href="#detection-of-significant-voxels" title="Permalink to this heading">#</a></h3>
+<h2><strong>2.0 Detection of significant voxels</strong><a class="headerlink" href="#detection-of-significant-voxels" title="Permalink to this heading">#</a></h2>
 <p>In order to estimate our Betas of the GLM, we need to calculate the contrasts for all conditions. By doing this, we are weighting the columns to discover the associated statistics.</p>
 <p>This requires some data wrangling. First, we need to extract all unique values from our <em>event</em> file, so we only have the stimuli presented in the paradigm. Before, we have to sort the values, because our design matrix follows a ascending order. Then we remove the one NaN from this list. After that, we will create the variable <strong>conditions</strong>. This list containts the prefix “active”, so we know we are dealing with an activated brain region and is added by the respective condition name.</p>
-<p>Then an array of the length of all regressors is created. For each of our regressors of interest, so for all our conditions, i.e. imagery stimuli, a weight is assigned. One thing is very important here: Our design matrix tells us, that the first three regressors are <strong>NOT</strong> the imagery conditions but rather the cue presentation, rest and imagery evaluation. Due to this, we have to start by assigning the first weight to the <strong>fourth</strong> 0 zero of our array. This is then combined into a dictionary, so it can serve as in input to the nilearn function <strong>plot_contrast_matrix</strong>.</p>
+<p>Then an array of the length of all regressors is created. For each of our regressors of interest, so for all our conditions, i.e. imagery stimuli, a weight is assigned. One thing is very important here: Our design matrix tells us, that the first three regressors are <strong>NOT</strong> the imagery conditions but rather the cue presentation, rest and imagery evaluation. Due to this, we have to start by assigning the first weight to the <code class="docutils literal notranslate"><span class="pre">fourth</span></code> zero of our array. This is then combined into a dictionary, so it can serve as in input to the nilearn function <strong>plot_contrast_matrix</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1632,7 +1628,6 @@ The z map serves combined with the condition labels as the input for nilearns de
 <img alt="../_images/f242e95dadae9b2a0e401d1efcc36f5216eb5306fb6a0595862d1556d77dfa55.png" src="../_images/f242e95dadae9b2a0e401d1efcc36f5216eb5306fb6a0595862d1556d77dfa55.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="performing-the-glm-for-all-runs">
 <h2><strong>3.0 Performing the glm for all runs</strong><a class="headerlink" href="#performing-the-glm-for-all-runs" title="Permalink to this heading">#</a></h2>
@@ -2770,11 +2765,8 @@ VERY IMPORANT INFORMATION:
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-notebook-serves-the-purpose-of-performing-the-general-linear-model-on-the-respective-dataset">This notebook serves the purpose of performing the general linear model on the respective dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model"><strong>1.0 running the model</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-of-significant-voxels"><strong>2.0 Detection of significant voxels</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-glm-for-all-runs"><strong>3.0 Performing the glm for all runs</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-check"><strong>4.0 Quality check</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>4.1 Model evaluation</strong></a></li>
