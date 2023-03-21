@@ -423,7 +423,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examing-the-voxel-pattern"><strong>2.0 Examing the voxel pattern</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-matrix-and-voxel-pattern"><strong>2.0 Correlation matrix and voxel pattern</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>3.0 Logistic regression</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-search-what-is-wrong-with-the-data"><strong>4.0 Error search - what is wrong with the data?</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca"><strong>4.1 PCA</strong></a></li>
@@ -508,6 +508,7 @@ document.write(`
 </div>
 </div>
 <p>As mentioned before in the literature review part, The V1 seems to be a suitable canidate for mental imagery. Thus, we will choose this region as our mask.</p>
+<p>This mask can also be plotted with respect to the z-map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func_filename_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/c/Users/janos/git/sessions_new/z_maps_1_perrun&#39;</span>
@@ -536,7 +537,7 @@ document.write(`
 <img alt="../_images/5d45f7be2b86bbae962bd94d457414970ee7c4e29879cd36f4142a3d7d3f6537.png" src="../_images/5d45f7be2b86bbae962bd94d457414970ee7c4e29879cd36f4142a3d7d3f6537.png" />
 </div>
 </div>
-<p>Now the next step is to load in the X and Y variables. We will do this by applying Nilearns Niftimasker function on the z_maps we calculated.</p>
+<p>Now the next step is to load in the X and y variables. We will do this by applying Nilearns Niftimasker function on the z-maps we calculated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.maskers</span> <span class="kn">import</span> <span class="n">NiftiMasker</span>
@@ -545,9 +546,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>This loops helps us in extracting the time series from each z-map.
-Also, we append values to the y list. We have 26 different categories we want to decode. Since there are 4 sessions in total and the categories are the same for each session, we will add a “1” for category one and so on to the Y list.</p>
-<p>Since there are 5 runs per category, we also need to define a category starting index and a boundary index. This way we can keep track of which zmaps belongs to which image category.</p>
+<p>This loops helps us in extracting the voxel pattern from each z-map.
+Also, we append values to the y list. We have 26 different categories we want to decode. Since there are 4 sessions in total and the categories are the same for each session, we will add a “1” for category one and so on to the y list.</p>
+<p>Since there are 5 runs per category, we also need to define a category starting index and a boundary index. This way we can keep track of which z-maps belongs to which image category.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
@@ -580,7 +581,7 @@ Also, we append values to the y list. We have 26 different categories we want to
 </div>
 </div>
 </div>
-<p>First we need to transform our list type variables into numpy arrays. Then, we can check the shape of our input (X) and output(y) data.</p>
+<p>First we need to transform our list type variables into numpy arrays. Then, we can check the shape of our input (X) and output (y) data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -619,11 +620,11 @@ Also, we append values to the y list. We have 26 different categories we want to
 </div>
 <p>There are 520 rows for both X and y. This makes sense, because each row represents the respective image category label. The columns in our X data represents the voxels in our specific mask, in other words: We have the activity of 992 voxels per category.</p>
 </section>
-<section id="examing-the-voxel-pattern">
-<h2><strong>2.0 Examing the voxel pattern</strong><a class="headerlink" href="#examing-the-voxel-pattern" title="Permalink to this heading">#</a></h2>
-<p>The shape of our input array X tells us, that we have n_samples = 104 and n_features = 992.
-The features relate to the amount of voxels extracted. The samples are the 26 categories multiplied by all 4 sessions.</p>
-<p>First, we will take a look at the correlation matrix.</p>
+<section id="correlation-matrix-and-voxel-pattern">
+<h2><strong>2.0 Correlation matrix and voxel pattern</strong><a class="headerlink" href="#correlation-matrix-and-voxel-pattern" title="Permalink to this heading">#</a></h2>
+<p>The shape of our input array X tells us, that we have n_samples = 520 and n_features = 992.
+The features relate to the amount of voxels extracted. The samples are the 26 categories multiplied by all 4 sessions and all 5 runs per session.</p>
+<p>First, we will take a look at the <code class="docutils literal notranslate"><span class="pre">correlation</span> <span class="pre">matrix</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -879,13 +880,13 @@ The features relate to the amount of voxels extracted. The samples are the 26 ca
 VERY IMPORANT INFORMATION:
 <p>This notebook has gone through several attempts. Please take a look at the respective github repository folder to understand the different attempts made.</p>
 <p>For example: The first idea was to run the Logistic Regression for the z maps across runs (so 104 samples) with a 80/20 split. This ended up in really bad accuracies. Thus I implemented a GridSearch, to tune the hyperparameters of the model. This did not help. I then tried to create x and y manually. This means, that I created a loop which sorts the data into training and testing set at random, so the model would be trained in instances of all sessions and tested on instances of all sessions. Results remained poorly. Then I tried to run a PCA and inverse transform it without the session variance (please follow this notebook for more detailed explanation). This also did not help. I tried several masks. Nothing. Sklearns feature selection (k-best) did not improve results. I even tried the procedure with the data from subject two. But, you might guess it, nothing changed. Thats why this notebook containts the attempt with using the LOGO strategy and the z-maps perrun. The idea was to increase the samples and let the model “see” more data before testing it.</p>
-<p>If you are interested in the other approaches, please take either a look at the open-lab-notebook, the different github versions or contact me. </div></p>
+<p>If you are interested in the other approaches, please take either a look at the open-lab-notebook, the different github versions or contact me.</p>
+<p>Otherwise, some of the approaches mentioned are documented in the SVM notebook.</div></p>
 <p>To set up the logistic regression we will mostly use the fantastic machine learning library <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a>.</p>
 <p>We will choose the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html">leave one group out</a> method for cross validation. Since we have 4 sessions, we will leave the last session, so session 4, out for testing our data. In the meanwhile, session 1,2 and 3 are cross validated against each other. Meaning, that the logistic regression is trained with the data of session 1 and 2 and then validated against session 3, and so on. This trained model will then be tested on the data from session 4.</p>
 <p>But step by step:</p>
 <ol class="arabic simple">
 <li><p>Define our group variable, which basically just consists of the respective session label for each sample. This is a neccesary argument for the LeaveOneGroupOut method.</p></li>
-<li><p>Split the data in a training testing set. Then, we are also going to normalize our X data with sklearns <em>processing</em> module. In order to do so, we will fit_transform the scaler on to the training data. The scaler has to be solely fitted on to the test data later on.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -949,7 +950,10 @@ VERY IMPORANT INFORMATION:
 </div>
 </div>
 </div>
-<p>Contains the labels for the corresponding sessions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">groups</span></code>variable contains the labels for the corresponding sessions.</p>
+<ol class="arabic simple" start="2">
+<li><p>Split the data in a training testing set. Then, we are also going to normalize our X data with sklearns <em>processing</em> module. In order to do so, we will fit_transform the scaler on to the training data. The scaler has to be solely fitted on to the test data later on.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">390</span><span class="p">]</span>
@@ -994,7 +998,7 @@ VERY IMPORANT INFORMATION:
 </div>
 </div>
 </div>
-<p>Step one is finished. We split our X and y variables into a training and testing set, and normalised our X_train variable.</p>
+<p>Step one and two are finished. We split our X and y variables into a training and testing set, and normalised our X_train variable.</p>
 <p><strong>NOTE</strong>:
 The index for the training and testing set are choosen that way, because the first 390 samples belong to session 1 - 3. Remember: One session has 5 runs per 26 categories. Leaving us with 130 samples per session.</p>
 <p>Step 3. Import sklearns LeaveOneGroupOut module. Store the method in a variable ‘LOGO’. Run a loop over our training variables to get an idea, how the method works “behind the scene”:</p>
@@ -1168,7 +1172,7 @@ Fold 2:
 </div>
 <p>We now have an idea of how the LOGO method works.
 it is time to setup our Logistic Regression model. We will define and then fit it on the training data. Afterwards, we will take a look on how well it can predict the test data.</p>
-<p>For this part we need sklearns LogisticRegression function. This method allows us to set up the ‘one versus rest (ovr)’ multi_class classification algorithm. OVR allows us to compare one class (for example image category one) vs all the other classes. So one model is created for each class. Each model predicts a probability for a given class. The highest probability is then used as a predictor.</p>
+<p>For this part we need sklearns LogisticRegression function. This method allows us to set up the <code class="docutils literal notranslate"><span class="pre">one</span> <span class="pre">versus</span> <span class="pre">rest</span></code>(ovr) multi_class classification algorithm. OVR allows us to compare one class (for example image category one) vs all the other classes (category 2-25). So one model is created for each class. Each model predicts a probability for a given class. The highest probability is then used as a predictor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span><span class="o">=</span><span class="n">LeaveOneGroupOut</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
@@ -1239,8 +1243,8 @@ it is time to setup our Logistic Regression model. We will define and then fit i
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-danger">
-Please notice, that the testing data has also been normalized. </div><p>After fitting our model is becomes very obvious, that we could not predict anything at all in the testing data. Our model seems to be dramatically overfitted.</p>
+<div class="alert alert-block alert-success">
+Please notice, that the testing data has also been normalized by applying scaler.transform on X_test . </div><p>After fitting our model is becomes very obvious, that we could not predict anything at all in the testing data. Our model seems to be dramatically overfitted.</p>
 <p>But lets visualize our results. We can create a classification_report and a confusion matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1345,6 +1349,7 @@ weighted avg       0.04      0.05      0.03       130
 <p>“<strong>The F-beta</strong> score can be interpreted as a weighted harmonic mean of the precision and recall, where an F-beta score reaches its best value at 1 and worst score at 0.”</p>
 <p><strong>Support</strong> refers to the occurrences of the respective class in y_true.</p>
 <p>Source: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support">Sklearn documentation</a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">classification</span> <span class="pre">reports</span></code> tell us that the training data is 100% predicted and the test data 0% predicted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
@@ -1408,7 +1413,8 @@ weighted avg       0.04      0.05      0.03       130
 <img alt="../_images/201987c9f0ea2674a26fa52d5a64879f851373dd3a1e266a6293d2a2b3ac2ff6.png" src="../_images/201987c9f0ea2674a26fa52d5a64879f851373dd3a1e266a6293d2a2b3ac2ff6.png" />
 </div>
 </div>
-<p>Plotting the coefficients for category one and two</p>
+<p>Not a lot of cofficients seem to be above 0.5. That doesnt look good. Rather that there are a lot of non meaningful coefficients.</p>
+<p>We continue with plotting the coefficients for category one and two</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">coef</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1464,6 +1470,7 @@ weighted avg       0.04      0.05      0.03       130
 <img alt="../_images/b3bca26a5a48cc1eed5c515404cd854ffaca79c58a9173ba84cc92c2579a6b8f.png" src="../_images/b3bca26a5a48cc1eed5c515404cd854ffaca79c58a9173ba84cc92c2579a6b8f.png" />
 </div>
 </div>
+<p>We get all unique features from the important features list to use them as our input features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">imp_f</span><span class="p">)</span>
@@ -1494,6 +1501,7 @@ weighted avg       0.04      0.05      0.03       130
 </div>
 <p>X_imp now represents our input data, but with 936 features (=voxel) less. This might be an idea to combat overfitting.</p>
 <p>The remaining 56 features are somewhat important. So lets run the logistic regression again!</p>
+<p>To prevent myself from repeating information, I will not provide a lot of information here. All steps from above are repeated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_imp_train</span> <span class="o">=</span> <span class="n">X_imp</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">390</span><span class="p">]</span>
@@ -1759,7 +1767,7 @@ Our model does not work. Feature selection does not help. SklearnsGridSearch als
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>0. Introduction</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking"><strong>1. Masking</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examing-the-voxel-pattern"><strong>2.0 Examing the voxel pattern</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-matrix-and-voxel-pattern"><strong>2.0 Correlation matrix and voxel pattern</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>3.0 Logistic regression</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-search-what-is-wrong-with-the-data"><strong>4.0 Error search - what is wrong with the data?</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca"><strong>4.1 PCA</strong></a></li>
