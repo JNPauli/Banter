@@ -58,7 +58,7 @@ In the summer semester 2022, a presentation for this project was created. This p
 
 ## I've got a question!
 
-In case you have any questions or difficulties with the lecture and its materials, please don’t hesitate a single second to get in touch with me. A great way to do this is to open an issue on the GitHub site of the course. You can of course further contact me via <details>
+In case you have any questions or difficulties with the research report, please don’t hesitate a single second to get in touch with me. A great way to do this is to open an issue on the GitHub site of the course. You can of course further<details>
 <summary> contact me via e-mail:</summary>
 <br>(paulijanos@gmail.com)</details>
 
