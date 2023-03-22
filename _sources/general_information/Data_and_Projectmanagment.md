@@ -1,18 +1,19 @@
 # Data- and Projectmanagment
-This file containts the description of the Data- and Projectmanagment. In other words, the `Dataset` is described and evaluated, also the question regarding `Version control` are answered, the `literature library` and the `FAIR` principle is adressed. Furthermore, comments about the `open lab notebook` and the `computational environment` are made. So lets start right away.
+This file holds the description of the Data- and Projectmanagment. In other words, the `Dataset` is described and evaluated, also the question regarding `Version control` is answered, the `literature library` and the `FAIR` principle is adressed. Furthermore, comments about the `open lab notebook` and the `computational environment` are made. So lets start right away!
 
 ## Dataset description and evaluation
-As already mentioned in the *Research question* section, the [Dataset](https://openneuro.org/datasets/ds001506/versions/1.3.1) can be obtained from openneuro. [Openneuro](https://openneuro.org/) is a open-source website that hosts multiple datasets from different modalities. In our case, the Dataset is from an fMRI experiment. Since the data is not preprocessed, it needs to be preprocessed and then downloaded from brainlife. Brainlife is a cloud computing platform, that makes it possible to store, share and analyse Data. The preprocessed brainlife dataset can be found [here](https://brainlife.io/project/638b2a566881d56fbfac223e). Brainlife has specifically been used to preprocess the fMRI data in the *subject anatomical space* for the imagery sessions of all three subjects. Further descriptions follow in the Dataset Exploration part.
+As already mentioned in the *Research question* section, the [Dataset](https://openneuro.org/datasets/ds001506/versions/1.3.1) is obtained from openneuro. [Openneuro](https://openneuro.org/) is a open-source website that hosts multiple datasets from different modalities. In our case, the Dataset is from an fMRI experiment. Since the data is not preprocessed, it needs to be preprocessed and then downloaded from brainlife. Brainlife is a cloud computing platform, that makes it possible to store, share and analyse Data. The preprocessed brainlife dataset can be found [here](https://brainlife.io/project/638b2a566881d56fbfac223e). Brainlife has specifically been used to preprocess the fMRI data in the *subject anatomical space* for the imagery sessions of all three subjects. Further descriptions follow in the Dataset Exploration part.
 
-**NOTE:** It is actually possible to store preprocessed Data on openneuron as well. It would have been better, if the dataset was already preprocessed. This way its easier to comprehend every step that has been made in the analysis. 
+**NOTE:** It is actually possible to store preprocessed Data on openneuro as well. It would have been better, if the dataset was already preprocessed. This way its easier to comprehend every step that has been made in the analysis of the original paper. 
 
-Regarding the general analysis of the paper: The authors also uploaded their code on [Github](https://github.com/KamitaniLab/DeepImageReconstruction). The original paper `reconstructs` mental images.
+**Hint**:
+Regarding the general analysis of the paper: The authors also uploaded their code on [Github](https://github.com/KamitaniLab/DeepImageReconstruction). The original paper deals with `reconstructing` mental images.
 
-The dataset follows the BIDS format and contains the data from three healthy subjects. For each subject there is fMRI data from five different experiment tasks and multiple sessions. In our case, only the fMRI data of the `imagery` sessions are used. The structure of the imagery sessions looked like this: 
+The dataset follows the BIDS format and contains the data from three healthy subjects. For each subject there is fMRI data from five different experiment tasks and multiple sessions. In our case, only the fMRI data of the `imagery` sessions are used. The structure of the imagery sessions looks like this: 
 
 Subject one - Session imagery 01, 02, 03 and 04. 5 runs per session, so 20 runs in total.
 
-Subject two - Session imagery 01, 02 and 03. Session one had 8 runs, session two and three 6 runs. So also 20 runs in total.
+Subject two - Session imagery 01, 02 and 03. Session one had 8 runs, session two and three both 6 runs. So also 20 runs in total.
 
 Subject three - Session imagery 01, 02 and 03. Session one had 3 runs, session two 9 and session three 8 runs. Leading to further 20 runs in total.
 
@@ -21,7 +22,7 @@ Every run consisted of 26 images (for further details, please see the Dataset Ex
 The stimuli images were obtained from Imagenet. So called natural images were explicitly used for the imagery sessions.
 
 ## Version control
-The whole project is documented on Github. Please click [here](https://github.com/JNPauli/Mental-image-decoding) to get to the Github repository. 
+The whole project is documented on Github. Please click [here](https://github.com/JNPauli/Mental-image-decoding) to get to the Github repository. Github allows the user to keep track of their project, by exploring changes that were made. This is called `version control`.
 
 **Note**: Most of the commits happened on the update branch, so that the main branch is not trashed with random stuff and ideas. The README file of the Github repository explains the respective structure and what contents are documented in which folder. Also, the project is documented on [OSF](https://osf.io/t2psq/).
 
@@ -323,14 +324,14 @@ Interoperability is reached, because the data follows the BIDS format. HOWEVER: 
 The data hits the Reuse criterion, because it not only a license is provided, but also but the data is well documented, it is described how the data was collected and what the data essentially represents.
 
 ## Openlab notebook
-The [open-lab-notebook](https://github.com/JNPauli/Mental-image-decoding/open_lab_notebook.html) exists. This folder holds the **Documentation.md** file. The whole process of the project is documented there. Every obstacle, failure and win is described and sorted by date. Ideally, the thought process within the project is reasonable and transparent for everyone interested (or just put me under the fMRI, whatever suits you best).
+An [open-lab-notebook](https://github.com/JNPauli/Mental-image-decoding/open_lab_notebook.html) exists. The open lab notebook folder holds the **Documentation.md** file. The whole process of the project is documented there. Every obstacle, failure and win is described and sorted by date. Ideally, the thought process within the project is reasonable and transparent for everyone interested (or just put me under the fMRI, whatever suits you best).
 
 ## Computational environment
-In order to fulfill the FAIR principle, a computational environment exists. This environment consists of all python modules that are used in this project, but ONLY in this project. This way a possible conflict between different versions of modules etc is prevented. You can find the modules within the **requirements_code.txt** file in the [content/code folder](https://github.com/JNPauli/Mental-image-decoding/content/code) of the github repository.
+In order to fulfill the FAIR principle, a computational environment exists. This environment consists of all python modules that are used in this project, but ONLY in this project. This way a possible conflict between different versions of modules etc. is prevented. You can find the modules in the **requirements_code.txt** file in the [content/code folder](https://github.com/JNPauli/Mental-image-decoding/content/code) of the github repository.
 
-To install the modules, simply download the requirements_code.txt file from the github repository or you can follow the alternative way.
+To install the modules, simply download the requirements_code.txt file from the github repository or you can follow the `alternative download way`.
  
-`Alternative way`: 
+**Alternative download way**: 
 Create a new folder (mkdir your_directory) and clone the repository 
 
 (1. cd your_directory,
